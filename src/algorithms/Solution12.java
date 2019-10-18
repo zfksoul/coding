@@ -13,16 +13,6 @@ public class Solution12 {
 		// TODO Auto-generated method stub
 
 	}
-	public int NumberOf1(int n) {
-        int count=0;
-		int i=1;
-		while(i!=0) {
-			if((n&i)!=0) {
-				count++;
-			}
-			i=i<<1;
-		}
-		return count;
-    }
+	
 
 }
