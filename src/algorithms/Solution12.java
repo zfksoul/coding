@@ -9,7 +9,7 @@ package algorithms;
 */
 public class Solution12 {
 	public static void main(String[] args) {
-		int[] array = {3,4,5,6,1,2};
+		int[] array = {3,4,5,6,1,2,2,3};
 		Solution6 so = new Solution6();
 		System.out.println(so.minNumberInRotateArray(array));
 	}
