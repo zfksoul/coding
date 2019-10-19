@@ -10,5 +10,7 @@ package algorithms;
 */
 public class Solution13 {
 
-
+	int i;
+	int j;
+	int k;
 }
