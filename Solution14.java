@@ -10,7 +10,7 @@ package algorithms;
 public class Solution14 {
 
     public ListNode FindKthToTail(ListNode head, int k) {
-        if (head == null || k == 0) {
+        if (head == null) {
             return null;
         }
         ListNode p = head;
