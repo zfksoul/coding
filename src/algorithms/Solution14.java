@@ -8,5 +8,5 @@ package algorithms;
 * 
 */
 public class Solution14 {
-
+    
 }
