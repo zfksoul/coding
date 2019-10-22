@@ -21,17 +21,18 @@ public class Solution21 {
         int j = 0;
         for (int i = 0; i < pushA.length; i++) {
             st.push(pushA[i]);
-            while(!st.isEmpty()) {
-                if(st.peek()==popA[j]) {
+            while (!st.isEmpty()) {
+                if (st.peek() == popA[j]) {
                     st.pop();
                     j++;
-                }else {
+                } else {
                     break;
                 }
             }
         }
         return st.isEmpty();
     }
+
     public boolean IsPopOrder1(int[] pushA, int[] popA) {
         if (pushA == null || popA == null) {
             return false;
@@ -42,31 +43,31 @@ public class Solution21 {
         Stack<Integer> st = new Stack<Integer>();
         int i = 0;
         int j = 0;
-        while(i < pushA.length) {
-            while (i<pushA.length) {
-                if(pushA[i] != popA[j]) {
+        while (i < pushA.length) {
+            while (i < pushA.length) {
+                if (pushA[i] != popA[j]) {
                     st.push(pushA[i]);
                     i++;
-                }else {
+                } else {
                     i++;
                     j++;
                     break;
                 }
             }
-            while (j<popA.length) {
-                if(st.peek() == popA[j]) {
+            while (j < popA.length) {
+                if (st.peek() == popA[j]) {
                     st.pop();
                     j++;
-                }else {
+                } else {
                     break;
                 }
             }
         }
-        while (j<popA.length) {
-            if(st.peek() == popA[j]) {
+        while (j < popA.length) {
+            if (st.peek() == popA[j]) {
                 st.pop();
                 j++;
-            }else {
+            } else {
                 break;
             }
         }
