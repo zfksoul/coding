@@ -10,6 +10,7 @@ import java.util.ArrayList;
  * 
  */
 public class Solution24 {
+    
     public ArrayList<ArrayList<Integer>> FindPath(TreeNode root, int target) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         ArrayList<Integer> array = new ArrayList<Integer>();
@@ -18,6 +19,27 @@ public class Solution24 {
     }
 
     public void fun(TreeNode node, ArrayList<ArrayList<Integer>> res, ArrayList<Integer> array, int target) {
+        if (target <= 0 || node == null) {
+            return;
+        }
+        if (node.left == null && node.right == null) {
+            if (node.val == target) {
+                array.add(node.val);
+                res.add(new ArrayList<Integer>(array));
+                array.remove(array.size()-1);
+            } else {
+                return;
+            }
+        }
+        array.add(node.val);
+        
+        fun(node.left, res, array, target - node.val);
+        fun(node.right, res, array, target - node.val);
+        
+        array.remove(array.size()-1);
+    }
+    
+    public void fun1(TreeNode node, ArrayList<ArrayList<Integer>> res, ArrayList<Integer> array, int target) {
         if (target <= 0) {
             return;
         }
