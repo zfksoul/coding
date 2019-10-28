@@ -34,6 +34,7 @@ public class ReverseBetween {
         if (head == null) {
             return null;
         }
+        if (m == n) return head; 
         ListNode node = new ListNode(0);
         node.next = head;
         ListNode p = node;
