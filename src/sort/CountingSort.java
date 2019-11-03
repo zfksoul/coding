@@ -10,7 +10,7 @@ package sort;
 public class CountingSort {
 
     public static void main(String[] args) {
-        int[] arr = new int[] { 1, 3, 2, 5, 4, 6, 6, 4, 2, 1 };
+        int[] arr = new int[] { 1, 3, 2, 5, 4,  6, 6, 4, 2, 1 };
         CountingSort o = new CountingSort();
         arr = o.myCountingSort(arr, 6);
         for (int i = 0; i < arr.length; i++) {
