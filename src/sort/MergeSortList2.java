@@ -16,16 +16,17 @@ public class MergeSortList2 {
         ListNode node3 = new ListNode(5);
         ListNode node4 = new ListNode(7);
         ListNode node5 = new ListNode(2);
-        /*ListNode node6 = new ListNode(4);
-        ListNode node7 = new ListNode(6);
-        ListNode node8 = new ListNode(8);*/
+        /*
+         * ListNode node6 = new ListNode(4); ListNode node7 = new ListNode(6); ListNode
+         * node8 = new ListNode(8);
+         */
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
         node4.next = node5;
-        /*node5.next = node6;
-        node6.next = node7;
-        node7.next = node8;*/
+        /*
+         * node5.next = node6; node6.next = node7; node7.next = node8;
+         */
         ListNode node = o.myMergeSortList2(node1);
         while (node != null) {
             System.out.println(node.val);
@@ -46,7 +47,7 @@ public class MergeSortList2 {
         for (int i = 1; i < n; i *= 2) {// 每一段的长度
             ListNode begin = dummy;
             for (int j = 0; j + i < n; j += i * 2) {// 判断本轮迭代是否结束
-                //j + i < n：最后如果只有一段链表则不需要调整，但是数组不能这么判断
+                // j + i < n：最后如果只有一段链表则不需要调整，但是数组不能这么判断
                 ListNode first = begin.next;// 第一段开始
                 ListNode second = first;
                 for (int k = 0; k < i; k++) {

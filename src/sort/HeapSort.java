@@ -10,7 +10,7 @@ package sort;
 public class HeapSort {
 
     public static void main(String[] args) {
-        int[] arr = new int[] { 1, 3, 2, 5, 4, 6, 5, 9, 8, 7, 10, 11 };
+        int[] arr = new int[] { 1,22, 3, 2, 5, 4, 6, 5, 9, 8, 7, 10, 11 };
         HeapSort o = new HeapSort();
         arr = o.myHeapSort(arr);
         for (int i = 0; i < arr.length; i++) {
