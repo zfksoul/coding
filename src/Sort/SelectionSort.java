@@ -17,7 +17,6 @@ public class SelectionSort {
             System.out.println(arr[i]);
         }
     }
-    
     public int[] mySelectionSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             int minIndex = i;

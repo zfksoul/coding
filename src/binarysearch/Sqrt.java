@@ -11,7 +11,7 @@ public class Sqrt {
 
     public static void main(String[] args) {
         Sqrt s = new Sqrt();
-        System.out.println(s.mySqrt(2147483647));
+        System.out.println(s.mySqrt(12));
     }
     public int mySqrt(int x) {
         int l = 0;

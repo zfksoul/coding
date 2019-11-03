@@ -11,7 +11,7 @@ public class Search {
     public static void main(String[] args) {
         Search s = new Search();
         int[] arr = new int[] { 5, 6, 7, 8, 1, 2, 3, 4 };
-        System.out.println(s.mySearch(arr, 7));
+        System.out.println(s.mySearch(arr, 4));
     }
 
     public int mySearch(int[] arr, int target) {
@@ -27,7 +27,7 @@ public class Search {
                 l = mid + 1;
             }
         }
-        if (arr[arr.length - 1] > target) {
+        if (arr[arr.length - 1] >= target) {
             r = arr.length - 1;
         } else {
             l = 0;

@@ -22,7 +22,7 @@ public class InsertionSort {
         for (int i = 1; i < arr.length; i++) {
             int j = i - 1;
             int tmp = arr[i];
-            while (j >= 0 && arr[j] >= tmp) {
+            while (j >= 0 && arr[j] > tmp) { //">"确保排序稳定
                 arr[j + 1] = arr[j];
                 j--;
             }
@@ -36,7 +36,7 @@ public class InsertionSort {
             int j = i - 1;
             int tmp = arr[i];
             while (j >= 0) {
-                if (arr[j] >= tmp) {
+                if (arr[j] > tmp) {
                     arr[j + 1] = arr[j];
                     j--;
                 } else {

@@ -23,7 +23,7 @@ public class ShellSort {
             for (int i = gap; i < arr.length; i += gap) {
                 int j = i - gap;
                 int tmp = arr[i];
-                while (j >= 0 && arr[j] >= tmp) {
+                while (j >= 0 && arr[j] > tmp) {
                     arr[j + gap] = arr[j];
                     j -= gap;
                 }

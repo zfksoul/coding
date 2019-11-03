@@ -12,17 +12,41 @@ public class QuickSort {
     public static void main(String[] args) {
         int[] arr = new int[] { 1, 3, 2, 5, 4, 6, 5, 9, 8, 7, 10, 11 };
         QuickSort o = new QuickSort();
-        arr = o.myQuickSort(arr, 0, arr.length - 1);
+        arr = o.myQuickSort1(arr, 0, arr.length - 1);
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);
         }
     }
     
-    public int[] myQuickSort(int[] arr, int l, int r) {
+    public int[] myQuickSort2(int[] arr, int l, int r) {
+        if (l < r) {
+            int i = l - 1;
+            int j = r + 1;
+            int mid = (l + r) >> 1;
+            while (i < j) {
+                do {
+                    j--;
+                }while (arr[j] > arr[mid]);
+                do {
+                    i++;
+                }while(arr[i]<arr[mid]);
+                if (i < j) {
+                    int tmp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = tmp;
+                }else {
+                    myQuickSort2(arr,l,j);
+                    myQuickSort2(arr,j+1,r);
+                }
+            }
+        }
+        return arr;
+    }
+    public int[] myQuickSort1(int[] arr, int l, int r) {
         if (l < r) {
             int partionIndex = partition(arr, l, r);
-            myQuickSort(arr, l, partionIndex-1);
-            myQuickSort(arr, partionIndex+1, r);
+            myQuickSort1(arr, l, partionIndex-1);
+            myQuickSort1(arr, partionIndex+1, r);
         }
         return arr;
     }
@@ -45,3 +69,4 @@ public class QuickSort {
     }
 
 }
+

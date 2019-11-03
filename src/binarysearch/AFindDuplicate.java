@@ -8,10 +8,10 @@ package binarysearch;
  * 给定一个包含n+1个整数的数组nums，数字在1到n之间（包括1和n），可知至少存在一个重复的整数，
  * 假设只有一个重复整数，找到这个重复的数
  */
-public class FindDuplicate {
+public class AFindDuplicate {
 
     public static void main(String[] args) {
-        FindDuplicate f = new FindDuplicate();
+        AFindDuplicate f = new AFindDuplicate();
         int[] arr = new int[] { 5, 6, 7, 8, 1, 2, 2, 3, 4 };
         System.out.println(f.myFindDuplicate(arr));
     }
