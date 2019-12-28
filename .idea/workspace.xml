@@ -1,141 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1cf9b976-33ef-4e6a-b772-bb42001dda51" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/coding.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/ListNode.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Mycomparator.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/RandomListNode.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution1.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution10.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution11.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution12.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution13.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution14.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution15.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution16.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution17.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution18.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution19.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution2.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution20.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution21.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution22.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution23.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution24.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution25.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution26.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution27.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution3.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution4$TreeNode.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution4.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution5.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution6.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution7.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution8.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/Solution9.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/algorithms/TreeNode.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/binarysearch/AFindDuplicate.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/binarysearch/BinarySearch.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/binarysearch/FindMin.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/binarysearch/FindPeakElement.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/binarysearch/HIndex.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/binarysearch/Search.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/binarysearch/SearchInsert.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/binarysearch/SearchMatrix.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/binarysearch/SearchRange.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/binarysearch/Sqrt.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/linkedlist/DeleteDuplicates.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/linkedlist/DetectCycle.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/linkedlist/GetIntersectionNode.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/linkedlist/ListNode.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/linkedlist/RemoveNthFromEnd.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/linkedlist/ReverseBetween.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/linkedlist/ReverseList.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/linkedlist/RotateRight.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/linkedlist/SwapNodes.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/linkedlist/SwapPairs.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/BubbleSort.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/BucketSort.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/CountingSort.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/HeapSort.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/InsertionSort.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/InversePairs.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/ListNode.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/MergeSort1.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/MergeSort2.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/MergeSortList1.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/MergeSortList2.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/QuickSort.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/QuickSortList1.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/QuickSortList2.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/RadixSort.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/SelectionSort.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/sort/ShellSort.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test/A.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test/B.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test/C.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test/Card.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test/D.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test/Tag.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test/Test.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/A$B.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/A$BImp.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/A$BImp2.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/A$C.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/A$CImp.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/A$CImp2.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/A$D.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/A$DImp.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/A$DImp2.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/A.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/B.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/C.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/D.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/E$G.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/E$H.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/E.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/F.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/G.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/H.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/Jim.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/Jim1.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/Jim2.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/NestingInterfaces$BImp.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/NestingInterfaces$CImp.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/NestingInterfaces$EGImp.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/NestingInterfaces$EImp.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/NestingInterfaces$EImp2$EG.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/NestingInterfaces$EImp2.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/NestingInterfaces.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/P$PP.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/P.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/Parcel2$Contents.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/Parcel2$Destination.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/coding/test1/Parcel2.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/linkedlist/SwapNodes.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/sort/QuickSortList1.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/sort/QuickSortList2.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/A.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/B.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/C.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test1/B.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test1/C.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test1/Jim.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test1/NestingInterfaces.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test1/Parcel2.java" />
-      <change beforePath="$PROJECT_DIR$/src/linkedlist/DeleteDuplicates.java" afterPath="$PROJECT_DIR$/src/linkedlist/DeleteDuplicates.java" />
-      <change beforePath="$PROJECT_DIR$/src/linkedlist/ReverseBetween.java" afterPath="$PROJECT_DIR$/src/linkedlist/ReverseBetween.java" />
-      <change beforePath="$PROJECT_DIR$/src/sort/BucketSort.java" afterPath="$PROJECT_DIR$/src/sort/BucketSort.java" />
-      <change beforePath="$PROJECT_DIR$/src/sort/HeapSort.java" afterPath="$PROJECT_DIR$/src/sort/HeapSort.java" />
-      <change beforePath="$PROJECT_DIR$/src/sort/InversePairs.java" afterPath="$PROJECT_DIR$/src/sort/InversePairs.java" />
-      <change beforePath="$PROJECT_DIR$/src/sort/MergeSortList1.java" afterPath="$PROJECT_DIR$/src/sort/MergeSortList1.java" />
-      <change beforePath="$PROJECT_DIR$/src/sort/RadixSort.java" afterPath="$PROJECT_DIR$/src/sort/RadixSort.java" />
-    </list>
+    <list default="true" id="1cf9b976-33ef-4e6a-b772-bb42001dda51" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -159,8 +25,8 @@
       <file leaf-file-name="SwapNodes.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/linkedlist/SwapNodes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-399">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="323">
+              <caret line="47" column="20" lean-forward="true" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -460,12 +326,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1577499941771</updated>
-      <workItem from="1577499947351" duration="4860000" />
+      <workItem from="1577499947351" duration="5437000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4860000" />
+    <option name="totallyTimeSpent" value="5437000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -598,8 +464,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/linkedlist/SwapNodes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-399">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="323">
+          <caret line="47" column="20" lean-forward="true" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
           <folding />
         </state>
       </provider>
