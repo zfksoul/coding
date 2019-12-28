@@ -43,5 +43,12 @@ public class RadixSort {
         }
         return res;
     }
+    public int get(int x, int i) {
+        while (i > 0) {
+            x /= 10;
+            i--;
+        }
+        return x % 10;
+    }
 
 }

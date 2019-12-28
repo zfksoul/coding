@@ -1,5 +1,7 @@
 package linkedlist;
 
+import java.util.List;
+
 /**
  * 
  *
@@ -32,6 +34,7 @@ public class DeleteDuplicates {
             return null;
         }
         ListNode p = head;
+        //List l = new List();
         while (p.next != null) {
             if (p.val == p.next.val) {
                 p.next = p.next.next;

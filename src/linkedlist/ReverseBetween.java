@@ -35,20 +35,19 @@ public class ReverseBetween {
             return null;
         }
         if (m == n) return head; 
-        ListNode node = new ListNode(0);
-        node.next = head;
-        ListNode p = node;
-        ListNode q = node;
-        head = node;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode p = dummy;
+        ListNode q = dummy;
         while(m > 1 && p.next != null) {
-            p = p.next;
+            p = p.next;//p指向交换区间的前一个节点
             m--;
         }
         if (m > 1) {
             return null;
         }
         while(n >= 0 && q != null) {
-            q = q.next;
+            q = q.next;//q指向交换区间的下一个节点
             n--;
         }
         if (n >= 0) {
@@ -64,7 +63,7 @@ public class ReverseBetween {
         }
         p.next.next = q;
         p.next = a;
-        return head.next;
+        return dummy.next;
     }
 
 }

@@ -1,5 +1,7 @@
 package sort;
 
+import java.util.List;
+
 /**
 * 
 *
@@ -17,7 +19,7 @@ public class BucketSort {
     public void myBucketSort(int[] arr) {
         
     }
-    public void insertSort(List<Integer>, int data) {
-        
+    public void insertSort(List<Integer> list, int data) {
+
     }
 }

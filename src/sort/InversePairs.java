@@ -16,6 +16,12 @@ public class InversePairs {
         
     }
 
+    /*一个横坐标，向右为正方向，有n个车，每个车速度不同，初始位置不同
+     * 车速为v
+     * v>0,V<0,V=0
+     * 经过无限长时间，小车相遇多少次
+     * 求速度的逆序对个数为答案 
+     */
     // 用归并排序查找逆序对
     public int inversePairs(int[] arr, int l, int r) {
         int res = 0;
