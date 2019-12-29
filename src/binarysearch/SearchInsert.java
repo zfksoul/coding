@@ -14,7 +14,10 @@ public class SearchInsert {
         System.out.println(s.mySearchInsert(arr, 4));
     }
     public int mySearchInsert(int[] arr, int target) {
-        if (arr == null || arr.length == 0 || arr[arr.length - 1] < target) {
+        if (arr == null || arr.length == 0){
+            return 0;
+        }
+        if (arr[arr.length - 1] < target) {
             return arr.length;
         }
         int l = 0, r = arr.length - 1;

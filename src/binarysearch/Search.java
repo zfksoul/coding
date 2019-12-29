@@ -41,11 +41,45 @@ public class Search {
                 l = mid + 1;
             }
         }
-        if (arr[l] == target) {// 这里只能用l，上面r--可能使r=-1,造成数组越界
+        if (arr[l] == target) {// 这里只能用l，上面r--可能使r=-1,造成数组越界，但如果r=-1，target一定不等于arr[l]
             return l;
         } else {
             return -1;
         }
 
+    }
+    public int mySearch1(int[] arr, int target) {
+        if (arr == null || arr.length == 0){
+            return -1;
+        }
+        int l = 0;
+        int r = arr.length-1;
+        while(l < r){
+            int mid = (l + r) >> 1;
+            if (arr[mid] <= arr[arr.length -1]){
+                r = mid;
+            }else{
+                l = mid + 1;
+            }
+        }
+        if (arr[arr.length-1] >= target){
+            r = arr.length - 1;
+        }else{
+            l = 0;
+            r--;
+        }
+        while(l < r){
+            int mid = (l + r) >> 1;
+            if (arr[mid] >= target){
+                r = mid;
+            }else{
+                l = mid + 1;
+            }
+        }
+        if (arr[l] == target){
+            return l;
+        }else{
+            return -1;
+        }
     }
 }
