@@ -9,10 +9,10 @@ package binarysearch;
  * 假设只有一个重复整数，找到这个重复的数
  * 每次统计O(n)，共O(logn)次，时间复杂度O(nlogn)
  */
-public class AFindDuplicate {
+public class FindDuplicate1 {
 
     public static void main(String[] args) {
-        AFindDuplicate f = new AFindDuplicate();
+        FindDuplicate1 f = new FindDuplicate1();
         int[] arr = new int[] { 5, 6, 7, 8, 1, 2, 2, 3, 4 };
         System.out.println(f.myFindDuplicate1(arr));
     }

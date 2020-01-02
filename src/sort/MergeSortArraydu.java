@@ -7,12 +7,12 @@ package sort;
  * @date 2019年10月28日 下午9:31:07
  * 
  */
-public class MergeSort2 {
+public class MergeSortArraydu {
 
     public static void main(String[] args) {
         int[] arr = new int[] { 5, 4, 3, 2, 1, 6, 7, 8, 30, 2, 3, 4 };
-        MergeSort2 o = new MergeSort2();
-        arr = o.myMergeSort2(arr);
+        MergeSortArraydu o = new MergeSortArraydu();
+        arr = o.myMergeSortArraydu(arr);
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);
         }
@@ -21,7 +21,7 @@ public class MergeSort2 {
     // 自底向上+数组
     // 时间复杂度O（nlogn）
     // 空间复杂度O(n)：用迭代不用递归，省掉系统栈的额外空间，但是合并有序序列时还是需要O(n)的辅助空间
-    public int[] myMergeSort2(int[] arr) {
+    public int[] myMergeSortArraydu(int[] arr) {
         int[] tmp = new int[arr.length];
         for (int i = 1; i < arr.length; i *= 2) {
             int begin = 0;

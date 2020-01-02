@@ -8,10 +8,10 @@ package binarysearch;
  * 给定数组nums，其中nums[i]!=nums[i+1]，找到峰值元素并返回其索引，数组可能包含多个峰值，返回任何一个即可
  * 假设nums[-1]=nums[n]=-∞
  */
-public class FindPeakElement {
+public class FindPeakElement1 {
 
     public static void main(String[] args) {
-        FindPeakElement f = new FindPeakElement();
+        FindPeakElement1 f = new FindPeakElement1();
         int[] arr = new int[] { 5, 6, 7, 8, 1, 2, 3, 4 };
         System.out.println(f.myFindPeakElement1(arr));
     }

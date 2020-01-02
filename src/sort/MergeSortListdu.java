@@ -7,10 +7,10 @@ package sort;
  * @date 2019年10月28日 下午9:31:07
  * 
  */
-public class MergeSortList2 {
+public class MergeSortListdu {
 
     public static void main(String[] args) {
-        MergeSortList2 o = new MergeSortList2();
+        MergeSortListdu o = new MergeSortListdu();
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(3);
         ListNode node3 = new ListNode(5);
@@ -27,7 +27,7 @@ public class MergeSortList2 {
         /*
          * node5.next = node6; node6.next = node7; node7.next = node8;
          */
-        ListNode node = o.myMergeSortList2(node1);
+        ListNode node = o.myMergeSortListdu(node1);
         while (node != null) {
             System.out.println(node.val);
             node = node.next;
@@ -37,7 +37,7 @@ public class MergeSortList2 {
     // 自底向上+链表
     // 时间复杂度分析：整个链表总共遍历 logn次，每次遍历的复杂度是 O(n)，所以总时间复杂度是 O(nlogn)。
     // 空间复杂度分析：整个算法没有递归，迭代时只会使用常数个额外变量，所以额外空间复杂度是 O(1)
-    public ListNode myMergeSortList2(ListNode head) {
+    public ListNode myMergeSortListdu(ListNode head) {
         int n = 0;
         for (ListNode p = head; p != null; p = p.next) {
             n++;

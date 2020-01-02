@@ -6,10 +6,10 @@ package binarysearch;
  * 假设升序排序的数组在未知的某个点上进行了旋转，搜索一个给定目标值，若存在则返回它的索引，不存在返回-1 
  * 如【1, 2, 3, 4, 5, 6, 7, 8】变为 【5, 6, 7, 8, 1, 2, 3, 4】
  */
-public class Search {
+public class Search1 {
 
     public static void main(String[] args) {
-        Search s = new Search();
+        Search1 s = new Search1();
         int[] arr = new int[] { 5, 6, 7, 8, 1, 2, 3, 4 };
         System.out.println(s.mySearch(arr, 4));
     }

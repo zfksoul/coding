@@ -7,10 +7,10 @@ package sort;
  * @date 2019年10月28日 下午9:31:07
  * 
  */
-public class MergeSortList1 {
+public class MergeSortListud {
 
     public static void main(String[] args) {
-        MergeSortList1 o = new MergeSortList1();
+        MergeSortListud o = new MergeSortListud();
 
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(3);
@@ -27,7 +27,7 @@ public class MergeSortList1 {
         node5.next = node6;
         node6.next = node7;
         node7.next = node8;
-        ListNode node = o.myMergeSortList2(node1);
+        ListNode node = o.myMergeSortListud2(node1);
         while (node != null) {
             System.out.println(node.val);
             node = node.next;
@@ -37,7 +37,7 @@ public class MergeSortList1 {
     // 自顶向下+链表
     // 时间复杂度O（nlogn）
     // 空间复杂度O(logn)：使用链表就不需要辅助空间把有序序列归并，对链表指针操作就可以
-    public ListNode myMergeSortList1(ListNode head) {
+    public ListNode myMergeSortListud1(ListNode head) {
         if (head == null || head.next == null) {
             return null;
         }
@@ -49,8 +49,8 @@ public class MergeSortList1 {
         }
         ListNode h = s.next;
         s.next = null;
-        myMergeSortList1(head);
-        myMergeSortList1(h);
+        myMergeSortListud1(head);
+        myMergeSortListud1(h);
         return merge1(head, h);
     }
 
@@ -70,7 +70,7 @@ public class MergeSortList1 {
         }
     }
     
-    public ListNode myMergeSortList2(ListNode head) {
+    public ListNode myMergeSortListud2(ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
@@ -82,8 +82,8 @@ public class MergeSortList1 {
         }
         ListNode begin = s.next;
         s.next = null;
-        head = myMergeSortList2(head);
-        begin = myMergeSortList2(begin);
+        head = myMergeSortListud2(head);
+        begin = myMergeSortListud2(begin);
         return merge2(head,begin);
     }
     public ListNode merge2(ListNode n1, ListNode n2) {
