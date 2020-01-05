@@ -50,7 +50,6 @@ public class MergeSortArrayud {
                 arr[i] = tmp[i];
             }
         }
-        return;
     }
 
     public void myMergeSortArrayud1(int[] arr, int start, int end) {

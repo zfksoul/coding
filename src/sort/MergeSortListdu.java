@@ -1,5 +1,7 @@
 package sort;
 
+import java.util.LinkedList;
+
 /**
  * 
  *
@@ -27,7 +29,7 @@ public class MergeSortListdu {
         /*
          * node5.next = node6; node6.next = node7; node7.next = node8;
          */
-        ListNode node = o.myMergeSortListdu(node1);
+        ListNode node = o.myMergeSortListdu1(node1);
         while (node != null) {
             System.out.println(node.val);
             node = node.next;
@@ -38,14 +40,17 @@ public class MergeSortListdu {
     // 时间复杂度分析：整个链表总共遍历 logn次，每次遍历的复杂度是 O(n)，所以总时间复杂度是 O(nlogn)。
     // 空间复杂度分析：整个算法没有递归，迭代时只会使用常数个额外变量，所以额外空间复杂度是 O(1)
     public ListNode myMergeSortListdu(ListNode head) {
+        if (head == null || head.next == null){
+            return head;
+        }
         int n = 0;
-        for (ListNode p = head; p != null; p = p.next) {
+        for (ListNode p = head; p != null; p = p.next) {//计算链表长度
             n++;
         }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
         for (int i = 1; i < n; i *= 2) {// 每一段的长度
-            ListNode begin = dummy;
+            ListNode begin = dummy;//第一个节点可能换位置，所以begin不能指向第一个节点
             for (int j = 0; j + i < n; j += i * 2) {// 判断本轮迭代是否结束
                 // j + i < n：最后如果只有一段链表则不需要调整，但是数组不能这么判断
                 ListNode first = begin.next;// 第一段开始
@@ -55,7 +60,7 @@ public class MergeSortListdu {
                 }
                 int f = 0;// 遍历第一段
                 int s = 0;// 遍历第二段
-                while (f < i && s < i && second != null) {// 合并一组段
+                while (f < i && s < i && second != null) {// 合并一组
                     if (first.val <= second.val) {
                         begin.next = first;
                         begin = begin.next;
@@ -68,22 +73,97 @@ public class MergeSortListdu {
                         s++;
                     }
                 }
-                while (f < i) {// 合并剩余部分
+                /*while (f < i) {// 合并剩余部分
                     begin.next = first;
                     begin = begin.next;
                     first = first.next;
                     f++;
+                }*/
+                if (f < i){
+                    begin.next = first;
+                    while (f < i){
+                        begin = begin.next;
+                        f++;
+                    }
                 }
-                while (s < i && second != null) {
+                /*while (s < i && second != null) {
                     begin.next = second;
                     begin = begin.next;
                     second = second.next;
                     s++;
+                }*/
+                if (s < i){
+                    begin.next = second;
+                    while (s < i && second != null){
+                        begin = begin.next;
+                        second = second.next;
+                        s++;
+                    }
                 }
-                begin.next = second;// 连接下一组段的第一个节点
+                begin.next = second;// 连接下一组的第一个节点
             }
         }
         return dummy.next;
     }
+    public ListNode myMergeSortListdu1(ListNode head) {
+        if (head == null || head.next == null){
+            return head;
+        }
+        ListNode p = head;
+        int n = 0;
+        while (p != null){
+            p = p.next;
+            n++;
+        }
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode begin;
+        ListNode first;
+        ListNode second;
+        for (int i = 1; i < n; i *= 2){
+            begin = dummy;
+            for (int j = 0; j + i < n; j += i * 2){
+                int f = 0;
+                int s = 0;
+                first = begin.next;
+                second = begin.next;
+                for (int k = 0; k < i; k++){
+                    second = second.next;
+                }
+                while (f < i && s < i && second != null){
+                    if (first.val <= second.val){
+                        begin.next = first;
+                        begin = begin.next;
+                        first = first.next;
+                        f++;
+                    } else {
+                        begin.next = second;
+                        begin = begin.next;
+                        second = second.next;
+                        s++;
+                    }
+                }
+                if (f < i){
+                    begin.next = first;
+                    while (f < i){
+                        begin = begin.next;
+                        f++;
+                    }
+                }
+                if (s < i){
+                    begin.next = second;
+                    while (s < i && second != null){
+                        begin = begin.next;
+                        second = second.next;
+                        s++;
+                    }
+                }
+                begin.next = second;
+            }
+        }
+        return dummy.next;
+    }
+
+
 
 }

@@ -27,7 +27,7 @@ public class MergeSortListud {
         node5.next = node6;
         node6.next = node7;
         node7.next = node8;
-        ListNode node = o.myMergeSortListud2(node1);
+        ListNode node = o.myMergeSortListud3(node1);
         while (node != null) {
             System.out.println(node.val);
             node = node.next;
@@ -39,11 +39,11 @@ public class MergeSortListud {
     // 空间复杂度O(logn)：使用链表就不需要辅助空间把有序序列归并，对链表指针操作就可以
     public ListNode myMergeSortListud1(ListNode head) {
         if (head == null || head.next == null) {
-            return null;
+            return head;
         }
-        ListNode f = head.next;
-        ListNode s = head;
-        while (f != null && f.next != null) {
+        ListNode f = head;//快指针，f起始位置比s多1，确保s位于（l+r）/2，而不是（l+r+1）/2
+        ListNode s = head;//慢指针
+        while (f.next != null && f.next.next != null) {
             f = f.next.next;
             s = s.next;
         }
@@ -74,17 +74,17 @@ public class MergeSortListud {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode s = head;
         ListNode f = head.next;
+        ListNode s = head;
         while (f != null && f.next != null) {
             s = s.next;
             f = f.next.next;
         }
-        ListNode begin = s.next;
+        ListNode h2 = s.next;
         s.next = null;
         head = myMergeSortListud2(head);
-        begin = myMergeSortListud2(begin);
-        return merge2(head,begin);
+        h2 = myMergeSortListud2(h2);
+        return merge2(head,h2);
     }
     public ListNode merge2(ListNode n1, ListNode n2) {
         ListNode dummy = new ListNode(-1);
@@ -107,5 +107,49 @@ public class MergeSortListud {
         }
         return dummy.next;
     }
+    public ListNode myMergeSortListud3(ListNode head) {
+        if (head == null || head.next == null){
+            return head;
+        }
+        ListNode f = head;
+        ListNode s = head;
+        while (f.next != null && f.next.next != null){
+            f = f.next.next;
+            s = s.next;
+        }
+        ListNode h2 = s.next;
+        s.next = null;
+        head = myMergeSortListud3(head);
+        h2 = myMergeSortListud3(h2);
+        return merge4(head,h2);
+    }
 
+    private ListNode merge3(ListNode h1, ListNode h2) {
+        if (h1 == null) return h2;
+        if (h2 == null) return h1;
+        if (h1.val <= h2.val){
+            h1.next = merge3(h1.next, h2);
+            return h1;
+        } else{
+            h2.next = merge3(h1, h2.next);
+            return h2;
+        }
+    }
+    private ListNode merge4(ListNode h1, ListNode h2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode p = dummy;
+        while (h1 != null && h2 != null){
+            if (h1.val <= h2.val){
+                p.next = h1;
+                h1 = h1.next;
+            }else{
+                p.next = h2;
+                h2 = h2.next;
+            }
+            p = p.next;
+        }
+        if (h1 == null) p.next = h2;
+        if (h2 == null) p.next = h1;
+        return dummy.next;
+    }
 }

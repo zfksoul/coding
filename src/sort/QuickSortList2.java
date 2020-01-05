@@ -36,7 +36,76 @@ public class QuickSortList2 {
     
     //基于链表实现的快速排序
     public ListNode myQuickSortList(ListNode head) {
-        return null;
+        if (head == null || head.next == null){
+            return head;
+        }
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode pivot = partition(dummy);
+        ListNode head2 = pivot.next;
+        ListNode n = dummy;
+        while (n.next != pivot){
+            n = n.next;
+        }
+        n.next = null;
+        ListNode h1 = myQuickSortList(dummy.next);
+        ListNode h2 = myQuickSortList(head2);
+        dummy.next = h1;
+        n = dummy;
+        while (n.next != null){
+            n = n.next;
+        }
+        n.next = pivot;
+        pivot.next = h2;
+        return dummy.next;
+    }
+
+    private ListNode partition(ListNode dummy) {
+        if (dummy.next == null || dummy.next.next == null){
+            return dummy.next;
+        }
+        ListNode preP = dummy.next;
+        ListNode prePivot = dummy;
+        for(ListNode preI = preP; preI.next != null; preI = preI.next){
+            if (preI.next.val < prePivot.next.val){
+                swap(preI,preP);
+                preP = preP.next;
+            }
+        }
+        ListNode prePreP = dummy;
+        while (prePreP.next != preP){
+            prePreP = prePreP.next;
+        }
+        ListNode p = preP.next;
+        swap(prePreP,prePivot);
+        while (preP.next != p){
+            preP = preP.next;
+        }
+        return preP;
+    }
+
+    private void swap(ListNode preN1, ListNode preN2) {
+        if (preN1 == preN2){
+            return;
+        }
+        ListNode n1 = preN1.next;
+        ListNode n2 = preN2.next;
+        ListNode posN1 = n1.next;
+        ListNode posN2 = n2.next;
+        if (n1.next == n2){
+            preN1.next = n2;
+            n2.next = n1;
+            n1.next = posN2;
+        } else if (n2.next == n1){
+            preN2.next = n1;
+            n1.next = n2;
+            n2.next = posN1;
+        } else {
+            preN1.next = n2;
+            n2.next = posN1;
+            preN2.next = n1;
+            n1.next = posN2;
+        }
     }
 }
         
