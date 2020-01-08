@@ -52,7 +52,7 @@ public class BucketSort {
         int gap = (max - min + 1) / (10 - 1);
         ArrayList<LinkedList<Integer>> buckets = new ArrayList<>();
         for (int i = 0; i < 10; i++){
-            buckets.add(new LinkedList<>());
+            buckets.add(new LinkedList<Integer>());
         }
         for (int data : arr){
             int index = (data-min)/gap;

@@ -32,10 +32,10 @@ public class RemoveNthFromEnd {
         if (head == null || n <= 0) {
             return null;
         }
-        ListNode node = new ListNode(-1 );
-        node.next = head;
-        ListNode p = node;
-        ListNode q = node;
+        ListNode dummy = new ListNode(-1 );
+        dummy.next = head;
+        ListNode p = dummy;
+        ListNode q = dummy;
         while(n > 0 && q.next!= null) {
             q = q.next;
             n--;
@@ -48,7 +48,7 @@ public class RemoveNthFromEnd {
             q = q.next;
         }
         p.next = p.next.next;
-        return node.next;
+        return dummy.next;
     }
 
 }

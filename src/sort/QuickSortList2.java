@@ -48,7 +48,7 @@ public class QuickSortList2 {
             n = n.next;
         }
         n.next = null;
-        ListNode h1 = myQuickSortList(dummy.next);
+        ListNode h1 = myQuickSortList(head);
         ListNode h2 = myQuickSortList(head2);
         dummy.next = h1;
         n = dummy;
@@ -62,11 +62,11 @@ public class QuickSortList2 {
 
     private ListNode partition(ListNode dummy) {
         if (dummy.next == null || dummy.next.next == null){
-            return dummy.next;
+            return  dummy.next;
         }
         ListNode preP = dummy.next;
         ListNode prePivot = dummy;
-        for(ListNode preI = preP; preI.next != null; preI = preI.next){
+        for (ListNode preI = preP; preI.next != null; preI = preI.next){
             if (preI.next.val < prePivot.next.val){
                 swap(preI,preP);
                 preP = preP.next;
@@ -107,5 +107,6 @@ public class QuickSortList2 {
             n1.next = posN2;
         }
     }
+
 }
         

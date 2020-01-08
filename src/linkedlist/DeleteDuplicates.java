@@ -1,5 +1,6 @@
 package linkedlist;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -8,6 +9,7 @@ import java.util.List;
  * @author zfk
  * @date 2019年10月26日 下午8:37:26
  * 删除链表中重复的节点
+ *
  */
 public class DeleteDuplicates {
 
@@ -28,7 +30,17 @@ public class DeleteDuplicates {
             n1 = n1.next;
         }
     }
-
+    /*public ListNode myDeleteDuplicates(ListNode head) {
+        ListNode cur = head;
+        while (cur != null){
+            if (cur.next != null && cur.val == cur.next.val){
+                cur.next = cur.next.next;
+            } else {
+                cur =  cur.next;
+            }
+        }
+        return head;
+    }*/
     public ListNode myDeleteDuplicates(ListNode head) {
         if (head == null) {
             return null;

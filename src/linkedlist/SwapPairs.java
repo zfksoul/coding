@@ -31,20 +31,18 @@ public class SwapPairs {
     }
 
     public ListNode mySwapPairs(ListNode head) {
-        ListNode node = new ListNode(0);
-        node.next = head;
-        head = node;
-        ListNode p = null;
-        ListNode q = null;
-        while (node.next != null && node.next.next != null) {
-            p = node.next;
-            q = p.next;
-            node.next = q;
-            p.next = q.next;
-            q.next = p;
-            node = p;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode a = dummy;
+        while (a.next != null && a.next.next != null) {
+            ListNode b = a.next;
+            ListNode c = b.next;
+            a.next = c;
+            b.next = c.next;
+            c.next = b;
+            a = b;
         } 
-        return head.next;
+        return dummy.next;
     }
 
 }

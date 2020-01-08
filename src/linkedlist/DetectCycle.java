@@ -18,10 +18,10 @@ public class DetectCycle {
         ListNode n6 = new ListNode(6);
         n1.next = n2;
         n2.next = n3;
-        /*n3.next = n4;
+        n3.next = n4;
         n4.next = n5;
         n5.next = n6;
-        n6.next = n5;*/
+        n6.next = n5;
         DetectCycle o = new DetectCycle();
         // n1 = o.myGetIntersectionNode1(n1, n11);
         n1 = o.myDetectCycle1(n1);
@@ -35,8 +35,8 @@ public class DetectCycle {
         while (s != null) {
             f = f.next;
             s = s.next;
-            if (s != null) {
-                s = s.next;
+            if (f != null) {
+                f = f.next;
             } else {
                 return null;
             }

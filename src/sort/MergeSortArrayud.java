@@ -56,10 +56,10 @@ public class MergeSortArrayud {
         if (start < end){
             int mid = (start + end) >> 1;
             myMergeSortArrayud1(arr, start, mid);
-            myMergeSortArrayud1(arr, mid+1, end);
-            int[] tmp = new int[arr.length];
+            myMergeSortArrayud1(arr, mid + 1, end);
             int p1 = start;
             int p2 = mid + 1;
+            int[] tmp = new int[arr.length];
             int k = start;
             while (p1 <= mid && p2 <= end){
                 if (arr[p1] <= arr[p2]){
@@ -68,12 +68,8 @@ public class MergeSortArrayud {
                     tmp[k++] = arr[p2++];
                 }
             }
-            while (p1 <= mid){
-                tmp[k++] = arr[p1++];
-            }
-            while (p2 <= end) {
-                tmp[k++] = arr[p2++];
-            }
+            while (p1 <= mid) tmp[k++] = arr[p1++];
+            while (p2 <= end) tmp[k++] = arr[p2++];
             for (int i = start; i <= end; i++){
                 arr[i] = tmp[i];
             }

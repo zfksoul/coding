@@ -106,13 +106,9 @@ public class MergeSortListdu {
         return dummy.next;
     }
     public ListNode myMergeSortListdu1(ListNode head) {
-        if (head == null || head.next == null){
-            return head;
-        }
-        ListNode p = head;
+        if (head == null || head.next == null) return head;
         int n = 0;
-        while (p != null){
-            p = p.next;
+        for (ListNode p = head; p != null; p = p.next){
             n++;
         }
         ListNode dummy = new ListNode(-1);
@@ -123,13 +119,13 @@ public class MergeSortListdu {
         for (int i = 1; i < n; i *= 2){
             begin = dummy;
             for (int j = 0; j + i < n; j += i * 2){
-                int f = 0;
-                int s = 0;
                 first = begin.next;
                 second = begin.next;
-                for (int k = 0; k < i; k++){
+                for (int m = 0; m < i; m++){
                     second = second.next;
                 }
+                int f = 0;
+                int s = 0;
                 while (f < i && s < i && second != null){
                     if (first.val <= second.val){
                         begin.next = first;
@@ -145,14 +141,15 @@ public class MergeSortListdu {
                 }
                 if (f < i){
                     begin.next = first;
-                    while (f < i){
+                    while (f < i && first != null){
                         begin = begin.next;
+                        first = first.next;
                         f++;
                     }
                 }
                 if (s < i){
                     begin.next = second;
-                    while (s < i && second != null){
+                    while (f < i && second != null){
                         begin = begin.next;
                         second = second.next;
                         s++;

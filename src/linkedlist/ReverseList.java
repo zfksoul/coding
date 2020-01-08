@@ -34,15 +34,14 @@ public class ReverseList {
         if (head == null) {
             return null;
         }
-        ListNode a = head;
-        ListNode b = head.next;
-        while (b != null) {
-            ListNode c = b.next;
-            b.next = a;
-            a = b;
-            b = c;
+        ListNode a = null;
+        ListNode b;
+        while (head != null) {
+            b = head.next;
+            head.next = a;
+            a = head;
+            head = b;
         }
-        head.next = null;
         return a;
     }
 

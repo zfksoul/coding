@@ -22,7 +22,7 @@ public class ReverseBetween {
         n4.next = n5;
         n5.next = n6;
         ReverseBetween o = new ReverseBetween();
-        n1 = o.myReverseBetween(n1,3,6);
+        n1 = o.myReverseBetween1(n1,3,6);
         System.out.println(n1);
         while (n1 != null) {
             System.out.println(n1.val);
@@ -35,7 +35,7 @@ public class ReverseBetween {
             return null;
         }
         if (m == n) return head; 
-        ListNode dummy = new ListNode(0);
+        ListNode dummy = new ListNode(-1);
         dummy.next = head;
         ListNode p = dummy;
         ListNode q = dummy;
@@ -63,6 +63,33 @@ public class ReverseBetween {
         }
         p.next.next = q;
         p.next = a;
+        return dummy.next;
+    }
+    public ListNode myReverseBetween1(ListNode head, int m, int n) {
+        if (head == null) {
+            return null;
+        }
+        if (m == n) return head;
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode a = dummy;
+        ListNode d = dummy;
+        for (int i = 0; i < m - 1; i++){//a指向m前一个节点
+            a = a.next;
+        }
+        for (int i = 0; i < n; i++){//d指向n节点
+            d = d.next;
+        }
+        ListNode b = a.next;
+        ListNode c = d.next;
+        for (ListNode p = b ,q = b.next; q != c;){
+            ListNode o = q.next;
+            q.next = p;
+            p = q;
+            q = o;
+        }
+        b.next = c;
+        a.next = d;
         return dummy.next;
     }
 

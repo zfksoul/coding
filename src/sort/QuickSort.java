@@ -45,7 +45,7 @@ public class QuickSort {
 
     public int[] myQuickSort1(int[] arr, int l, int r) {
         if (l < r) {
-            int partionIndex = partition1(arr, l, r);
+            int partionIndex = partitionRandom1(arr, l, r);
             myQuickSort1(arr, l, partionIndex - 1);
             myQuickSort1(arr, partionIndex + 1, r);
         }

@@ -27,7 +27,7 @@ public class MergeSortListud {
         node5.next = node6;
         node6.next = node7;
         node7.next = node8;
-        ListNode node = o.myMergeSortListud3(node1);
+        ListNode node = o.myMergeSortListud4(node1);
         while (node != null) {
             System.out.println(node.val);
             node = node.next;
@@ -47,11 +47,11 @@ public class MergeSortListud {
             f = f.next.next;
             s = s.next;
         }
-        ListNode h = s.next;
+        ListNode head2 = s.next;
         s.next = null;
         myMergeSortListud1(head);
-        myMergeSortListud1(h);
-        return merge1(head, h);
+        myMergeSortListud1(head2);
+        return merge1(head, head2);
     }
 
     public ListNode merge1(ListNode n1, ListNode n2) {
@@ -121,7 +121,7 @@ public class MergeSortListud {
         s.next = null;
         head = myMergeSortListud3(head);
         h2 = myMergeSortListud3(h2);
-        return merge4(head,h2);
+        return merge3(head,h2);
     }
 
     private ListNode merge3(ListNode h1, ListNode h2) {
@@ -135,7 +135,7 @@ public class MergeSortListud {
             return h2;
         }
     }
-    private ListNode merge4(ListNode h1, ListNode h2) {
+    private ListNode merge(ListNode h1, ListNode h2) {
         ListNode dummy = new ListNode(-1);
         ListNode p = dummy;
         while (h1 != null && h2 != null){
@@ -150,6 +150,35 @@ public class MergeSortListud {
         }
         if (h1 == null) p.next = h2;
         if (h2 == null) p.next = h1;
+        return dummy.next;
+    }
+    public ListNode myMergeSortListud4(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode fast = head.next;
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        ListNode head2 = slow.next;
+        slow.next = null;
+        head = myMergeSortListud4(head);
+        head2 = myMergeSortListud4(head2);
+        ListNode dummy = new ListNode(-1);
+        ListNode cur = dummy;
+        while (head != null && head2 != null){
+            if (head.val <= head2.val){
+                cur.next = head;
+                head = head.next;
+                cur = cur.next;
+            } else {
+                cur.next = head2;
+                head2 = head2.next;
+                cur = cur.next;
+            }
+        }
+        if (head != null) cur.next = head;
+        if (head2 != null) cur.next = head2;
         return dummy.next;
     }
 }

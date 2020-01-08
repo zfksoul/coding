@@ -43,16 +43,10 @@ public class GetIntersectionNode {
         ListNode p = head1;
         ListNode q = head2;
         while (p != q) {
-            if (p != null) {
-                p = p.next;
-            } else {
-                p = head2;
-            }
-            if (q != null) {
-                q = q.next;
-            } else {
-                q = head1;
-            }
+            if (p != null) p = p.next;
+            else p = head2;
+            if (q != null) q = q.next;
+            else q = head1;
         }
         return p;
     }
@@ -60,7 +54,7 @@ public class GetIntersectionNode {
     public ListNode myGetIntersectionNode1(ListNode head1, ListNode head2) {
         ListNode p = head1;
         ListNode q = head2;
-        while (p != q) {
+        while (p != q) { //java中null == null返回true
             if (p.next != null && q.next != null) {
                 p = p.next;
                 q = q.next;
