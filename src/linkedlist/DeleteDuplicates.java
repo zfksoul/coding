@@ -24,7 +24,7 @@ public class DeleteDuplicates {
         n3.next = n4;
         n4.next = n5;
         DeleteDuplicates o = new DeleteDuplicates();
-        n1 = o.myDeleteDuplicates(n1);
+        n1 = o.myDeleteDuplicates1(n1);
         while (n1 != null) {
             System.out.println(n1.val);
             n1 = n1.next;
@@ -56,5 +56,16 @@ public class DeleteDuplicates {
         }
         return head;
     }
-
+    public ListNode myDeleteDuplicates1(ListNode head) {
+        if (head == null) return head;
+        ListNode p = head;
+        while (p.next != null){
+            if (p.val == p.next.val){
+                p.next = p.next.next;
+            } else {
+                p = p.next;
+            }
+        }
+        return head;
+    }
 }
