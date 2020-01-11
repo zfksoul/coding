@@ -22,7 +22,7 @@ public class BinarySearchTree {
         System.out.println(o.isValidBST(node1));
     }
     public boolean isValidBST(TreeNode root){
-        return dfs1(root, Long.MIN_VALUE, Long.MAX_VALUE);
+        return dfs(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
 
     private boolean dfs(TreeNode root, Long minValue, Long maxValue) {
@@ -34,7 +34,7 @@ public class BinarySearchTree {
     private boolean dfs1(TreeNode root, Long minValue, Long maxValue) {
         if (root == null) return true;
         if (root.val < minValue || root.val > maxValue) return false;
-        return dfs1(root.left,minValue, root.val - 1L) &&
+        return dfs1(root.left, minValue, root.val - 1L) &&
                 dfs1(root.right, root.val + 1L, maxValue);
     }
 

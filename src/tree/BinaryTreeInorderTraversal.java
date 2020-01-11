@@ -1,6 +1,7 @@
 package tree;
 
 import linkedlist.ListNode;
+import sun.reflect.generics.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class BinaryTreeInorderTraversal {
         node3.right = node7;
         BinaryTreeInorderTraversal o = new BinaryTreeInorderTraversal();
         o.inorderTraversal3(node1);
-        //System.out.println(o.inorderTraversal2(node1));
+        System.out.println(o.inorderTraversal2(node1));
     }
     //迭代,将整颗树的最左边一条链压入栈中，每次取栈顶元素，如果它有右边子树，则将右子树压入栈中
     public List<Integer> inorderTraversal(TreeNode root){
@@ -44,10 +45,10 @@ public class BinaryTreeInorderTraversal {
     }
 
     public List<Integer> inorderTraversal2(TreeNode root){
-        Stack<TreeNode> st = new Stack<>();
-        List<Integer> list = new ArrayList<>();
         TreeNode p = root;
-        while(p != null || st.size() > 0){
+        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> st = new Stack<>();
+        while (p != null || st.size() != 0){
             while (p != null){
                 st.push(p);
                 p = p.left;
@@ -63,7 +64,7 @@ public class BinaryTreeInorderTraversal {
     public void inorderTraversal3(TreeNode root){
         if (root == null) return;
         inorderTraversal3(root.left);
-        System.out.print(root.val + " ");
+        System.out.print(root.val+" ");
         inorderTraversal3(root.right);
     }
 }

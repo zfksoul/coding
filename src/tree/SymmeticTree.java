@@ -23,23 +23,23 @@ public class SymmeticTree {
         node3.left = node6;
         node3.right = node7;
         SymmeticTree o = new SymmeticTree();
-        System.out.println(o.isSymmetric1(node1));
+        System.out.println(o.isSymmetric2(node1));
     }
-    //迭代，左边：左中右遍历，右边：右中左遍历
+    //迭代，左边：左中右遍历，右边：右中左遍历，两边做对称的中序遍历
     public boolean isSymmetric1(TreeNode root){
         if (root == null) return true;
         Stack<TreeNode> left = new Stack<>();
         Stack<TreeNode> right = new Stack<>();
         TreeNode l = root.left;
         TreeNode r = root.right;
-        while (l != null || r != null || left.size() != 0 || right.size() != 0){
+        while (l != null || left.size() != 0 || r != null || right.size() != 0){
             while (l != null && r != null){
                 left.push(l);
                 l = l.left;
                 right.push(r);
                 r = r.right;
             }
-            if ( l != null || r != null) return false;
+            if ( l != null || r != null) return false;//上一轮循环后，如果l或r不为空，则不对称
             l = left.peek();
             left.pop();
             r = right.peek();
@@ -50,16 +50,40 @@ public class SymmeticTree {
         }
         return true;
     }
-    //递归
     public boolean isSymmetric2(TreeNode root){
+        if (root == null) return true;
+        Stack<TreeNode> st1 = new Stack<>();
+        Stack<TreeNode> st2 = new Stack<>();
+        TreeNode l = root.left;
+        TreeNode r = root.right;
+        while (l != null || st1.size() != 0 || r != null || st2.size() != 0){
+            while (l != null && r != null){
+                st1.push(l);
+                l = l.left;
+                st2.push(r);
+                r = r.right;
+            }
+            if (l != null || r != null) return false;
+            l = st1.peek();
+            st1.pop();
+            r = st2.peek();
+            st2.pop();
+            if (l.val != r.val) return false;
+            l = l.right;
+            r = r.left;
+        }
+        return true;
+    }
+    //递归
+    public boolean isSymmetric3(TreeNode root){
         if (root == null) return true;
         return dfs(root.left, root.right);
     }
 
     private boolean dfs(TreeNode p, TreeNode q) {
-        if (p == null || q == null) {
+        if (p == null || q == null){
             return (p == null && q == null);
         }
-        return p.val == q.val && dfs(p.left, q.right) && dfs(p.right, q.left);
+        return p.val == q.val && dfs(p.left,q.right) && dfs(p.right,q.left);
     }
 }
