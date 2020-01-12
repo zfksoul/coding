@@ -1,13 +1,11 @@
 package tree;
 
-import linkedlist.ListNode;
-import sun.reflect.generics.tree.Tree;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class BinaryTreeInorderTraversal {
+//先序遍历二叉树
+public class BTpreorderTraversal {
     public static void main(String[] args){
         TreeNode node1 = new TreeNode(4);
         TreeNode node2 = new TreeNode(2);
@@ -22,49 +20,52 @@ public class BinaryTreeInorderTraversal {
         node2.right = node5;
         node3.left = node6;
         node3.right = node7;
-        BinaryTreeInorderTraversal o = new BinaryTreeInorderTraversal();
-        o.inorderTraversal3(node1);
-        System.out.println(o.inorderTraversal2(node1));
+        BTpreorderTraversal o = new BTpreorderTraversal();
+        System.out.println(o.preOrder3(node1));
+        o.preOrder2(node1);
     }
-    //迭代,将整颗树的最左边一条链压入栈中，每次取栈顶元素，如果它有右边子树，则将右子树压入栈中
-    public List<Integer> inorderTraversal(TreeNode root){
-        List<Integer> res = new ArrayList<Integer>();
+    //迭代
+    public List<Integer> preOrder1(TreeNode root){
+        List<Integer> res = new ArrayList<>();
         Stack<TreeNode> st = new Stack<>();
         TreeNode p = root;
+        //对于前序遍历，需要一直往二叉树的左子树上走，直道左子树走完。在走左子树的过程中需要输出遇到节点的值
         while (p != null || st.size() != 0){
             while (p != null){
+                res.add(p.val);
                 st.push(p);
                 p = p.left;
             }
-            p = st.peek();
-            st.pop();
-            res.add(p.val);
-            p = p.right;
+            //左边节点都走完了，需要改变节点方向
+            if (st.size() != 0){
+                p = st.pop();
+                p = p.right;
+            }
         }
         return res;
     }
-
-    public List<Integer> inorderTraversal2(TreeNode root){
-        TreeNode p = root;
-        List<Integer> list = new ArrayList<>();
+    public List<Integer> preOrder3(TreeNode root){
         Stack<TreeNode> st = new Stack<>();
+        List<Integer> list = new ArrayList<>();
+        if (root == null) return list;
+        TreeNode p = root;
         while (p != null || st.size() != 0){
             while (p != null){
+                list.add(p.val);
                 st.push(p);
                 p = p.left;
             }
-            p = st.peek();
-            st.pop();
-            list.add(p.val);
+            p = st.pop();
             p = p.right;
         }
         return list;
+
     }
     //递归
-    public void inorderTraversal3(TreeNode root){
+    public void preOrder2(TreeNode root){
         if (root == null) return;
-        inorderTraversal3(root.left);
-        System.out.print(root.val+" ");
-        inorderTraversal3(root.right);
+        System.out.print(root.val + " ");
+        preOrder2(root.left);
+        preOrder2(root.right);
     }
 }

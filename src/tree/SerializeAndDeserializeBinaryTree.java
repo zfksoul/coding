@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-//先根遍历方式序列化，根-左-右
+//先根遍历方式序列化，根-左-右，不能定义函数外的变量
 public class SerializeAndDeserializeBinaryTree {
     public static void main(String[] args){
         TreeNode node1 = new TreeNode(4);
@@ -47,7 +47,7 @@ public class SerializeAndDeserializeBinaryTree {
     public StringBuilder serialize(TreeNode root){
         StringBuilder res = new StringBuilder();
         dfs1(root,res);
-        return res;
+        return new StringBuilder(res.substring(0,res.length()-1));
     }
 
     private void dfs1(TreeNode root, StringBuilder res) {
@@ -61,30 +61,52 @@ public class SerializeAndDeserializeBinaryTree {
     }
 
     public TreeNode deserialize(StringBuilder data){
-        int u = 0;
-        return dfs2(data,u);
+        int[] u = {0};
+        return dfs3(data,u);
     }
 
-    private TreeNode dfs2(StringBuilder data, int u) {
-        if (data.charAt(u) == '#'){
-            u += 2;
+    private TreeNode dfs2(StringBuilder data, int[] u) {
+        if (data.charAt(u[0]) == '#'){
+            u[0] += 2;
             return null;
         }
         int t = 0;
         boolean isMinus = false;
-        if (data.charAt(u) == '-'){
+        if (data.charAt(u[0]) == '-'){
             isMinus = true;
-            u++;
+            u[0]++;
         }
-        while (data.charAt(u) != ','){
-            t = t * 10 + data.charAt(u) - '0';
-            u++;
+        while (data.charAt(u[0]) != ','){
+            t = t * 10 + data.charAt(u[0]) - '0';
+            u[0]++;
         }
-        u++;
+        u[0]++;
         if (isMinus) t = -t;
         TreeNode root = new TreeNode(t);
         root.left = dfs2(data,u);
         root.right = dfs2(data,u);
+        return root;
+    }
+    private TreeNode dfs3(StringBuilder data, int[] u) {
+        if (data.charAt(u[0]) == '#'){
+            u[0] += 2;
+            return null;
+        }
+        boolean isMinus = false;
+        int t = 0;
+        if (data.charAt(u[0]) == '-') {
+            isMinus = true;
+            u[0]++;
+        }
+        while (u[0] < data.length() && data.charAt(u[0]) != ','){
+            t = t * 10 + data.charAt(u[0]) - '0';
+            u[0]++;
+        }
+        u[0]++;
+        if (isMinus) t = -t;
+        TreeNode root = new TreeNode(t);
+        root.left = dfs3(data,u);
+        root.right = dfs3(data,u);
         return root;
     }
 }

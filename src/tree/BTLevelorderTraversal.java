@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 //层次遍历二叉树
-public class BinartyTreeLevelOrderTreversal {
+public class BTLevelorderTraversal {
     public static void main(String[] args){
         TreeNode node1 = new TreeNode(4);
         TreeNode node2 = new TreeNode(2);
@@ -21,7 +21,7 @@ public class BinartyTreeLevelOrderTreversal {
         node2.right = node5;
         node3.left = node6;
         node3.right = node7;
-        BinartyTreeLevelOrderTreversal o = new BinartyTreeLevelOrderTreversal();
+        BTLevelorderTraversal o = new BTLevelorderTraversal();
         System.out.println(o.levelOrder1(node1));
     }
     public List<List<Integer>> levelOrder(TreeNode root){
