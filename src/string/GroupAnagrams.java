@@ -36,7 +36,9 @@ public class GroupAnagrams {
             sort(c,0,c.length-1);
             //Arrays.sort(c);
             System.out.println(c);
-            String key = Arrays.toString(c);
+            //String key = Arrays.toString(c);
+            //String key = new String(c);
+            String key = String.valueOf(c);
             System.out.println("key:"+key);
             if (map.get(key) == null){
                 map.put(key, new ArrayList<String>());

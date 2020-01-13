@@ -24,10 +24,10 @@ public class UniqueEmailAddresses {
         Set<String> set = new HashSet<String>();
         for (String email : emails){
             int at = email.indexOf("@");
-            StringBuilder name = new StringBuilder();
+            String name = "";
             for (int i = 0; i < at; i++){
                 if (email.charAt(i) == '+') break;
-                if (email.charAt(i) != '.') name.append(email.charAt(i));
+                if (email.charAt(i) != '.') name += email.charAt(i);
             }
             String domain = email.substring(at+1);
             //set.add(name.append("@").append(domain).toString());
