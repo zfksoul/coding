@@ -11,6 +11,11 @@ public class OutPut {
         list.add(new People(1));
         System.out.println(list);
     }
+
+    @Override
+    public String toString() {
+        return "OutPut{}"+super.toString();
+    }
 }
 class People{
     String name;
@@ -24,7 +29,7 @@ class People{
         return "People{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
-                '}';
+                '}'+super.toString();
     }
 }
 
