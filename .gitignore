@@ -1,4 +1,7 @@
-*.class
 .idea
+.settings
 bin
-.*
+out
+.classpath
+.project
+coding.iml
