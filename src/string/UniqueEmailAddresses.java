@@ -24,14 +24,14 @@ public class UniqueEmailAddresses {
         Set<String> set = new HashSet<String>();
         for (String email : emails){
             int at = email.indexOf("@");
-            String name = "";
+            StringBuilder name = new StringBuilder("");
             for (int i = 0; i < at; i++){
                 if (email.charAt(i) == '+') break;
-                if (email.charAt(i) != '.') name += email.charAt(i);
+                if (email.charAt(i) != '.') name.append(email.charAt(i));
             }
             String domain = email.substring(at+1);
-            //set.add(name.append("@").append(domain).toString());
-            set.add(name+"@"+domain);
+            set.add(name.append("@").append(domain).toString());
+            //set.add(name+"@"+domain);
         }
         return set.size();
     }
