@@ -1,7 +1,6 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class OutPut {
     public static void main(String[] args){
@@ -10,6 +9,8 @@ public class OutPut {
         list.add(new People(1));
         list.add(new People(1));
         System.out.println(list);
+        HashSet<Integer> set = new HashSet<>();
+        HashMap<Integer,Integer> map = new LinkedHashMap<>();
     }
 
     @Override
@@ -22,6 +23,11 @@ class People{
     int age;
     public People(int age){
         this.age = age;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 
     @Override
