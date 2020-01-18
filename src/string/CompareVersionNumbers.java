@@ -12,6 +12,7 @@ public class CompareVersionNumbers {
     public static void main(String[] args){
         CompareVersionNumbers o = new CompareVersionNumbers();
         System.out.println(o.myCompareVersion("1.0","1.0.1"));
+        System.out.println(o.myCompareVersion1("1.0","1.0.1"));
     }
     public int myCompareVersion(String s1, String s2){
         int i = 0;
@@ -40,5 +41,22 @@ public class CompareVersionNumbers {
             i++;
         }
         return res;
+    }
+    public int myCompareVersion1(String s1, String s2){
+        int i = 0;
+        int j = 0;
+        while (i < s1.length() || j < s2.length()){
+            int x = i;
+            int y = j;
+            while (x < s1.length() && s1.charAt(x) != '.') x++;
+            while (y < s2.length() && s2.charAt(y) != '.') y++;
+            int a = (i == x) ? 0 : count(s1.substring(i,x));
+            int b = (j == y) ? 0 : count(s2.substring(j,y));
+            if (a > b) return 1;
+            if (a < b) return -1;
+            i = x + 1;
+            j = y + 1;
+        }
+        return 0;
     }
 }
