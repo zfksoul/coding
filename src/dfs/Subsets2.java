@@ -17,6 +17,7 @@ public class Subsets2 {
     List<Integer> path = new ArrayList<>();
     public static void main(String[] args){
         Subsets2 o = new Subsets2();
+        System.out.println(o.subsetsWithDup(new int[]{1,2,2}));
     }
     public List<List<Integer>> subsetsWithDup(int[] nums){
         mysort(nums,0,nums.length-1);
@@ -30,11 +31,13 @@ public class Subsets2 {
             return;
         }
         int n = 0;
-        while (k + n < nums.length && nums[k +n] == nums[k]) n++;
-        for (int i = 0; i <= n; i++){
-            dfs(nums,k+n);
+        while (k + n < nums.length && nums[k +n] == nums[k]) n++;//计算当前数字个数
+        for (int i = 0; i <= n; i++){//数字有n个时，共n+1种情况
+            dfs(nums,k+n);//当前数枚举完从下一个数开始枚举
             path.add(nums[k]);
         }
+        //恢复现场
+        for (int i = 0; i <= n; i++) path.remove(path.size()-1);
     }
 
     private void mysort(int[] nums,int l,int r) {
