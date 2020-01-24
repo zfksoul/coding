@@ -11,8 +11,8 @@ public class NQueens {
     int totalNQueens(int n){
         this.n = n;
         col = new boolean[n];//每列一个皇后
-        d = new boolean[n * 2];//每条斜线一个皇后，有2n-1个对角线，x+y表示在第几条斜线上
-        ud = new boolean[n * 2];//每条斜线一个皇后，有2n-1个对角线，x-y+n表示在第几条斜线上
+        d = new boolean[n * 2];//每条斜线一个皇后，有2n-1个对角线，x+y表示在第几条斜线上，x+y取值范围[0,2n-2]
+        ud = new boolean[n * 2];//每条斜线一个皇后，有2n-1个对角线，x-y+n表示在第几条斜线上，x-y+n取值范围[1,2n-1]
         dfs(0);//枚举每一行
         return res;
     }
