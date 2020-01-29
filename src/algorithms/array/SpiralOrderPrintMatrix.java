@@ -1,4 +1,4 @@
-package alg.array;
+package algorithms.array;
 
 /**
  * 螺旋打印数组
