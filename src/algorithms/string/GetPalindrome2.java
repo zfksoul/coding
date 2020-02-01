@@ -1,4 +1,4 @@
-package alogrithms.string;
+package algorithms.string;
 
 /**
  * 给定字符串str和它的最长回文子串strlps，返回添加最少字符串使str成为回文串的一种结果

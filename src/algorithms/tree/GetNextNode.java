@@ -1,4 +1,4 @@
-package algorithms.algorithms.tree;
+package algorithms.tree;
 
 /**
  * 返回按中序遍历顺序的该节点的后继节点
