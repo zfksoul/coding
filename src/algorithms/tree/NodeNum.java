@@ -1,6 +1,5 @@
 package algorithms.tree;
 
-import algorithms.TreeNode;
 
 /**
  * 统计完全二叉树节点数
