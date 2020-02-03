@@ -6,6 +6,8 @@ import java.util.Stack;
 /**
  * 给定数组，没有重复元素，构造MaxTree
  * MaxTree是二叉树，父节点大于子节点
+ * 单调栈：查找每个数左侧第一个比它小的数
+ * 单调队列：滑动窗口中的最值
  */
 public class MaxTree {
     public static void main(String[] args){
