@@ -16,7 +16,7 @@ public class MinContainString {
     }
 
     private int minLength(String str1, String str2) {
-        if (str1 == null || str1.length() == 0 || str2 == null || str2.length() == 0){
+        if (str1 == null || str2 == null || str1.length() < str2.length()){
             return 0;
         }
         char[] c1 = str1.toCharArray();
@@ -28,16 +28,22 @@ public class MinContainString {
         int i = 0;
         int j = 0;
         int t = c2.length;
-        while (i < c1.length && j < c1.length){
-            if (t >= 0){
-                map[c1[j]]--;
-                if (map[c1[j]] == 0){
-                    t--;
-                }
-            } else {
-                map[c1[i++]]++;
-                if ()
+        int len = Integer.MAX_VALUE;
+        while (j < c1.length){
+            map[c1[j]]--;
+            if (map[c1[j]] >= 0){
+                t--;
             }
+            if (t == 0){
+                while (map[c1[i]] < 0){
+                    map[c1[i++]]++;
+                }
+                len = Math.min(len, j - i + 1);
+                t++;
+                map[c1[i++]]++;
+            }
+            j++;
         }
+        return len == Integer.MAX_VALUE ? 0 : len;
     }
 }
