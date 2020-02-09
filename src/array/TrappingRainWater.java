@@ -24,8 +24,7 @@ public class TrappingRainWater {
         for (int i = 0; i < height.length; i++){
             int last = 0;//存上一层的高度，用于求高度差
             while (!st.empty() && height[st.peek()] <= height[i]){
-                int t = st.peek();
-                st.pop();
+                int t = st.pop();
                 res += (i - t - 1) * (height[t] - last);
                 last = height[t];
             }

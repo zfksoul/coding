@@ -34,7 +34,7 @@ public class NodeNum {
         if (node == null) return 0;
         return mycount(node, 1, mostLeftLevel(node, 1));
     }
-
+    //计算2^n时间复杂度O(logn)
     private int mycount(TreeNode node, int l, int h) {
         if (l == h) return 1;
         if (mostLeftLevel(node.right, l + 1) == h){
@@ -50,4 +50,15 @@ public class NodeNum {
         }
         return l - 1;
     }
+    //求a^n时间复杂度O(n)
+    /*public double getPower(double a, int n){
+        double res = 1;
+        for (; n != 0; n >>= 1){
+            if ((n & 1) != 0){
+                res *= a;
+            }
+            a *= a;
+        }
+        return res;
+    }*/
 }

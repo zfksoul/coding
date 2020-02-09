@@ -12,7 +12,7 @@ public class MaxSum2 {
         System.out.println(o.myMaxSum1(arr));
     }
     private int myMaxSum1(int[] arr) {
-        if (arr == null || arr.length == 0){
+        if (arr == null || arr.length < 2){
             return 0;
         }
         int N = arr.length;
@@ -36,7 +36,7 @@ public class MaxSum2 {
         return res;
     }
     private int myMaxSum(int[] arr) {
-        if (arr == null || arr.length == 0){
+        if (arr == null || arr.length < 2){
             return 0;
         }
         int[] help = new int[arr.length];
