@@ -1,5 +1,8 @@
 package algorithms.array;
 
+/**
+ * 给定数组中，求排序后相邻2数相差最大值
+ */
 public class MaxGap {
     public static void main(String[] args){
         MaxGap o = new MaxGap();
@@ -50,6 +53,7 @@ public class MaxGap {
     }
 
     public int bucket(long num, long len, long min, long max) {
+
         return (int) (len * (num - min) / (max - min));
     }
 }

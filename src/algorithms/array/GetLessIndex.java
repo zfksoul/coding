@@ -1,5 +1,8 @@
 package algorithms.array;
 
+/**
+ * 找到数组中极小值的坐标
+ */
 public class GetLessIndex {
     public static void main(String[] args){
         GetLessIndex o = new GetLessIndex();

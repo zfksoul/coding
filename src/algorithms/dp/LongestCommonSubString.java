@@ -1,5 +1,8 @@
 package algorithms.dp;
 
+/**
+ * 最长公共子串
+ */
 public class LongestCommonSubString {
     public static void main(String[] args){
         LongestCommonSubString o = new LongestCommonSubString();

@@ -1,5 +1,8 @@
 package algorithms.array;
 
+/**
+ * 给定数组，求2个数围成的面积最大值
+ */
 public class MaxArea {
     public static void main(String[] args){
         MaxArea o = new MaxArea();

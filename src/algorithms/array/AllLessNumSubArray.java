@@ -7,9 +7,9 @@ import java.util.LinkedList;
  * 单调栈：查找每个数左侧第一个比它小的数
  * 单调队列：滑动窗口中的最值
  */
-public class GetNum {
+public class AllLessNumSubArray {
     public static void main(String[] args){
-        GetNum o = new GetNum();
+        AllLessNumSubArray o = new AllLessNumSubArray();
         int[] arr = {4,3,5,0,3,3,6,7};
         System.out.println(o.myGetNum(arr, 3));
         System.out.println(o.myGetNum1(arr, 3));

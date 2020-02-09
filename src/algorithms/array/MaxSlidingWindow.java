@@ -6,6 +6,8 @@ import java.util.LinkedList;
 /**
  * 单调栈：查找每个数左侧第一个比它小的数
  * 单调队列：滑动窗口中的最值
+ *
+ * 给定数组和窗口大小，求窗口中最大值
  */
 public class MaxSlidingWindow {
     public static void main(String[] args){

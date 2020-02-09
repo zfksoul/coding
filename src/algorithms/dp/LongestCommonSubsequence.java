@@ -2,6 +2,9 @@ package algorithms.dp;
 
 import java.util.Arrays;
 
+/**
+ * 最长公共子序列
+ */
 public class LongestCommonSubsequence {
     public static void main(String[] args){
         LongestCommonSubsequence o = new LongestCommonSubsequence();
