@@ -50,7 +50,7 @@ public class GetNextNode {
 
     private TreeNode getNextNode(TreeNode node) {
         if (node == null) return node;
-        if (node.right != null){
+        if (node.right != null){//1.节点有右子树，后继节点是右子树最左节点
             TreeNode r = node.right;
             while (r.left != null) {
                 r = r.left;
@@ -59,6 +59,10 @@ public class GetNextNode {
         }
         TreeNode p = node.parent;
         TreeNode cur = node;
+        /**
+         * 2.节点没有右子树，一直找父节点，如果一个节点是父节点的左孩子，则后继节点是这个父节点
+         * 3.找不到父节点，后继节点为空
+         */
         while (p != null && p.left != cur){
             cur = p;
             p = p.parent;
