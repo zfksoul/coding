@@ -1,7 +1,6 @@
 package tree;
 
 import linkedlist.ListNode;
-import sun.reflect.generics.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.List;

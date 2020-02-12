@@ -19,7 +19,7 @@ public class LongestNotRepeatSubstring {
             return 0;
         }
         HashMap<Integer, Integer> map = new HashMap<>();
-        int pre = -1;
+        int pre = -1;//以arr[i-1]为结尾的最长无重复子数组左边界位置
         int res = 0;
         for (int i = 0; i < arr.length; i++){
             if (map.containsKey(arr[i])){
@@ -36,8 +36,8 @@ public class LongestNotRepeatSubstring {
         if (arr == null || arr.length == 0){
             return 0;
         }
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int pre = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();//每种字符上次出现的位置
+        int pre = 0;//以arr[i-1]为结尾的最长无重复子数组长度
         int res = 0;
         for (int i = 0; i < arr.length; i++){
             if (map.containsKey(arr[i])){

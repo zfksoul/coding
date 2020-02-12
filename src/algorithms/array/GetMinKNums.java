@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 /**
  * 找到无序数组中最小的k个数
+ * BFPRT时间复杂度O(n)
+ * 至少(n/10-2)*3个数小于中位数，最多n-(n/10-2)*3=7n/10+6个数大于中位数
+ * T(n)=O(n)+T(n/5)+T(7n/10+6)
  */
 public class GetMinKNums {
     public static void main(String[] args){
@@ -33,7 +36,7 @@ public class GetMinKNums {
 
     public int getMinKthByBFPRT(int[] arr, int k) {
         int[] copyArr = copyArr(arr);
-        return select(copyArr, 0, copyArr.length - 1, k - 1);
+        return select(copyArr, 0, copyArr.length - 1, k - 1);//数组下标以0开始
     }
     public int[] copyArr(int[] arr) {
         int[] res = new int[arr.length];
@@ -70,7 +73,7 @@ public class GetMinKNums {
     }
 
 
-
+    //返回分区后pivot所在的坐标范围
     private int[] partition(int[] arr, int begin, int end, int pivot) {
         int small = begin - 1;
         int cur = begin;

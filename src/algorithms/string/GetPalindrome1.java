@@ -5,15 +5,15 @@ package algorithms.string;
  * input: str="A1B21C", strlps="121"
  * output: "AC1B2B1CA"或"CA1B2B1AC"
  */
-public class GetPalindrome2 {
+public class GetPalindrome1 {
     public static void main(String[] args){
-        GetPalindrome2 o = new GetPalindrome2();
+        GetPalindrome1 o = new GetPalindrome1();
         String str = "A1B21C";
         String strlps = "121";
-        System.out.print(o.myGetPalindrome2(str,strlps));
+        System.out.print(o.myGetPalindrome1(str,strlps));
     }
 
-    public String myGetPalindrome2(String str, String strlps){
+    public String myGetPalindrome1(String str, String strlps){
         if (str == null || str.equals("")){
             return "";
         }

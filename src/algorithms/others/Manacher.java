@@ -2,6 +2,8 @@ package algorithms.others;
 
 /**
  * 给定字符串，返回最长回文子串的长度
+ * 问题：在字符串末尾添加字符串使整体都是回文串
+ * 用manacher算法求出必须以最后字符结尾的最长回文子串，在字符串后面添加前面字符串逆序
  */
 public class Manacher {
     public static void main(String[] args){

@@ -24,7 +24,7 @@ public class MinContainString {
         int[] map = new int[256];
         for (int i = 0; i < c2.length; i++){
             map[c2[i]]++;
-        }
+        }//其他字符欠款为0，只有c2里的字符欠款大于0，所以l右滑还款时，其他字符不会大于0，只有c2里的字符会大于0，用于判断是否再次欠款
         int i = 0;
         int j = 0;
         int t = c2.length;
