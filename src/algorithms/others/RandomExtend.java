@@ -62,7 +62,7 @@ public class RandomExtend {
             start++;
         }
         int index = start;
-        boolean lastEqual = true;//如果上一位相等，则下一位不能大于，否则可以大于
+        boolean lastEqual = true;//如果上一位nMSys和res相等，则下一位res不能大于nMSys，否则可以大于
         while (index < nMSys.length){
             res[index] = rand1ToM(m) - 1;
             if (lastEqual){

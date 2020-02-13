@@ -35,7 +35,7 @@ public class WinCard {
         for (int i = 0; i < arr.length; i++){
             f[i][i] = arr[i];
         }
-        for (int i = arr.length; i >= 0; i--){
+        for (int i = arr.length - 1; i >= 0; i--){
             for (int j = i + 1; j < arr.length; j++){
                 f[i][j] = Math.max(arr[i] + s[i + 1][j], arr[j] + s[i][j - 1]);
                 s[i][j] = Math.min(f[i + 1][j], f[i][j - 1]);
