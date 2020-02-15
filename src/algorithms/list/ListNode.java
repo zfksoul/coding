@@ -8,4 +8,11 @@ public class ListNode {
     public ListNode(int i) {
         value = i;
     }
+
+    @Override
+    public String toString() {
+        return "ListNode{" +
+                "value=" + value +
+                '}';
+    }
 }

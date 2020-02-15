@@ -34,4 +34,5 @@ public class TwoStackImplementQueue {
             return stackPop.peek();
         }
     }
+
 }
