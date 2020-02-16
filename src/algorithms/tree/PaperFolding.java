@@ -13,8 +13,18 @@ public class PaperFolding {
         if (n < 1){
             return;
         }
-        printProcess(1, n, true);
+        //printProcess(1, n, true);
+        printProcess1(n, true);
         System.out.println();
+    }
+
+    private void printProcess1(int n, boolean down) {
+        if (n < 1){
+            return;
+        }
+        printProcess1(n - 1, down);
+        System.out.print(down ? "down " : "up ");
+        printProcess1(n - 1, !down);
     }
 
     private void printProcess(int i, int n, boolean down) {

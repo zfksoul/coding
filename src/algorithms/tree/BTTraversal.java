@@ -18,10 +18,17 @@ public class BTTraversal {
         node6.left = node5;
         node6.right = node7;
         BTTraversal o = new BTTraversal();
-        o.preOrderUnRecur(node4);
-        o.inOrderUnRecur(node4);
-        o.posOrderUnRecur1(node4);
+        //o.preOrderUnRecur(node4);
+        //o.preOrderUnRecur1(node4);
+        //o.preOrderRecur(node4);
+        //o.inOrderUnRecur(node4);
+        //o.inOrderUnRecur1(node4);
+        //o.inOrderRecur(node4);
+        //o.posOrderUnRecur1(node4);
         o.posOrderUnRecur2(node4);
+        o.posOrderUnRecur3(node4);
+        o.posOrderUnRecur4(node4);
+        o.posOrderRecur(node4);
     }
 
     public void preOrderUnRecur(TreeNode head){
@@ -43,6 +50,31 @@ public class BTTraversal {
         }
         System.out.println();
     }
+    public void preOrderUnRecur1(TreeNode head){
+        if (head == null){
+            return;
+        }
+        Stack<TreeNode> st = new Stack<>();
+        while(!st.empty() || head != null){
+            if (head != null){
+                System.out.print(head.value + " ");
+                st.push(head);
+                head = head.left;
+            } else {
+                head = st.pop();
+                head = head.right;
+            }
+        }
+        System.out.println();
+    }
+    public void preOrderRecur(TreeNode head){
+        if (head == null){
+            return;
+        }
+        System.out.print(head.value + " ");
+        preOrderRecur(head.left);
+        preOrderRecur(head.right);
+    }
     public void inOrderUnRecur(TreeNode head){
         System.out.println("inOrderUnRecur:");
         if (head == null){
@@ -60,6 +92,31 @@ public class BTTraversal {
             }
         }
         System.out.println();
+    }
+    public void inOrderUnRecur1(TreeNode head){
+        if (head == null){
+            return;
+        }
+        Stack<TreeNode> st = new Stack<>();
+        while (!st.empty() || head != null){
+            if (head != null){
+                st.push(head);
+                head = head.left;
+            } else {
+                head = st.pop();
+                System.out.print(head.value + " ");
+                head = head.right;
+            }
+        }
+        System.out.println();
+    }
+    public void inOrderRecur(TreeNode head){
+        if (head == null){
+            return;
+        }
+        inOrderRecur(head.left);
+        System.out.print(head.value + " ");
+        inOrderRecur(head.right);
     }
     public void posOrderUnRecur1(TreeNode head){
         System.out.println("posOrderUnRecur1:");
@@ -105,5 +162,58 @@ public class BTTraversal {
             }
         }
         System.out.println();
+    }
+
+    public void posOrderUnRecur3(TreeNode head){
+        if (head == null){
+            return;
+        }
+        Stack<TreeNode> st1 = new Stack<>();
+        Stack<TreeNode> st2 = new Stack<>();
+        while(!st1.empty() || head != null){
+            if (head != null){
+                st1.push(head);
+                st2.push(head);
+                head = head.right;
+            } else {
+                head = st1.pop();
+                head = head.left;
+            }
+        }
+        while (!st2.empty()){
+            head = st2.pop();
+            System.out.print(head.value + " ");
+        }
+        System.out.println();
+    }
+    public void posOrderUnRecur4(TreeNode head){
+        if (head == null){
+            return;
+        }
+        Stack<TreeNode> st = new Stack<>();
+        TreeNode last = head;
+        st.push(head);
+        while (!st.empty()){
+            head = st.peek();
+            if (head.left != null && head.left != last && head.right != last){
+                head = head.left;
+                st.push(head);
+            } else if (head.right != null && head.right != last){
+                head = head.right;
+                st.push(head);
+            } else {
+                System.out.print(st.pop().value + " ");
+                last = head;
+            }
+        }
+        System.out.println();
+    }
+    public void posOrderRecur(TreeNode head){
+        if (head == null){
+            return;
+        }
+        posOrderRecur(head.left);
+        posOrderRecur(head.right);
+        System.out.print(head.value + " ");
     }
 }

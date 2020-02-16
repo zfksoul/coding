@@ -11,8 +11,11 @@ public class CopyListWithRand {
         node1.rand = node3;
         node2.rand = node1;
         node3.rand = node1;
-        ListNode copyNode = o.copy(node1);
-        System.out.print(copyNode);
+        ListNode copyNode = o.copy2(node1);
+        while (copyNode != null){
+            System.out.println(copyNode);
+            copyNode = copyNode.next;
+        }
     }
     private ListNode copy1(ListNode head) {
         if (head == null){
@@ -44,6 +47,37 @@ public class CopyListWithRand {
             cur = next;
         }
         return res;
+    }
+    private ListNode copy2(ListNode head) {
+        if (head == null){
+            return null;
+        }
+        ListNode next = null;
+        ListNode p = head;
+        ListNode q = null;
+        while (p != null){
+            next = p.next;
+            q = new ListNode(p.value);
+            p.next = q;
+            q.next = next;
+            p = next;
+        }
+        p = head;
+        while (p != null){
+            p.next.rand = p.rand == null ? null : p.rand.next;
+            p = p.next.next;
+        }
+        p = head;
+        q = head.next;
+        ListNode res = head.next;
+        while (p != null){
+            p.next = p.next.next;
+            p = p.next;
+            q.next = p == null ? null : p.next;
+            q = q.next;
+        }
+        return res;
+
     }
 
     private ListNode copy(ListNode node1) {

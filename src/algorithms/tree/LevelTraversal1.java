@@ -3,7 +3,7 @@ package algorithms.tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class PrintByLevel {
+public class LevelTraversal1 {
     public static void main(String[] args){
         TreeNode node1 = new TreeNode(1);
         TreeNode node2 = new TreeNode(2);
@@ -18,7 +18,7 @@ public class PrintByLevel {
         node2.right = node3;
         node6.left = node5;
         node6.right = node7;
-        PrintByLevel o = new PrintByLevel();
+        LevelTraversal1 o = new LevelTraversal1();
         o.print(node4);
         o.print1(node4);
     }
