@@ -12,7 +12,7 @@ import java.util.*;
 public class PrintKMajor {
     public static void main(String[] args){
         PrintKMajor o = new PrintKMajor();
-        int[] arr = {1,1,1,3,4,5,5};
+        int[] arr = {1,1,1,3,4,5,5,5};
         o.myPrintKMajor(arr,3);
     }
     public void myPrintKMajor(int[] arr, int k){
@@ -65,6 +65,18 @@ public class PrintKMajor {
             Integer key = set.getKey();
             Integer value = set.getValue();
             if (value == 1){
+                cands.remove(key);
+            } else {
+                cands.put(key, value - 1);
+            }
+        }
+    }
+    /*private void allCandsMinusOne(HashMap<Integer, Integer> cands) {
+        List<Integer> removeList = new LinkedList<>();
+        for (Map.Entry<Integer, Integer> set : cands.entrySet()){
+            Integer key = set.getKey();
+            Integer value = set.getValue();
+            if (value == 1){
                 removeList.add(key);
             }
             cands.put(key, value - 1);
@@ -72,7 +84,7 @@ public class PrintKMajor {
         for (Integer removeKey : removeList){
             cands.remove(removeKey);
         }
-    }
+    }*/
 
     public void myPrintKMajor1(int[] arr, int k){
         int[] cand = new int[k-1];

@@ -1,5 +1,6 @@
 package algorithms.array;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -13,6 +14,7 @@ public class GetMinKNums {
         GetMinKNums o = new GetMinKNums();
         int[] arr = {1,2,3,3,5,3,7,7,4,5,6,7,8,9,10};
         System.out.print(Arrays.toString(o.getMinKNumsByBFPRT(arr, 6)));
+        System.out.print(o.getMinKNums(arr, 6));
     }
 
 
@@ -117,5 +119,37 @@ public class GetMinKNums {
             }
         }
     }
+    public ArrayList<Integer> getMinKNums(int[] arr, int k){
+        if(arr == null || arr.length < k){
+            return null;
+        }
+        quickSort(arr, 0, arr.length - 1);
+        ArrayList<Integer> res = new ArrayList<>();
+        for (int i = 0; i < k; i++){
+            res.add(arr[i]);
+        }
+        return res;
+    }
 
+    private void quickSort(int[] arr, int l, int r) {
+        if (l >= r){
+            return;
+        }
+        int pivot = partition(arr, l, r);
+        quickSort(arr, l, pivot - 1);
+        quickSort(arr, pivot + 1, r);
+    }
+
+    private int partition(int[] arr, int l, int r) {
+        int ran = (int) (l + Math.random() * (r - l + 1));
+        swap(arr, l, ran);
+        int p = l + 1;
+        for (int i = p; i <= r; i++){
+            if (arr[i] <= arr[l]){
+                swap(arr, p++, i);
+            }
+        }
+        swap(arr, l, p - 1);
+        return p - 1;
+    }
 }

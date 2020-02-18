@@ -1,54 +1,82 @@
 package offer;
 
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.*;
 
-/**
-* 
-*
-* @author zfk
-* @date 2019年10月25日 下午11:43:04 
-* 
-*/
 public class Solution27 {
-    public static void main(String[] args) {
-        Solution27 so = new Solution27();
-        String s = "axgasdxzsf";
-        char[] c = so.sort(s);
-        for(int i = 0; i<c.length;i++) {
-            System.out.print(c[i]);
+    public static void main(String[] args){
+        Solution27 o = new Solution27();
+        String s = "abc";
+        StringBuilder sb = new StringBuilder("abc");
+        System.out.println(o.Permutation(sb));
+    }
+
+    public ArrayList<String> Permutation1(String str) {
+        ArrayList<String> res = new ArrayList<>();
+        if (str == null){
+            return res;
         }
-        System.out.println("--------------");
-        System.out.println("bba".compareTo("bab"));
-        System.out.println("a".compareTo("a"));
-        System.out.println("b".compareTo("a"));
-    }
-    public ArrayList<String> Permutation(String str) {
-        char[] c = sort(str);
-        ArrayList<String> res = new ArrayList<String>();
-        
-       // String s = String.valueOf(b);
-        //res.add(s);
-        return res;
-    }
-    public char[] sort(String str) {
-        char tmp;
+        if (str.length() == 1){
+            res.add(str);
+            return res;
+        }
         char[] c = str.toCharArray();
-        for(int i = 0;i<c.length;i++) {
-            for(int j =0;j<c.length-1;j++) {
-                if(c[j]>c[j+1]) {
-                    tmp = c[j+1];
-                    c[j+1]=c[j];
-                    c[j]=tmp;
+        for (int i = 0; i < c.length; i++){
+            if (i == 0 || c[i] != c[0]){
+                swap(c, 0, i);
+                ArrayList<String> list = Permutation1(new String(c, 1, c.length - 1));
+                for (String s : list){
+                    res.add(new String(String.valueOf(c[0]) + s));
                 }
+                swap(c, 0, i);
             }
         }
-        return c;
+        Collections.sort(res, new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                return s1.compareTo(s2);
+            }
+        });
+        return res;
     }
-}
-class Mycomparator implements Comparator<String>{
-    @Override
-    public int compare(String a, String b) {
-        return a.compareTo(b);
+    public ArrayList<String> Permutation(StringBuilder str) {
+        ArrayList<String> res = new ArrayList<>();
+        if (str == null){
+            return res;
+        }
+        if (str.length() == 1){
+            res.add(str.toString());
+            return res;
+        }
+        for (int i = 0; i < str.length(); i++){
+            if (i == 0 || str.charAt(i) != str.charAt(0)){
+                swap(str, 0, i);
+                ArrayList<String> list = Permutation(new StringBuilder(str.substring(1)));
+                for (String s : list){
+                    res.add(str.substring(0, 1) + s);
+                }
+                swap(str, 0, i);
+            }
+        }
+
+        String[] s = res.toArray(new String[0]);
+        Arrays.sort(s, new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                return s1.compareTo(s2);
+            }
+        });
+        res = new ArrayList<String>(Arrays.asList(s));
+        return res;
+    }
+
+    private void swap(char[] c, int l, int r) {
+        char tmp = c[l];
+        c[l] = c[r];
+        c[r] = tmp;
+    }
+    private void swap(StringBuilder str, int l, int r) {
+        char tmp = str.charAt(l);
+        str.setCharAt(l, str.charAt(r));
+        str.setCharAt(r, tmp);
     }
 }

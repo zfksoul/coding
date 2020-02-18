@@ -22,6 +22,7 @@ public class PrintHalfMajor {
         for (int i = 0; i < arr.length; i++){
             if (times == 0) {
                 cand = arr[i];
+                times++;
             } else if (arr[i] == cand) {
                 times++;
             } else {
@@ -35,5 +36,33 @@ public class PrintHalfMajor {
         if (times > arr.length / 2) System.out.print(cand);
         else System.out.print("no such number");
 
+    }
+    private int myPrintHalfMajor1(int[] arr) {
+        if (arr == null || arr.length == 0){
+            return 0;
+        }
+        int cnt = 1;
+        int res = arr[0];
+        for (int i = 1; i < arr.length; i++){
+            if (res == arr[i]){
+                cnt++;
+            } else if (cnt == 0){
+                res = arr[i];
+                cnt++;
+            } else {
+                cnt--;
+            }
+        }
+        cnt = 0;
+        for (int i = 0; i < arr.length; i++){
+            if (arr[i] == res){
+                cnt++;
+            }
+        }
+        if (cnt > arr.length / 2){
+            return res;
+        } else {
+            return 0;
+        }
     }
 }

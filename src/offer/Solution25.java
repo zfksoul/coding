@@ -2,7 +2,7 @@ package offer;
 
 /**
 * 
-*
+* 复杂链表的复制
 * @author zfk
 * @date 2019年10月23日 下午9:47:20 
 * 
