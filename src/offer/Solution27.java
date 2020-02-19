@@ -5,9 +5,39 @@ import java.util.*;
 public class Solution27 {
     public static void main(String[] args){
         Solution27 o = new Solution27();
-        String s = "abc";
+        String s = "cbaa";
         StringBuilder sb = new StringBuilder("abc");
-        System.out.println(o.Permutation(sb));
+        System.out.println(o.Permutation2(s));
+    }
+    public ArrayList<String> Permutation2(String str) {
+        if (str == null || str.length() == 0){
+            return null;
+        }
+        char[] c = str.toCharArray();
+        Arrays.sort(c);
+        StringBuilder sb = new StringBuilder();
+        TreeSet<String> set = new TreeSet<>();//TreeSet按序保存
+        ArrayList<String> res = new ArrayList<>();
+        boolean[] record = new boolean[c.length];
+        process(c, record, 0, set, sb);
+        res.addAll(set);
+        return res;
+    }
+
+    private void process(char[] c, boolean[] record, int len, TreeSet<String> set, StringBuilder sb) {
+        if (len == c.length){
+            set.add(new String(sb));
+            return;
+        }
+        for (int i = 0; i < record.length; i++){
+            if (record[i] == false){
+                record[i] = true;
+                sb.append(c[i]);
+                process(c, record, len + 1, set, sb);
+                sb.deleteCharAt(sb.length() - 1);
+                record[i] = false;
+            }
+        }
     }
 
     public ArrayList<String> Permutation1(String str) {
