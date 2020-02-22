@@ -1,7 +1,6 @@
 package dfs;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,19 +12,21 @@ import java.util.List;
  * 共24种选择
  */
 public class Subsets2 {
-    List<List<Integer>> res = new ArrayList<>();
-    List<Integer> path = new ArrayList<>();
+
+
     public static void main(String[] args){
         Subsets2 o = new Subsets2();
         System.out.println(o.subsetsWithDup(new int[]{1,2,2}));
     }
     public List<List<Integer>> subsetsWithDup(int[] nums){
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> path = new ArrayList<>();
         mysort(nums,0,nums.length-1);
-        dfs(nums, 0);
+        dfs1(nums, 0, res, path);
         return res;
     }
 
-    private void dfs(int[] nums, int k) {
+    private void dfs(int[] nums, int k, List<List<Integer>> res, List<Integer> path) {
         if (k == nums.length){
             res.add(new ArrayList<>(path));
             return;
@@ -33,11 +34,26 @@ public class Subsets2 {
         int n = 0;
         while (k + n < nums.length && nums[k +n] == nums[k]) n++;//计算当前数字个数
         for (int i = 0; i <= n; i++){//数字有n个时，共n+1种情况
-            dfs(nums,k+n);//当前数枚举完从下一个数开始枚举
-            path.add(nums[k]);
+            dfs(nums,k+n, res, path);//当前数枚举完从下一个数开始枚举，从0到n
+            path.add(nums[k]);//最后一次add多于，也没有在递归中用到
         }
         //恢复现场
-        for (int i = 0; i <= n; i++) path.remove(path.size()-1);
+        for (int i = 0; i <= n; i++) path.remove(path.size()-1);//最后一次add把多于的值删掉
+    }
+    private void dfs1(int[] nums, int k, List<List<Integer>> res, List<Integer> path) {
+        if(k == nums.length){
+            res.add(new ArrayList<>(path));
+            return;
+        }
+        int n = 0;
+        while (k + n < nums.length && nums[k] == nums[k + n]) n++;
+        for (int i = 0; i <= n; i++){
+            dfs1(nums, k +n, res, path);
+            path.add(nums[k]);
+        }
+        for (int i = 0; i <= n; i++){
+            path.remove(path.size() - 1);
+        }
     }
 
     private void mysort(int[] nums,int l,int r) {
