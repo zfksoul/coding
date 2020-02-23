@@ -1,7 +1,7 @@
 package algorithms.string;
 
 /**
- * 给定2个字符串，以长的字符串长度为准，返回在字典序中，2个字符串直接有多少个字符串
+ * 给定2个字符串，以长的字符串长度为准，返回在字典序中，2个字符串之间有多少个字符串
  */
 public class TwoStringDistance {
     public static void main(String[] args){
@@ -43,7 +43,7 @@ public class TwoStringDistance {
         int index = 0;
         while (index < len){
             if (index < c.length){
-                pre = pre * 26 + c[index] - 'a';
+                pre = pre * 26 + c[index] - 'a';//分别算不同长度的结果
                 res += pre + 1;
             } else {
                 pre = pre * 26;
