@@ -11,6 +11,13 @@ public class ListNode {
     int val;
     ListNode next = null;
 
+    @Override
+    public String toString() {
+        return "ListNode{" +
+                "val=" + val +
+                '}';
+    }
+
     ListNode(int val) {
         this.val = val;
     }

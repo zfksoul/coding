@@ -1,6 +1,11 @@
-package algorithms.tree;
+package offer;
 
-public class IsBalancedTree {
+import algorithms.tree.TreeNode;
+
+/**
+ * 输入一棵二叉树，判断该二叉树是否是平衡二叉树。
+ */
+public class Solution39 {
     public static void main(String[] args){
         TreeNode node1 = new TreeNode(1);
         TreeNode node2 = new TreeNode(2);
@@ -15,7 +20,7 @@ public class IsBalancedTree {
         node2.right = node3;
         node6.left = node5;
         node6.right = node7;
-        IsBalancedTree o = new IsBalancedTree();
+        Solution39 o = new Solution39();
         System.out.println(o.isBalance(node4));
     }
     public boolean isBalance(TreeNode head){
