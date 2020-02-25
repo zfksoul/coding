@@ -1,4 +1,4 @@
-package algorithms.array;
+package offer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +8,7 @@ import java.util.Map;
  * num1,num2分别为长度为1的数组。传出参数
  * 将num1[0],num2[0]设置为返回结果
  */
-public class FindNumsAppearOnce {
+public class Solution40 {
     public void myFindNumsAppearOnce(int [] arr,int num1[] , int num2[]) {
         if (arr == null || arr.length == 0){
             return;
