@@ -75,10 +75,18 @@ public class MatchString {
         }
         boolean[][] dp = new boolean[s.length + 1][e.length + 1];
         dp[s.length][e.length] = true;
-        for (int j = dp[0].length - 3; j >= 0; j--){
-            dp[s.length][j] = e[j + 1] == '*' ? true : false;
+        for (int j = dp[0].length - 3; j >= 0; j -= 2){
+            if (e[j] != '*' && e[j + 1] == '*'){
+                dp[s.length][j] = true;
+            } else {
+                break;
+            }
         }
-        dp[dp.length - 2][dp[0].length - 2] = e[e.length - 1] == s[s.length - 1] ? true : false;
+        if (s.length > 0 && e.length > 0){
+            if (s[s.length - 1] == e[e.length - 1] || e[e.length - 1] == '.'){
+                dp[dp.length - 2][dp.length - 2] = true;
+            }
+        }
         for (int i = dp.length - 2; i >= 0; i--){
             for (int j = dp[0].length - 3; j >= 0; j--){
                 if (e[j + 1] != '*'){

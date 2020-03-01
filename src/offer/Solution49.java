@@ -1,13 +1,13 @@
-package algorithms.string;
+package offer;
 
 /**
  * 将一个字符串转换成一个整数，要求不能使用字符串转换整数的库函数。 数值为0或者字符串不是一个合法的数值则返回0
  * 输入一个字符串,包括数字字母符号,可以为空
  * 如果是合法的数值表达则返回该数字，否则返回0
  */
-public class StrToInt {
+public class Solution49 {
     public static void main(String[] args){
-        StrToInt o = new StrToInt();
+        Solution49 o = new Solution49();
         String str = "-2147483649";
         System.out.println(o.myStrToInt(str));
     }
