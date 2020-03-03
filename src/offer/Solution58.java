@@ -3,6 +3,9 @@ package offer;
 
 import algorithms.tree.TreeNode;
 
+import java.util.ArrayList;
+import java.util.Stack;
+
 /**
  * 请实现一个函数，用来判断一颗二叉树是不是对称的。注意，如果一个二叉树同此二叉树的镜像是同样的，定义其为对称的。
  */
@@ -23,6 +26,44 @@ public class Solution58 {
         n3.left = n6;
         n3.right = n7;
         System.out.println(o.myIsSymmetrical(n1));
+    }
+    boolean myIsSymmetrical1(TreeNode head) {
+        if (head == null){
+            return true;
+        }
+        Stack<TreeNode> st = new Stack<>();
+        TreeNode p = head.left;
+        ArrayList<Integer> arr1 = new ArrayList<>();
+        ArrayList<Integer> arr2 = new ArrayList<>();
+        while (st != null && p != null){
+            if (p != null){
+                arr1.add(p.value);
+                st.push(p);
+                p = p.left;
+            } else {
+                p = st.pop();
+                p = p.right;
+            }
+        }
+        p = head.right;
+        while (st != null && p != null){
+            if (p != null){
+                arr2.add(p.value);
+                st.push(p);
+                p = p.right;
+            } else {
+                p = st.pop();
+                p = p.left;
+            }
+        }
+        while (!arr1.isEmpty() && !arr2.isEmpty()){
+            if (arr1.get(0) != arr2.get(0)){
+                return false;
+            }
+            arr1.remove(0);
+            arr2.remove(0);
+        }
+        return arr1.isEmpty() && arr2.isEmpty();
     }
     boolean myIsSymmetrical(TreeNode head) {
         if (head == null){
