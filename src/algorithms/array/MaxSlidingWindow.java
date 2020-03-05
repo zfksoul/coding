@@ -1,7 +1,9 @@
 package algorithms.array;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 单调栈：查找每个数左侧第一个比它小的数
@@ -14,6 +16,7 @@ public class MaxSlidingWindow {
         MaxSlidingWindow o = new MaxSlidingWindow();
         int[] arr = {4,3,5,4,3,3,6,7};
         System.out.print(Arrays.toString(o.getMaxWindow1(arr, 3)));
+        System.out.print(Arrays.toString(o.getMaxWindow(arr, 3)));
     }
     private int[] getMaxWindow1(int[] arr, int w) {
         if (arr == null || w < 1 || arr.length < w){
@@ -51,6 +54,27 @@ public class MaxSlidingWindow {
             }
             if (i >= w - 1) {
                 res[k++] = arr[q.peekFirst()];
+            }
+        }
+        return res;
+    }
+
+    public ArrayList<Integer> maxInWindows(int [] num, int size) {
+        ArrayList<Integer> res = new ArrayList<>();
+        if (num == null || num.length == 0 || size < 1 || size > num.length){
+            return res;
+        }
+        LinkedList<Integer> q = new LinkedList<>();
+        for (int i = 0; i < num.length; i++){
+            while (!q.isEmpty() && num[i] >= num[q.getLast()]){
+                q.removeLast();
+            }
+            q.addLast(i);
+            if (q.getFirst() <= i - size){
+                q.removeFirst();
+            }
+            if (i >= size - 1){
+                res.add(num[q.getFirst()]);
             }
         }
         return res;
