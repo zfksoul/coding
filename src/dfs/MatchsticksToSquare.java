@@ -11,7 +11,7 @@ package dfs;
  * 如果该木棒在当前边第一个位置失败，而最后成功，则该木棒会在下条边的某个位置，
  * 此时把木棒和第一个木棒交换，再把边和当前边交换，则与当前结论矛盾
  * 5.如果当前木棒拼接失败，且是当前边的最后一个，则直接减掉当前分支
- * 如果该木棒在不能放在当前边的最后位置，则可以放在下条边的某个位置，当前位置为由其他边组合而成，
+ * 如果该木棒在不能放在当前边的最后位置，则可以放在下条边的某个位置，当前w位置为由其他边组合而成，
  * 则可以将该木棒和组合木棒交换，与失败结论矛盾
  */
 public class MatchsticksToSquare {
@@ -28,25 +28,29 @@ public class MatchsticksToSquare {
         for (int n : arr){
             sum += n;
         }
-        if (sum == 0 || sum % 4 != 0) return false;
+        if (sum == 0 || sum % 4 != 0){
+            return false;
+        }
         myrevsort(arr);
         boolean[] record = new boolean[arr.length];
-        return dfs1(arr, 0, 0, record, sum / 4);
+        return dfs1(record, 0, 0, arr, sum / 4);
     }
 
-    private boolean dfs1(int[] arr, int n, int cur, boolean[] record, int len) {
-        if (cur == len){
+    private boolean dfs1(boolean[] record, int n, int cur, int[] arr, int length) {
+        if (cur == length){
             n++;
             cur = 0;
         }
-        if (n == 4) return true;
-        for (int i = 0; i < arr.length; i++){
-            if (!record[i]){
+        if (n == 4){
+            return true;
+        }
+        for (int i = 0; i < record.length; i++){
+            if (!record[i] && cur + arr[i] <= length){
                 record[i] = true;
-                if (dfs1(arr, n, cur + arr[i], record, len)) return true;
+                if(dfs1(record, n, cur + arr[i], arr, length)) return true;
                 record[i] = false;
                 if (cur == 0) return false;
-                if (cur + arr[i] == len) return false;
+                if (cur + arr[i] == length) return false;
                 while (i + 1 < arr.length && arr[i + 1] == arr[i]) i++;
             }
         }

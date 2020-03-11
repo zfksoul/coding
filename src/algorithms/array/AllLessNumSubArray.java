@@ -34,7 +34,7 @@ public class AllLessNumSubArray {
                 }
                 qmax.addLast(j);
                 if (arr[qmax.getFirst()] - arr[qmin.getFirst()] > num){
-                    break;
+                    break;//j位置不满足条件，[i,...,j-1]中所有子数组满足条件，求以i开头的子数组，有j-i个
                 }
                 j++;
             }
@@ -51,34 +51,27 @@ public class AllLessNumSubArray {
     }
 
     public int myGetNum(int[] arr, int num) {
+        if (arr == null || arr.length == 0 || num < 0){
+            return 0;
+        }
         LinkedList<Integer> qmax = new LinkedList<>();
         LinkedList<Integer> qmin = new LinkedList<>();
         int i = 0;
         int j = 0;
         int res = 0;
-        while (i < arr.length) {
-            while (j < arr.length) {
-                while (!qmax.isEmpty() && arr[qmax.peekLast()] <= arr[j]) {
-                    qmax.pollLast();
-                }
+        while (i < arr.length){
+            while (j < arr.length){
+                while (!qmax.isEmpty() && arr[qmax.getLast()] <= arr[j]) qmax.removeLast();
                 qmax.addLast(j);
-                while (!qmin.isEmpty() && arr[qmin.peekLast()] >= arr[j]) {
-                    qmin.pollLast();
-                }
+                while (!qmin.isEmpty() && arr[qmin.getLast()] >= arr[j]) qmin.removeLast();
                 qmin.addLast(j);
-                if (arr[qmax.peekFirst()] - arr[qmin.peekFirst()] > num) {
-                    break;
-                }
+                if (arr[qmax.getFirst()] - arr[qmin.getFirst()] > num) break;
                 j++;
             }
+            if (qmax.getFirst() == i) qmax.removeFirst();
+            if (qmin.getFirst() == i) qmin.removeFirst();
             res += j - i;
             i++;
-            if (qmax.peekFirst() < i) {
-                qmax.pollFirst();
-            }
-            if (qmin.peekFirst() < i) {
-                qmin.pollFirst();
-            }
         }
         return res;
     }
