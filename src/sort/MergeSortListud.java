@@ -107,6 +107,7 @@ public class MergeSortListud {
         }
         return dummy.next;
     }
+
     public ListNode myMergeSortListud3(ListNode head) {
         if (head == null || head.next == null){
             return head;
@@ -117,53 +118,39 @@ public class MergeSortListud {
             f = f.next.next;
             s = s.next;
         }
-        ListNode h2 = s.next;
+        ListNode head2 = s.next;
         s.next = null;
         head = myMergeSortListud3(head);
-        h2 = myMergeSortListud3(h2);
-        return merge3(head,h2);
-    }
-
-    private ListNode merge3(ListNode h1, ListNode h2) {
-        if (h1 == null) return h2;
-        if (h2 == null) return h1;
-        if (h1.val <= h2.val){
-            h1.next = merge3(h1.next, h2);
-            return h1;
-        } else{
-            h2.next = merge3(h1, h2.next);
-            return h2;
-        }
-    }
-    private ListNode merge(ListNode h1, ListNode h2) {
+        head2 = myMergeSortListud3(head2);
         ListNode dummy = new ListNode(-1);
-        ListNode p = dummy;
-        while (h1 != null && h2 != null){
-            if (h1.val <= h2.val){
-                p.next = h1;
-                h1 = h1.next;
-            }else{
-                p.next = h2;
-                h2 = h2.next;
+        ListNode cur = dummy;
+        while (head != null && head2 != null){
+            if (head.val <= head2.val){
+                cur.next = head;
+                head = head.next;
+                cur = cur.next;
+            } else {
+                cur.next = head2;
+                head2 = head2.next;
+                cur = cur.next;
             }
-            p = p.next;
         }
-        if (h1 == null) p.next = h2;
-        if (h2 == null) p.next = h1;
+        if (head != null) cur.next = head;
+        if (head2 != null) cur.next = head2;
         return dummy.next;
     }
     public ListNode myMergeSortListud4(ListNode head) {
         if (head == null || head.next == null) return head;
-        ListNode fast = head.next;
-        ListNode slow = head;
-        while (fast != null && fast.next != null) {
-            fast = fast.next.next;
-            slow = slow.next;
+        ListNode f = head;
+        ListNode s = head;
+        while (f.next != null && f.next.next != null){
+            f = f.next.next;
+            s = s.next;
         }
-        ListNode head2 = slow.next;
-        slow.next = null;
-        head = myMergeSortListud4(head);
-        head2 = myMergeSortListud4(head2);
+        ListNode head2 = s.next;
+        s.next = null;
+        head = myMergeSortListud3(head);
+        head2 = myMergeSortListud3(head2);
         ListNode dummy = new ListNode(-1);
         ListNode cur = dummy;
         while (head != null && head2 != null){

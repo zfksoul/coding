@@ -27,12 +27,13 @@ public class BucketSort1 {
                 max = arr[i];
             }
         }
-        int gap = (max - min + 1) / (10 - 1);
-        for (int i = 0; i < 10; i++){
+        int bucketSize = 5;
+        int bucketCount = ((max - min) / bucketSize) + 1;
+        for (int i = 0; i < bucketCount; i++){
             buckets.add(new LinkedList<Integer>());
         }
         for (Integer data : arr){
-            insertSort(buckets.get((data - min) / gap),data);
+            insertSort(buckets.get((data - min) / bucketSize),data);
         }
         int k = 0;
         for (LinkedList<Integer> bucket : buckets){

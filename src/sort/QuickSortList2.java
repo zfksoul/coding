@@ -36,9 +36,7 @@ public class QuickSortList2 {
     
     //基于链表实现的快速排序
     public ListNode myQuickSortList(ListNode head) {
-        if (head == null || head.next == null){
-            return head;
-        }
+        if (head == null || head.next == null) return head;
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
         ListNode pivot = partition(dummy);
@@ -48,7 +46,7 @@ public class QuickSortList2 {
             n = n.next;
         }
         n.next = null;
-        ListNode h1 = myQuickSortList(head);
+        ListNode h1 = myQuickSortList(dummy.next);
         ListNode h2 = myQuickSortList(head2);
         dummy.next = h1;
         n = dummy;
@@ -61,14 +59,11 @@ public class QuickSortList2 {
     }
 
     private ListNode partition(ListNode dummy) {
-        if (dummy.next == null || dummy.next.next == null){
-            return  dummy.next;
-        }
-        ListNode preP = dummy.next;
         ListNode prePivot = dummy;
+        ListNode preP = dummy.next;
         for (ListNode preI = preP; preI.next != null; preI = preI.next){
             if (preI.next.val < prePivot.next.val){
-                swap(preI,preP);
+                swap(preI, preP);
                 preP = preP.next;
             }
         }
@@ -77,7 +72,7 @@ public class QuickSortList2 {
             prePreP = prePreP.next;
         }
         ListNode p = preP.next;
-        swap(prePreP,prePivot);
+        swap(prePreP, prePivot);
         while (preP.next != p){
             preP = preP.next;
         }
@@ -85,9 +80,7 @@ public class QuickSortList2 {
     }
 
     private void swap(ListNode preN1, ListNode preN2) {
-        if (preN1 == preN2){
-            return;
-        }
+        if (preN1 == preN2) return;
         ListNode n1 = preN1.next;
         ListNode n2 = preN2.next;
         ListNode posN1 = n1.next;
@@ -107,6 +100,5 @@ public class QuickSortList2 {
             n1.next = posN2;
         }
     }
-
 }
         

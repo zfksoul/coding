@@ -19,7 +19,7 @@ public class ShellSort {
     }
     public int[] myShellSort(int[] arr) {
         for (int inc = arr.length / 2; inc > 0; inc /= 2) {
-            for (int i = inc; i < arr.length; i += inc) {
+            for (int i = inc; i < arr.length; i++) {//注意i++
                 int tmp = arr[i];
                 int j;
                 for (j = i - inc; j >= 0; j -= inc){
@@ -34,27 +34,9 @@ public class ShellSort {
         }
         return arr;
     }
-    public int[] myShellSort2(int[] arr) {
-        for (int inc = arr.length / 2; inc > 0; inc /= 2){
-            for (int i = inc; i < arr.length; i += inc){
-                int tmp = arr[i];
-                int j;
-                for (j = i - inc; j >= 0; j -= inc){
-                    if (arr[j] > tmp){
-                        arr[j+inc] = arr[j];
-                    } else {
-                        break;
-                    }
-                }
-                arr[j+inc] = tmp;
-            }
-        }
-        return arr;
-    }
-
     public int[] myShellSort1(int[] arr) {
         for (int inc = arr.length / 2; inc > 0; inc /= 2) {
-            for (int i = inc; i < arr.length; i += inc) {
+            for (int i = inc; i < arr.length; i++) {
                 int j = i - inc;
                 int tmp = arr[i];
                 while (j >= 0 && arr[j] > tmp) {
@@ -66,6 +48,23 @@ public class ShellSort {
         }
         return arr;
     }
+
+    public int[] myShellSort2(int[] arr) {
+        for (int inc = arr.length / 2; inc > 0; inc /= 2){
+            for (int i = inc; i < arr.length; i++){
+                int j = i - inc;
+                int tmp = arr[i];
+                while (j >= 0 && arr[j] > tmp){
+                    arr[j + inc] = arr[j];
+                    j -= inc;
+                }
+                arr[j + inc] = tmp;
+            }
+        }
+        return arr;
+    }
+
+
 
 
 }

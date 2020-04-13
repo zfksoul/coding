@@ -33,17 +33,17 @@ public class CountingSort {
     }
 
     public int[] myCountingSort2(int[] arr, int k) {
-        int[] cnt = new int[k+1];
+        int[] cnt = new int[k + 1];
         int[] res = new int[arr.length];
         for (int i = 0; i < arr.length; i++){
             cnt[arr[i]]++;
         }
-        for (int i = 1; i <= k; i++){
-            cnt[i] += cnt[i-1];
+        for (int i = 1; i < cnt.length; i++){
+            cnt[i] += cnt[i - 1];
         }
         for (int i = arr.length - 1; i >= 0; i--){
-            cnt[arr[i]]--;
-            res[cnt[arr[i]]] = arr[i];
+            //cnt[arr[i]]--;
+            res[--cnt[arr[i]]] = arr[i];
         }
         return res;
     }

@@ -59,7 +59,7 @@ public class MergeSortArraydu {
         int[] tmp = new int[arr.length];
         for (int i = 1; i < arr.length; i *= 2){
             int k = 0;
-            for (int begin = 0; begin < arr.length; begin += 2 * i){
+            for (int begin = 0; begin < arr.length; begin += i * 2){
                 int first = begin;
                 int second = begin + i;
                 int f = 0;
@@ -82,8 +82,8 @@ public class MergeSortArraydu {
                     s++;
                 }
             }
-            for (int m = 0; m < arr.length; m++){
-                arr[m] = tmp[m];
+            for (int j = 0; j < arr.length; j++){
+                arr[j] = tmp[j];
             }
         }
         return arr;

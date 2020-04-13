@@ -54,7 +54,7 @@ public class MergeSortListdu {
             for (int j = 0; j + i < n; j += i * 2) {// 判断本轮迭代是否结束
                 // j + i < n：最后如果只有一段链表则不需要调整，但是数组不能这么判断
                 ListNode first = begin.next;// 第一段开始
-                ListNode second = first;
+                ListNode second = begin.next;
                 for (int k = 0; k < i; k++) {
                     second = second.next;// 第二段开始
                 }
@@ -108,20 +108,19 @@ public class MergeSortListdu {
     public ListNode myMergeSortListdu1(ListNode head) {
         if (head == null || head.next == null) return head;
         int n = 0;
-        for (ListNode p = head; p != null; p = p.next){
+        ListNode p = head;
+        while (p != null){
+            p = p.next;
             n++;
         }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        ListNode begin;
-        ListNode first;
-        ListNode second;
         for (int i = 1; i < n; i *= 2){
-            begin = dummy;
+            ListNode begin = dummy;
             for (int j = 0; j + i < n; j += i * 2){
-                first = begin.next;
-                second = begin.next;
-                for (int m = 0; m < i; m++){
+                ListNode first = begin.next;
+                ListNode second = begin.next;
+                for (int k = 0; k < i; k++){
                     second = second.next;
                 }
                 int f = 0;
@@ -129,8 +128,8 @@ public class MergeSortListdu {
                 while (f < i && s < i && second != null){
                     if (first.val <= second.val){
                         begin.next = first;
-                        begin = begin.next;
                         first = first.next;
+                        begin = begin.next;
                         f++;
                     } else {
                         begin.next = second;
@@ -141,15 +140,15 @@ public class MergeSortListdu {
                 }
                 if (f < i){
                     begin.next = first;
-                    while (f < i && first != null){
+                    while (f < i){
                         begin = begin.next;
-                        first = first.next;
                         f++;
                     }
                 }
                 if (s < i){
                     begin.next = second;
-                    while (f < i && second != null){
+                    while (s < i && second != null){
+                        begin.next = second;
                         begin = begin.next;
                         second = second.next;
                         s++;

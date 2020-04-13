@@ -48,7 +48,7 @@ public class QuickSortList1 {
             p = p.next;
         }
         p.next = null;
-        ListNode h1 = myQuickSortList(dummy.next);
+        ListNode h1 = myQuickSortList(dummy.next);//partition后，head位置已经改变
         ListNode h2 = myQuickSortList(head2);
         dummy.next = h1;
         p = dummy;
@@ -60,9 +60,9 @@ public class QuickSortList1 {
         return dummy.next;
     }
     public ListNode partition(ListNode dummy) {
-        if (dummy.next == null || dummy.next.next == null) {
+        /*if (dummy.next == null || dummy.next.next == null) {
             return dummy.next;
-        }
+        }*/
         ListNode prePivot = dummy;
         ListNode preP = dummy.next;
         for (ListNode preI = preP; preI.next != null; preI = preI.next) {
