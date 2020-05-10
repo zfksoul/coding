@@ -52,29 +52,26 @@ public class LevelTraversal1 {
         System.out.println();
     }
     public void print(TreeNode head){
-        if (head == null){
-            return;
-        }
-        LinkedList<TreeNode> q = new LinkedList<>();
-        q.addLast(head);
+        if (head == null) return;
+        Queue<TreeNode> q = new LinkedList<>();
         TreeNode last = head;
-        TreeNode cur = head;
         TreeNode nlast = head;
-        int n = 1;
-        System.out.println("level:" + n++);
+        q.offer(head);
+        int level = 1;
+        System.out.println("level:" + level++);
         while (!q.isEmpty()){
-            cur = q.pollFirst();
-            if (cur.left != null){
-                q.addLast(cur.left);
+            TreeNode cur = q.poll();
+            if (cur.left != null) {
+                q.offer(cur.left);
                 nlast = cur.left;
             }
             if (cur.right != null){
-                q.addLast(cur.right);
+                q.offer(cur.right);
                 nlast = cur.right;
             }
             if (cur == last && !q.isEmpty()){
                 System.out.println(cur.value + " ");
-                System.out.println("level:" + n++);
+                System.out.println("level:" + level++);
                 last = nlast;
             } else {
                 System.out.print(cur.value + " ");

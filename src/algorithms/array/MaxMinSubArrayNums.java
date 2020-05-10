@@ -7,9 +7,9 @@ import java.util.LinkedList;
  * 单调栈：查找每个数左侧第一个比它小的数
  * 单调队列：滑动窗口中的最值
  */
-public class AllLessNumSubArray {
+public class MaxMinSubArrayNums {
     public static void main(String[] args){
-        AllLessNumSubArray o = new AllLessNumSubArray();
+        MaxMinSubArrayNums o = new MaxMinSubArrayNums();
         int[] arr = {4,3,5,0,3,3,6,7};
         System.out.println(o.myGetNum(arr, 3));
         System.out.println(o.myGetNum1(arr, 3));
@@ -51,9 +51,7 @@ public class AllLessNumSubArray {
     }
 
     public int myGetNum(int[] arr, int num) {
-        if (arr == null || arr.length == 0 || num < 0){
-            return 0;
-        }
+        if (arr == null || arr.length == 0 || num < 0) return 0;
         LinkedList<Integer> qmax = new LinkedList<>();
         LinkedList<Integer> qmin = new LinkedList<>();
         int i = 0;
@@ -61,15 +59,25 @@ public class AllLessNumSubArray {
         int res = 0;
         while (i < arr.length){
             while (j < arr.length){
-                while (!qmax.isEmpty() && arr[qmax.getLast()] <= arr[j]) qmax.removeLast();
+                while (!qmax.isEmpty() && arr[qmax.peekLast()] <= arr[j]){
+                    qmax.pollLast();
+                }
                 qmax.addLast(j);
-                while (!qmin.isEmpty() && arr[qmin.getLast()] >= arr[j]) qmin.removeLast();
+                while (!qmin.isEmpty() && arr[qmin.peekLast()] >= arr[j]){
+                    qmin.pollLast();
+                }
                 qmin.addLast(j);
-                if (arr[qmax.getFirst()] - arr[qmin.getFirst()] > num) break;
+                if (arr[qmax.peekFirst()] - arr[qmin.peekFirst()] > num){
+                    break;
+                }
                 j++;
             }
-            if (qmax.getFirst() == i) qmax.removeFirst();
-            if (qmin.getFirst() == i) qmin.removeFirst();
+            if (qmax.peekFirst() == i){
+                qmax.pollFirst();
+            }
+            if (qmin.peekFirst() == i){
+                qmin.pollFirst();
+            }
             res += j - i;
             i++;
         }

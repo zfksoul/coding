@@ -2,7 +2,7 @@ package algorithms.tree;
 
 import java.util.Stack;
 
-public class BTTraversal {
+public class BTTraversal1 {
     public static void main(String[] args){
         TreeNode node1 = new TreeNode(1);
         TreeNode node2 = new TreeNode(2);
@@ -17,14 +17,16 @@ public class BTTraversal {
         node2.right = node3;
         node6.left = node5;
         node6.right = node7;
-        BTTraversal o = new BTTraversal();
+        BTTraversal1 o = new BTTraversal1();
         /*o.preOrderUnRecur(node4);
         o.preOrderUnRecur1(node4);
         o.preOrderUnRecur2(node4);
         o.preOrderRecur(node4);*/
+
         /*o.inOrderUnRecur(node4);
         o.inOrderUnRecur1(node4);
         o.inOrderRecur(node4);*/
+
         o.posOrderUnRecur1(node4);
         o.posOrderUnRecur2(node4);
         o.posOrderUnRecur3(node4);
@@ -75,7 +77,7 @@ public class BTTraversal {
         Stack<TreeNode> st = new Stack<>();
         while (!st.isEmpty() || head != null){
             if (head != null){
-                System.out.println(head.value + " ");
+                System.out.print(head.value + " ");
                 st.push(head);
                 head = head.left;
             } else {
@@ -83,6 +85,7 @@ public class BTTraversal {
                 head = head.right;
             }
         }
+        System.out.println();
     }
 
     public void preOrderRecur(TreeNode head){
@@ -115,7 +118,7 @@ public class BTTraversal {
         if (head == null) return;
         Stack<TreeNode> st = new Stack<>();
         while (!st.isEmpty() || head != null){
-            if (head != null){
+            if (head != null) {
                 st.push(head);
                 head = head.left;
             } else {
@@ -204,18 +207,19 @@ public class BTTraversal {
     }
     public void posOrderUnRecur4(TreeNode head){
         if (head == null) return;
-        Stack<TreeNode> st = new Stack<>();
-        st.push(head);
         TreeNode cur = null;
         TreeNode last = head;
-        while (!st.isEmpty()){
+        Stack<TreeNode> st = new Stack<>();
+        st.push(head);
+        while(!st.isEmpty()){
             cur = st.peek();
-            if (cur.left != null && last != cur.left && last != cur.right){
+            if (cur.left != null && cur.left != last && cur.right != last){
                 st.push(cur.left);
-            } else if (cur.right != null && last != cur.right){
+            } else if (cur.right != null && cur.right != last){
                 st.push(cur.right);
             } else {
-                System.out.print(st.pop().value + " ");
+                cur = st.pop();
+                System.out.print(cur.value + " ");
                 last = cur;
             }
         }

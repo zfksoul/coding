@@ -39,21 +39,20 @@ public class ReverseStack {
     }
 
     public void myReverseStack(Stack<Integer> st) {
-        if (st.empty()){
-            return;
-        }
-        int i = getAndRemoveLast(st);
+        if (st == null || st.isEmpty()) return;
+        int last = getAndRemoveLast(st);
         myReverseStack(st);
-        st.push(i);
+        st.push(last);
     }
 
     public int getAndRemoveLast(Stack<Integer> st) {
-        int res = st.pop();
-        if (st.empty()){
-            return res;
+        int cur = st.pop();
+        if (st.isEmpty()){
+            return cur;
+        } else {
+            int last = getAndRemoveLast(st);
+            st.push(cur);
+            return last;
         }
-        int last = getAndRemoveLast(st);
-        st.push(res);
-        return last;
     }
 }

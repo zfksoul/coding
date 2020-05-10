@@ -13,7 +13,10 @@ public class MaxSubMatrix {
                      {1,1,1,0}};
         System.out.println(o.maxSize(m));
         System.out.println(o.maxSize1(m));
+        System.out.println(o.maxSize2(m));
     }
+
+
     public int maxSize1(int[][] m) {
         if (m == null || m.length == 0 || m[0] == null || m[0].length == 0){
             return 0;
@@ -24,12 +27,12 @@ public class MaxSubMatrix {
             for (int j = 0; j < m[0].length; j++){
                 height[j] = m[i][j] == 0 ? 0 : height[j] + 1;
             }
-            maxArea = Math.max(maxArea, maxRecFromBottom(height));
+            maxArea = Math.max(maxArea, getSize1(height));
         }
         return maxArea;
     }
 
-    private int maxRecFromBottom(int[] height) {
+    private int getSize1(int[] height) {
         if (height == null || height.length == 0){
             return 0;
         }
@@ -82,14 +85,10 @@ public class MaxSubMatrix {
         int max = 0;
         int cur = 0;
         for (int i = 0; i < help.length; i++){
-            while (!st.empty()){
-                if (help[st.peek()] >= help[i]){
-                    cur = help[st.pop()];
-                    size = st.empty() ? cur * i : cur * (i - st.peek() - 1);
-                    max = Math.max(max, size);
-                } else{
-                    break;
-                }
+            while (!st.empty() && help[st.peek()] >= help[i]){
+                cur = help[st.pop()];
+                size = st.empty() ? cur * i : cur * (i - st.peek() - 1);
+                max = Math.max(max, size);
             }
             st.push(i);
         }
@@ -97,6 +96,47 @@ public class MaxSubMatrix {
             cur = help[st.pop()];
             size = st.empty() ? cur * help.length : cur * (help.length - st.peek() - 1);
             max = Math.max(max, size);
+        }
+        return max;
+    }
+    private int maxSize2(int[][] m) {
+        if (m  == null || m.length == 0 || m[0] == null || m[0].length == 0){
+            return -1;
+        }
+        int more = m.length < m[0].length ? m[0].length : m.length;
+        int less = m.length < m[0].length ? m.length : m[0].length;
+        boolean rowmore = m.length < m[0].length ? false : true;
+        int[] help = new int[less];
+        int maxSize = 0;
+        for (int i = 0; i < more; i++){
+            for (int j = 0; j < less; j++){
+                if (rowmore){
+                    help[j] = m[i][j] == 0 ? 0 : help[j] + m[i][j];
+                } else {
+                    help[j] = m[j][i] == 0 ? 0 : help[j] + m[j][i];
+                }
+            }
+            maxSize = Math.max(maxSize, getSize2(help));
+        }
+        return maxSize;
+    }
+
+    private int getSize2(int[] help) {
+        if (help == null || help.length == 0) return -1;
+        Stack<Integer> st = new Stack<>();
+        int max = 0;
+        for (int i = 0; i < help.length; i++){
+            while (!st.isEmpty() && help[st.peek()] >= help[i]){
+                int j = st.pop();
+                int len = st.isEmpty() ? i : i - st.peek() - 1;
+                max = Math.max(max, len * help[j]);
+            }
+            st.push(i);
+        }
+        while (!st.isEmpty()){
+            int j = st.pop();
+            int len = st.isEmpty() ? help.length : help.length - st.peek() - 1;
+            max = Math.max(max, len * help[j]);
         }
         return max;
     }

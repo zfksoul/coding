@@ -2,6 +2,7 @@ package algorithms.dp;
 
 import java.util.Stack;
 
+//用栈实现
 public class Hano2 {
     public static void main(String[] args){
         Hano2 o = new Hano2();

@@ -41,19 +41,22 @@ public class MaxSlidingWindow {
     }
 
     private int[] getMaxWindow(int[] arr, int w) {
-        LinkedList<Integer> q = new LinkedList<>();
+        if (arr == null || w < 1 || arr.length < w){
+            return new int[]{};
+        }
         int[] res = new int[arr.length - w + 1];
-        int k = 0;
+        LinkedList<Integer> list = new LinkedList<>();
+        int index = 0;
         for (int i = 0; i < arr.length; i++){
-            while (!q.isEmpty() && arr[q.peekLast()] <= arr[i]){
-                q.removeLast();
+            while (!list.isEmpty() && arr[list.peekLast()] <= arr[i]){
+                list.pollLast();
             }
-            q.addLast(i);
-            if (q.peekFirst() < k){
-                q.removeFirst();
+            list.addLast(i);
+            if (list.peekFirst() == i - w){
+                list.pollFirst();
             }
-            if (i >= w - 1) {
-                res[k++] = arr[q.peekFirst()];
+            if (i >= w - 1){
+                res[index++] = arr[list.peekFirst()];
             }
         }
         return res;
