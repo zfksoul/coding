@@ -9,6 +9,7 @@ public class OutPut {
         list.add(new People(1));
         list.add(new People(1));
         System.out.println(list);
+        list.stream().sorted();
         HashSet<Integer> set = new HashSet<>();
         HashMap<Integer,Integer> map = new LinkedHashMap<>();
     }
