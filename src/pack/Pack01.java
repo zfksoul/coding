@@ -13,7 +13,7 @@ public class Pack01 {
     //空间复杂度O(N*capacity)
     public static int find(int[] v, int[] c, int capacity){
         int N = v.length;
-        int[][] f = new int[N + 1][capacity + 1];
+        int[][] f = new int[N + 1][capacity + 1];//二维空间对体积循环没限制，优化后的体系循环会有限制
         for (int i = 1; i <= N; i++){
             for (int j = 0; j <= capacity; j++){
                 f[i][j] = f[i - 1][j];
@@ -43,7 +43,7 @@ public class Pack01 {
     //空间复杂度O(capacity)
     public static int find1(int[] v, int[] c, int capacity){
         int N = v.length;
-        int[] f = new int[capacity + 1];
+        int[] f = new int[capacity + 1];//二维空间对体积循环没限制，优化后的体系循环会有限制
         for (int i = 0; i < N; i++){
             for (int j = capacity; j >= c[i]; j--){
                 f[j] = Math.max(f[j], f[j - c[i]] + v[i]);

@@ -17,6 +17,9 @@ public class CompletePack {
      * ...
      * f[j - c[i]] + v[i]，包含k-1个c[i]
      * f[j]，包含k个c[i]
+     * f[i][j] = max{f[i-1][j],f[i-1][j-c]+v,f[i-1][j-2c]+2v,..,f[i-1][j-kc]+kv}
+     * f[i][j-c]=max{f[i-1][j-c],f[i-1][j-2c]+v,f[i-1][j-3c]+2v,...}
+     * f[i][j] = max{f[i - 1][j], f[i][j - c] + v}
      */
     public static int find(int[] v, int[] c, int capacity){
         int N = v.length;
