@@ -28,6 +28,7 @@ public class Hano2 {
         }
         return step;
     }
+
     /**
      *
      * @param record 全局变量
