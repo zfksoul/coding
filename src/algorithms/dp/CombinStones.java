@@ -26,7 +26,7 @@ public class CombinStones {
             s[i] = in.nextInt();
             s[i] += s[i - 1];
         }
-        for (int len = 2; len <= n; len++){//区间问题，先枚举区间长度
+        for (int len = 2; len <= n; len++){//区间问题，先枚举区间长度，自底向上迭代
             for (int i = 1; i + len - 1 <= n; i++){//区间问题，再枚举区间左端点
                 int j = i + len - 1;//右端点
                 f[i][j] = Integer.MAX_VALUE;
