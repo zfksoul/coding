@@ -138,13 +138,14 @@ public class bfs {
             s = in.nextLine();
             String[] strs = s.trim().split(" ");
             n = strs.length;
-            g.add(new int[n]);
-            dist.add(new int[n]);
+            int[] tmp = new int[n];
             for (int i = 0; i < n; i++) {
-                g.get(m)[i] = Integer.parseInt(strs[i]);
+                tmp[i] = Integer.parseInt(strs[i]);
             }
-            m++;
+            g.add(tmp);
+            dist.add(new int[n]);
         }
+        m = g.size();
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 dist.get(i)[j] = -1;
