@@ -7,12 +7,13 @@ package test;
 * @date 2019年11月11日 下午9:25:50 
 * 
 */
-public class A {
+public class Father {
 
     protected int i = 12;
     public int j = 13;
+    String s = "abc";
    
-    protected void get(A a) {
+    protected void get(Father a) {
         System.out.println(a.i);
     }
     protected void set(int x) {

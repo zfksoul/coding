@@ -10,8 +10,8 @@ package test;
 public class C {
 
     public static void main(String[] args) {
-        A a = new A();
-        B b = new B();
+        Father a = new Father();
+        Sun s = new Sun();
         D d = new D();
     }
     

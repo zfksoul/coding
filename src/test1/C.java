@@ -1,6 +1,6 @@
 package test1;
 
-import test.A;
+import test.Father;
 
 /**
 * 
@@ -12,12 +12,12 @@ import test.A;
 public class C {
 
     public static void main(String[] args) {
-        A a = new A();
-        B b1 = new B();
-        B b2 = new B();
+        Father a = new Father();
+        Sun s1 = new Sun();
+        Sun s2 = new Sun();
         
     }
-    public void f(B b) {
+    public void f(Sun b) {
     }
     
 }

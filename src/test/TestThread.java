@@ -1,6 +1,7 @@
 package test;
 
 public class TestThread {
+    String s = "abc";
     public static void main(String[] args){
         Runnable r = new Runnable() {
             @Override
@@ -19,7 +20,13 @@ public class TestThread {
 class DThread{
 
     static {
-        System.out.println("DThread static{}");
+        if (true){
+            System.out.println("DThread static{}");
+            while (true){
+
+            }
+
+        }
     }
     {
         System.out.println("DThread {}");
