@@ -14,17 +14,18 @@ public class FindDuplicate1 {
     public static void main(String[] args) {
         FindDuplicate1 f = new FindDuplicate1();
         int[] arr = new int[] { 5, 6, 7, 8, 1, 2, 2, 3, 4 };
+        System.out.println(f.myFindDuplicate(arr));
         System.out.println(f.myFindDuplicate1(arr));
     }
 
     public int myFindDuplicate(int[] arr) {
         int r = arr.length - 1;
-        int l = 1;
+        int l = 1;           //注意从1开始
         while (l < r) {
             int mid = (l + r) >> 1;
             int cnt = 0;
             for (int i = 0; i < arr.length; i++) {
-                if (arr[i] >= 1 && arr[i] <= mid) {
+                if (arr[i] >= l && arr[i] <= mid) {
                     cnt++;
                 }
             }
@@ -43,16 +44,16 @@ public class FindDuplicate1 {
         int l = 1;
         int r = arr.length - 1;
         while (l < r){
-            int mid = (l + r) >> 1;
+            int mid = l + r >> 1;
             int cnt = 0;
-            for (int i = 0; i < arr.length; i++){
-                if (arr[i] >= l && arr[i] <= mid){
+            for (int i : arr){
+                if (i >= arr[l] && i <= arr[mid]){
                     cnt++;
                 }
             }
             if (cnt > mid - l + 1){
                 r = mid;
-            }else{
+            } else {
                 l = mid + 1;
             }
         }

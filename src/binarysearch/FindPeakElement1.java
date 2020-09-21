@@ -13,6 +13,7 @@ public class FindPeakElement1 {
     public static void main(String[] args) {
         FindPeakElement1 f = new FindPeakElement1();
         int[] arr = new int[] { 5, 6, 7, 8, 1, 2, 3, 4 };
+        System.out.println(f.myFindPeakElement(arr));
         System.out.println(f.myFindPeakElement1(arr));
     }
 
@@ -35,11 +36,11 @@ public class FindPeakElement1 {
         int l = 0;
         int r = arr.length - 1;
         while (l < r){
-            int mid = (l + r) >> 1;
-            if (arr[mid] > arr[mid+1]){
-                r = mid;
-            }else{
+            int mid = l + r >> 1;
+            if (arr[mid] < arr[mid + 1]){
                 l = mid + 1;
+            } else {
+                r = mid;
             }
         }
         return arr[l];

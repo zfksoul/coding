@@ -6,12 +6,13 @@ package binarysearch;
  * 假设升序排序的数组在未知的某个点上进行了旋转，搜索一个给定目标值，若存在则返回它的索引，不存在返回-1 
  * 如【1, 2, 3, 4, 5, 6, 7, 8】变为 【5, 6, 7, 8, 1, 2, 3, 4】
  */
-public class Search1 {
+public class SearchInRotatedArr {
 
     public static void main(String[] args) {
-        Search1 s = new Search1();
+        SearchInRotatedArr s = new SearchInRotatedArr();
         int[] arr = new int[] { 5, 6, 7, 8, 1, 2, 3, 4 };
-        System.out.println(s.mySearch(arr, 4));
+        System.out.println(s.mySearch(arr, 1));
+        System.out.println(s.mySearch1(arr, 1));
     }
 
     public int mySearch(int[] arr, int target) {
@@ -53,32 +54,32 @@ public class Search1 {
             return -1;
         }
         int l = 0;
-        int r = arr.length-1;
-        while(l < r){
-            int mid = (l + r) >> 1;
-            if (arr[mid] <= arr[arr.length -1]){
+        int r = arr.length - 1;
+        while (l < r){
+            int mid = l + r >> 1;
+            if (arr[mid] <= arr[arr.length - 1]){
                 r = mid;
-            }else{
+            } else {
                 l = mid + 1;
             }
         }
-        if (arr[arr.length-1] >= target){
+        if (target <= arr[arr.length - 1]){
             r = arr.length - 1;
-        }else{
+        } else {
             l = 0;
             r--;
         }
-        while(l < r){
-            int mid = (l + r) >> 1;
-            if (arr[mid] >= target){
-                r = mid;
-            }else{
-                l = mid + 1;
+        while (l < r){
+            int mid = l + r >> 1;
+            if (arr[mid] <= target){
+                l = mid;
+            } else {
+                r = mid - 1;
             }
         }
         if (arr[l] == target){
             return l;
-        }else{
+        } else {
             return -1;
         }
     }

@@ -13,6 +13,9 @@ public class Test {
 		
 		Card c = new Card();
 		int[][][] a = new int[10][][];
+		//Class<Number> c1 = int.class;
+		Class<Integer> c2 = int.class;
+		Class<? extends Number> c3 = int.class; //Integer的Class对象不是Number的Class对象的子类
 	}
 
 }
