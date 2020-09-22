@@ -12,7 +12,12 @@ public class Sqrt {
     public static void main(String[] args) {
         Sqrt s = new Sqrt();
         System.out.println(s.mySqrt(12));
+        System.out.println(s.mySqrt1(12));
     }
+
+
+
+
     public int mySqrt(int x) {
         int l = 0;
         int r = x;
@@ -27,6 +32,19 @@ public class Sqrt {
         return l;
     }
 
+    public int mySqrt1(int n) {
+        int l = 0;
+        int r = n;
+        while (l < r){
+            int mid = l + r >> 1;
+            if (mid <= n / mid){
+                l = mid;
+            } else {
+                r = mid - 1;
+            }
+        }
+        return l;
+    }
 
 
 }
