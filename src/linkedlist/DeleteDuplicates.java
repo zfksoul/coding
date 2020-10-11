@@ -19,34 +19,25 @@ public class DeleteDuplicates {
         ListNode n3 = new ListNode(2);
         ListNode n4 = new ListNode(5);
         ListNode n5 = new ListNode(5);
+        ListNode n6 = new ListNode(6);
         n1.next = n2;
         n2.next = n3;
         n3.next = n4;
         n4.next = n5;
+        n5.next = n6;
         DeleteDuplicates o = new DeleteDuplicates();
-        n1 = o.myDeleteDuplicates1(n1);
+        n1 = o.myDeleteDuplicates2(n1);
         while (n1 != null) {
             System.out.println(n1.val);
             n1 = n1.next;
         }
     }
-    /*public ListNode myDeleteDuplicates(ListNode head) {
-        ListNode cur = head;
-        while (cur != null){
-            if (cur.next != null && cur.val == cur.next.val){
-                cur.next = cur.next.next;
-            } else {
-                cur =  cur.next;
-            }
-        }
-        return head;
-    }*/
-    public ListNode myDeleteDuplicates(ListNode head) {
+
+    public ListNode myDeleteDuplicates1(ListNode head) {
         if (head == null) {
             return null;
         }
         ListNode p = head;
-        //List l = new List();
         while (p.next != null) {
             if (p.val == p.next.val) {
                 p.next = p.next.next;
@@ -56,8 +47,10 @@ public class DeleteDuplicates {
         }
         return head;
     }
-    public ListNode myDeleteDuplicates1(ListNode head) {
-        if (head == null) return head;
+    public ListNode myDeleteDuplicates2(ListNode head) {
+        if (head == null){
+            return head;
+        }
         ListNode p = head;
         while (p.next != null){
             if (p.val == p.next.val){

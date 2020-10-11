@@ -1,11 +1,13 @@
 package linkedlist;
 
+import pack.Pack01;
+
 /**
  * 
  *
  * @author zfk
  * @date 2019年10月26日 下午11:15:09
- * 
+ * 翻转链表
  */
 public class ReverseList {
 
@@ -22,7 +24,7 @@ public class ReverseList {
         n4.next = n5;
         n5.next = n6;
         ReverseList o = new ReverseList();
-        n1 = o.myReverseList(n1);
+        n1 = o.myReverseList1(n1);
         System.out.println(n1);
         while (n1 != null) {
             System.out.println(n1.val);
@@ -44,5 +46,18 @@ public class ReverseList {
         }
         return a;
     }
-
+    public ListNode myReverseList1(ListNode head) {
+        if (head == null){
+            return null;
+        }
+        ListNode a = null;
+        ListNode b;
+        while (head != null){
+            b = head.next;
+            head.next = a;
+            a = head;
+            head = b;
+        }
+        return a;
+    }
 }

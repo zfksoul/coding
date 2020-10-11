@@ -5,7 +5,7 @@ package linkedlist;
 *
 * @author zfk
 * @date 2019年11月4日 下午9:15:31 
-* 
+* 交换2个节点
 */
 public class SwapNodes {
 
@@ -22,7 +22,7 @@ public class SwapNodes {
         n4.next = n5;
         n5.next = n6;
         SwapNodes o = new SwapNodes();
-        n1 = o.mySwapNodes1(n1,3,6);
+        n1 = o.mySwapNodes2(n1,3,6);
         System.out.println(n1);
         while (n1 != null) {
             System.out.println(n1.val);
@@ -76,40 +76,42 @@ public class SwapNodes {
                 
     }
     
-    public ListNode mySwapNodes2(ListNode head, int v1, int v2) {
-        if (head == null || v1 == v2) {
+    public ListNode mySwapNodes2(ListNode head, int m, int n) {
+        if (head == null || m == n){
             return head;
         }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        ListNode p1 = null;
-        ListNode p2 = null;
-        ListNode pre1 = null;
         ListNode cur = dummy;
-        while (cur.next != null) {
-            if (cur.next.val == v1 || cur.next.val == v2) {
-                if (p1 == null) {
-                    p1 = cur.next;
-                    pre1 = cur;
-                }else {
-                    ListNode pos2 = cur.next.next;
-                    p2 = cur.next;
-                    pre1.next = p2;
-                    if (p1 == cur) {
-                        p2.next = p1;
-                        p1.next = pos2;
-                    }else {
-                        p2.next = p1.next;
-                        p1.next = pos2;
-                        cur.next = p1;
-                    }
-                    return dummy.next;
-                }
-            }
+        while (m > 1 && cur.next != null){
             cur = cur.next;
+            m--;
+        }
+        if (m > 1){
+            return null;
+        }
+        ListNode pre = cur;
+        ListNode p1 = cur.next;
+        cur = dummy;
+        while (n > 1 && cur.next != null){
+            cur = cur.next;
+            n--;
+        }
+        if (n > 1){
+            return null;
+        }
+        ListNode p2 = cur.next;
+        ListNode pos = p2.next;
+        if (p1.next == p2){
+            pre.next = p2;
+            p2.next = p1;
+            p1.next = pos;
+        } else {
+            pre.next = p2;
+            p2.next = p1.next;
+            p1.next = pos;
+            cur.next = p1;
         }
         return dummy.next;
-                
-                
     }
 }

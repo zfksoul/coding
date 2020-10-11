@@ -5,6 +5,7 @@ package linkedlist;
  *
  * @author zfk
  * @date 2019年10月26日 下午11:15:09
+ * 翻转链表，以n个节点为一组
  * 
  */
 public class ReverseList1 {
@@ -26,7 +27,7 @@ public class ReverseList1 {
         n6.next = n7;
         n7.next = n8;
         ReverseList1 o = new ReverseList1();
-        n1 = o.myReverseList(n1, 3);
+        n1 = o.myReverseList1(n1, 3);
         System.out.println(n1);
         while (n1 != null) {
             System.out.println(n1.val);
@@ -43,7 +44,34 @@ public class ReverseList1 {
         ListNode r;
         int cnt = 1;
         while (true){
-            while (q.next != null && cnt < 3){
+            while (q.next != null && cnt < n){//q指向段尾
+                q = q.next;
+                cnt++;
+            }
+            if (q.next == null){
+                q.next = p;
+                return head;
+            } else {
+                r = q.next;
+                q.next = p;
+                p = head;
+                head = r;
+
+                q = head;
+                cnt = 1;
+            }
+        }
+    }
+    public ListNode myReverseList1(ListNode head, int n) {
+        if (head == null || n <= 0){
+            return null;
+        }
+        ListNode p = null;
+        ListNode q = head;
+        ListNode r;
+        int cnt = 1;
+        while (true){
+            while (q.next != null && cnt < n){
                 q = q.next;
                 cnt++;
             }

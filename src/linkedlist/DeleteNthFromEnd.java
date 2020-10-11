@@ -7,7 +7,7 @@ package linkedlist;
 * @date 2019年10月26日 下午7:11:13 
 * 删除链表中倒数第n个节点
 */
-public class RemoveNthFromEnd {
+public class DeleteNthFromEnd {
 
     public static void main(String[] args) {
         ListNode n1 = new ListNode(1);
@@ -19,8 +19,8 @@ public class RemoveNthFromEnd {
         n2.next = n3;
         n3.next = n4;
         n4.next = n5;
-        RemoveNthFromEnd o = new RemoveNthFromEnd();
-        n1 = o.myRemoveNthFromEnd(n1, 5);
+        DeleteNthFromEnd o = new DeleteNthFromEnd();
+        n1 = o.myDeleteNthFromEnd(n1, 5);
         System.out.println(n1);
         while(n1 != null) {
             System.out.println(n1.val);
@@ -28,7 +28,7 @@ public class RemoveNthFromEnd {
         }
     }
     
-    public ListNode myRemoveNthFromEnd(ListNode head, int n) {
+    public ListNode myDeleteNthFromEnd(ListNode head, int n) {
         if (head == null || n <= 0) {
             return null;
         }
@@ -44,6 +44,28 @@ public class RemoveNthFromEnd {
             return null;
         }
         while (q.next != null) {
+            p = p.next;
+            q = q.next;
+        }
+        p.next = p.next.next;
+        return dummy.next;
+    }
+    public ListNode myDeleteNthFromEnd1(ListNode head, int n) {
+        if (head == null || n <= 0){
+            return null;
+        }
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode p = dummy;
+        ListNode q = dummy;
+        while (n > 0 && q.next != null){
+            q = q.next;
+            n--;
+        }
+        if (n > 0){
+            return null;
+        }
+        while (q.next != null){
             p = p.next;
             q = q.next;
         }

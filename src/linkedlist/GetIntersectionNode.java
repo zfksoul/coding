@@ -62,8 +62,27 @@ public class GetIntersectionNode {
                 p = head2;
                 q = q.next;
             } else if (p.next != null && q.next == null) {
-                q = head1;
                 p = p.next;
+                q = head1;
+            } else {
+                return null;
+            }
+        }
+        return p;
+    }
+    public ListNode myGetIntersectionNode2(ListNode head1, ListNode head2) {
+        ListNode p = head1;
+        ListNode q = head2;
+        while (p != q){
+            if (p.next != null && q.next != null){
+                p = p.next;
+                q = q.next;
+            } else if (p.next == null && q.next != null){
+                p = head2;
+                q = q.next;
+            } else if (p.next != null && q.next == null){
+                p = p.next;
+                q = head1;
             } else {
                 return null;
             }
@@ -71,35 +90,5 @@ public class GetIntersectionNode {
         return p;
     }
 
-    public ListNode myGetIntersectionNode2(ListNode head1, ListNode head2) {
-        if (head1 == null || head2 == null) {
-            return null;
-        }
-        ListNode p = head1;
-        ListNode q = head2;
-        ListNode a = head1;
-        ListNode b = head2;
-        while (p.next != null && q.next != null) {
-            p = p.next;
-            q = q.next;
-        }
-        if (p.next == null) {
-            while (q.next != null) {
-                q = q.next;
-                b = b.next;
-            }
-        } else {
-            while (p.next != null) {
-                p = p.next;
-                a = a.next;
-            }
-        }
-        while (a != b) {
-            a = a.next;
-            b = b.next;
-        }
-        return a;
-
-    }
 
 }

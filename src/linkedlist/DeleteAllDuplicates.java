@@ -15,34 +15,17 @@ public class DeleteAllDuplicates {
         n3.next = n4;
         n4.next = n5;
         DeleteAllDuplicates o = new DeleteAllDuplicates();
-        n1 = o.myDeleteAllDuplicates3(n1);
+        n1 = o.myDeleteAllDuplicates1(n1);
         while (n1 != null) {
             System.out.println(n1.val);
             n1 = n1.next;
         }
     }
-    private ListNode myDeleteAllDuplicates3(ListNode head) {
-        ListNode dummy = new ListNode(-1);
-        dummy.next = head;
-        ListNode p = dummy;
-        while (p.next != null){
-            ListNode q = p.next;
-            while (q != null && q.val == p.next.val){
-                q = q.next;
-            }
-            if (p.next.next == q){
-                p = p.next;
-            } else {
-                p.next = q;
-            }
-        }
-        return dummy.next;
-    }
     private ListNode myDeleteAllDuplicates1(ListNode head) {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
         ListNode p = dummy;
-        while (p.next != null) {
+        while (p.next != null){
             ListNode q = p.next;
             while (q != null && q.val == p.next.val){
                 q = q.next;
@@ -54,25 +37,23 @@ public class DeleteAllDuplicates {
             }
         }
         return dummy.next;
-
     }
-    private ListNode myDeleteAllDuplicates(ListNode head) {
+    private ListNode myDeleteAllDuplicates2(ListNode head) {
+        if (head == null || head.next == null){
+            return head;
+        }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
         ListNode p = dummy;
         ListNode q = p.next;
-        int n = 1;
-        while (q != null){
-            if (q.next != null && q.val == q.next.val){
-                n++;
+        while (p.next != null){
+            while (q != null && p.next.val == q.val){
                 q = q.next;
-            } else if (n > 1){
-                p.next = q.next;
-                q = q.next;
-                n = 1;
+            }
+            if (p.next.next == q){
+                p = p.next;
             } else {
-                p = q;
-                q = q.next;
+                p.next = q;
             }
         }
         return dummy.next;

@@ -1,5 +1,7 @@
 package linkedlist;
 
+import it.tt.Pair;
+
 /**
  * 
  *
@@ -24,15 +26,14 @@ public class DetectCycle {
         n6.next = n5;
         DetectCycle o = new DetectCycle();
         // n1 = o.myGetIntersectionNode1(n1, n11);
-        n1 = o.myDetectCycle1(n1);
+        n1 = o.myDetectCycle2(n1);
         System.out.println(n1);
-        System.out.println(n1.val);
     }
 
     public ListNode myDetectCycle1(ListNode head) {
         ListNode f = head;
         ListNode s = head;
-        while (s != null) {
+        while (f != null) {
             f = f.next;
             s = s.next;
             if (f != null) {
@@ -55,26 +56,23 @@ public class DetectCycle {
     public ListNode myDetectCycle2(ListNode head) {
         ListNode f = head;
         ListNode s = head;
-        if (f.next != null && f.next.next != null) {
-            f = f.next.next;
+        while (f != null){
+            f = f.next;
             s = s.next;
-        } else {
-            return null;
-        }
-        while (f != s) {
-            if (f.next != null && f.next.next != null) {
-                f = f.next.next;
-                s = s.next;
+            if (f != null){
+                f = f.next;
             } else {
                 return null;
             }
+            if (f == s){
+                s = head;
+                while (f != s){
+                    f = f.next;
+                    s = s.next;
+                }
+                return s;
+            }
         }
-        s = head;
-        while (f != s) {
-            f = f.next;
-            s = s.next;
-        }
-        return f;
+        return null;
     }
-
 }

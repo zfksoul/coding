@@ -6,8 +6,9 @@ package linkedlist;
 * @author zfk
 * @date 2019年10月26日 下午11:47:15 
 * 将链表中第m到n个节点反转
+ * 找到m前一个节点和n后一个节点
 */
-public class ReverseBetween {
+public class ReverseList2 {
 
     public static void main(String[] args) {
         ListNode n1 = new ListNode(1);
@@ -21,8 +22,8 @@ public class ReverseBetween {
         n3.next = n4;
         n4.next = n5;
         n5.next = n6;
-        ReverseBetween o = new ReverseBetween();
-        n1 = o.myReverseBetween1(n1,3,6);
+        ReverseList2 o = new ReverseList2();
+        n1 = o.myReverseList2(n1,3,6);
         System.out.println(n1);
         while (n1 != null) {
             System.out.println(n1.val);
@@ -30,7 +31,7 @@ public class ReverseBetween {
         }
     }
     
-    public ListNode myReverseBetween(ListNode head, int m, int n) {
+    public ListNode myReverseList1(ListNode head, int m, int n) {
         if (head == null) {
             return null;
         }
@@ -65,31 +66,36 @@ public class ReverseBetween {
         p.next = a;
         return dummy.next;
     }
-    public ListNode myReverseBetween1(ListNode head, int m, int n) {
-        if (head == null) {
-            return null;
+    public ListNode myReverseList2(ListNode head, int m, int n) {
+        if (head == null || m == n){
+            return head;
         }
-        if (m == n) return head;
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        ListNode a = dummy;
-        ListNode d = dummy;
-        for (int i = 0; i < m - 1; i++){//a指向m前一个节点
-            a = a.next;
+        ListNode p = dummy;
+        ListNode q = dummy;
+        while (m > 1 && p.next != null){
+            p = p.next;
+            m--;
         }
-        for (int i = 0; i < n; i++){//d指向n节点
-            d = d.next;
+        if (m > 1){
+            return null;
         }
+        while (q != null && n >= 0){
+            q = q.next;
+            n--;
+        }
+        ListNode a = p.next;
         ListNode b = a.next;
-        ListNode c = d.next;
-        for (ListNode p = b ,q = b.next; q != c;){
-            ListNode o = q.next;
-            q.next = p;
-            p = q;
-            q = o;
+        ListNode c;
+        while (b != q){
+            c = b.next;
+            b.next = a;
+            a = b;
+            b = c;
         }
-        b.next = c;
-        a.next = d;
+        p.next.next = q;
+        p.next = a;
         return dummy.next;
     }
 
