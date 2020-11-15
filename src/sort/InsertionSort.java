@@ -32,12 +32,18 @@ public class InsertionSort {
     }
 
     public int[] myInsertionSort1(int[] arr) {
+        if (arr == null || arr.length == 0){
+            return null;
+        }
         for (int i = 1; i < arr.length; i++){
-            int j = i - 1;
             int tmp = arr[i];
-            while (j >= 0 && arr[j] > tmp){
-                arr[j + 1] = arr[j];
-                j--;
+            int j;
+            for (j = i - 1; j >= 0; j--){
+                if (arr[j] > arr[j + 1]){
+                    arr[j + 1] = arr[j];
+                } else {
+                    break;
+                }
             }
             arr[j + 1] = tmp;
         }

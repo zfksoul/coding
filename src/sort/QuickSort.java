@@ -24,18 +24,14 @@ public class QuickSort {
             int j = r + 1;
             int mid = (l + r) >> 1;
             while (i < j) {
-                do {
-                    j--;
-                } while (arr[j] > arr[mid]);
-                do {
-                    i++;
-                } while (arr[i] < arr[mid]);
+                do j--; while (arr[j] > arr[mid]);
+                do i++; while (arr[i] < arr[mid]);
                 if (i < j) {
                     int tmp = arr[i];
                     arr[i] = arr[j];
                     arr[j] = tmp;
                 } else {
-                    myQuickSort2(arr, l, j);
+                    myQuickSort2(arr, l, j);    //以j分界
                     myQuickSort2(arr, j + 1, r);
                 }
             }
