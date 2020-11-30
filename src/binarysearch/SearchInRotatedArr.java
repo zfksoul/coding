@@ -57,11 +57,11 @@ public class SearchInRotatedArr {
         int r = arr.length - 1;
         while (l < r){
             int mid = l + r >> 1;
-            if (arr[mid] <= arr[arr.length - 1]){
-                r = mid;
-            } else {
-                l = mid + 1;
-            }
+             if (arr[mid] <= arr[arr.length - 1]){
+                 r = mid;
+             } else {
+                 l = mid + 1;
+             }
         }
         if (target <= arr[arr.length - 1]){
             r = arr.length - 1;
@@ -71,10 +71,10 @@ public class SearchInRotatedArr {
         }
         while (l < r){
             int mid = l + r >> 1;
-            if (arr[mid] <= target){
-                l = mid;
+            if (arr[mid] >= target){
+                r = mid;
             } else {
-                r = mid - 1;
+                l = mid + 1;
             }
         }
         if (arr[l] == target){

@@ -22,7 +22,7 @@ public class SearchRange {
         int l = 0, r = arr.length - 1;
         while (l < r) {
             int mid = (l + r) >> 1;
-            if (arr[mid] >= target) {
+            if (arr[mid] >= target) { //第一个大于等于target
                 r = mid;
             } else {
                 l = mid + 1;
@@ -32,11 +32,10 @@ public class SearchRange {
             return new int[]{-1, -1};
         }
         int start = l;
-        l = 0;
         r = arr.length - 1;
         while (l < r) {
             int mid = (l + r + 1) >> 1;
-            if (arr[mid] <= target) {
+            if (arr[mid] <= target) { //最后一个小于等于target
                 l = mid;
             } else {
                 r = mid - 1;
@@ -54,7 +53,7 @@ public class SearchRange {
         int r = arr.length - 1;
         while (l < r){
             int mid = l + r >> 1;
-            if (arr[mid] >= target) {
+            if (arr[mid] >= target){
                 r = mid;
             } else {
                 l = mid + 1;

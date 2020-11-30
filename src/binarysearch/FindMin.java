@@ -41,7 +41,7 @@ public class FindMin {
         int r = arr.length - 1;
         while (l < r){
             int mid = l + r >> 1;
-            if (arr[mid] <= arr[arr.length - 1]){
+            if (arr[mid] < arr[arr.length - 1]){
                 r = mid;
             } else {
                 l = mid + 1;

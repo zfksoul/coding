@@ -10,7 +10,7 @@ public class BinarySearch {
      * 其更新操作是r = mid或者l = mid + 1，
      * 计算mid时不需要加1。
      *
-     * 找第一个大于target的数
+     * 找第一个大于target的数，大于target的数中找第一个，mid满足时，区间为(target，mid]
      */
     public int binarySearch1(int l, int r, int target, int[] arr) {
         while (l < r) {
@@ -29,7 +29,7 @@ public class BinarySearch {
      * 其更新操作是r = mid - 1或者l = mid，
      * 此时为了防止死循环，计算mid时需要加1。
      *
-     * 找第一个小于等于target的数
+     * 找最后一个小于等于target的数，小于等于target的数中找最后一个，mid满足时，区间为[mid,target]
      */
     public int binarySearch2(int l, int r, int target, int[] arr) {
         while (l < r) {

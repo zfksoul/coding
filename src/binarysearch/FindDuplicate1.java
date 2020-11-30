@@ -43,18 +43,20 @@ public class FindDuplicate1 {
         }
         int l = 1;
         int r = arr.length - 1;
+        int mid;
+        int cnt;
         while (l < r){
-            int mid = l + r >> 1;
-            int cnt = 0;
+            cnt = 0;
+            mid = l + r >> 1;
             for (int i : arr){
-                if (i >= arr[l] && i <= arr[mid]){
+                if (i >= l && i <= mid){
                     cnt++;
                 }
             }
-            if (cnt > mid - l + 1){
-                r = mid;
-            } else {
+            if (cnt == mid - l + 1){
                 l = mid + 1;
+            } else {
+                r = mid;
             }
         }
         return l;

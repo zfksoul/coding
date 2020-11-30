@@ -35,18 +35,18 @@ public class SearchInsert {
 
     public int mySearchInsert1(int[] arr, int target) {
         if (arr == null || arr.length == 0){
-            return 0;
-        }
-        if (arr[arr.length - 1] < target){
-            return arr.length;
+            return -1;
         }
         int l = 0;
         int r = arr.length - 1;
+        if (target > arr[arr.length - 1]){
+            return arr.length;
+        }
         while (l < r){
             int mid = l + r >> 1;
             if (arr[mid] >= target){
                 r = mid;
-            } else{
+            } else {
                 l = mid + 1;
             }
         }

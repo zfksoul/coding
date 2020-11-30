@@ -36,7 +36,7 @@ public class Sqrt {
         int l = 0;
         int r = n;
         while (l < r){
-            int mid = l + r >> 1;
+            int mid = l + r + 1 >> 1;
             if (mid <= n / mid){
                 l = mid;
             } else {
