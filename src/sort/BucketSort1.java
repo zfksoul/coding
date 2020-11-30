@@ -17,73 +17,50 @@ public class BucketSort1 {
     }
 
     private void myBucketSort(int[] arr) {
-        ArrayList<LinkedList<Integer>> buckets = new ArrayList<>();
+        if (arr == null || arr.length == 0){
+            return;
+        }
         int min = arr[0];
         int max = arr[0];
-        for (int i = 0; i < arr.length; i++){
-            if (arr[i] < min){
-                min = arr[i];
-            } else if (arr[i] > max){
-                max = arr[i];
+        for (int i : arr){
+            if (min > i){
+                min = i;
+            }
+            if (max < i){
+                max = i;
             }
         }
-        int bucketSize = 5;
-        int bucketCount = ((max - min) / bucketSize) + 1;
-        for (int i = 0; i < bucketCount; i++){
-            buckets.add(new LinkedList<Integer>());
+        int bucketsize = 5;
+        int bucketcount = (max - min) / bucketsize + 1;
+        ArrayList<LinkedList<Integer>> buckets = new ArrayList<>();
+        for (int i = 0; i < bucketcount; i++){
+            buckets.add(new LinkedList<>());
         }
-        for (Integer data : arr){
-            insertSort(buckets.get((data - min) / bucketSize),data);
+        for (int i : arr){
+            int index = (i - min) / bucketsize;
+            insert(buckets.get(index), i);
         }
         int k = 0;
-        for (LinkedList<Integer> bucket : buckets){
-            for (Integer data : bucket){
-                arr[k++] = data;
+        for (List<Integer> bucket : buckets){
+            for (Integer i : bucket){
+                arr[k++] = i;
             }
         }
     }
 
-    private void insertSort(LinkedList<Integer> bucket, int data) {
-        ListIterator<Integer> it = bucket.listIterator();
-        boolean flag = true;
+    private void insert(LinkedList<Integer> bucket, int i) {
+        ListIterator it = bucket.listIterator();
+        boolean flag = false;
         while (it.hasNext()){
-            if (it.next() > data){
+            if ((Integer)it.next() > i){
                 it.previous();
-                it.add(data);
-                flag = false;
+                it.add(i);
+                flag = true;
                 break;
             }
         }
-        if (flag) it.add(data);
-    }
-
-    private void myBucketSort1(float[] arr) {
-        ArrayList<LinkedList<Float>> buckets = new ArrayList<>();
-        for (int i = 0; i < 10; i++){
-            buckets.add(new LinkedList<Float>());
+        if (!flag){
+            bucket.add(i);
         }
-        for (float data : arr){
-            insertSort1(buckets.get((int)data),data);
-        }
-        int k = 0;
-        for (LinkedList<Float> bucket : buckets){
-            for (float data : bucket){
-                arr[k++] = data;
-            }
-        }
-    }
-
-    private void insertSort1(LinkedList<Float> bucket, float data) {
-        ListIterator<Float> it = bucket.listIterator();
-        boolean flag = true;
-        while (it.hasNext()){
-            if (it.next() > data){
-                it.previous();
-                it.add(data);
-                flag = false;
-                break;
-            }
-        }
-        if (flag) it.add(data);
     }
 }
