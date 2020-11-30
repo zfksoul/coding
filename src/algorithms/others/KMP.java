@@ -82,7 +82,17 @@ public class KMP {
                 next[i++] = 0;
             }
         }
-        return next;
+        //优化
+        int[] nextval = new int[match.length];
+        nextval[0] = 0;
+        for (int j = 1; j < match.length; j++){
+            if (match[j] == match[next[j]]){
+                nextval[j] = nextval[next[j]];
+            } else {
+                nextval[j] = next[j];
+            }
+        }
+        return nextval;
     }
 
     public int[] getNextArray1(char[] match){

@@ -19,6 +19,9 @@ public class BubbleSort {
     }
 
     public int[] myBubbleSort1(int[] arr) {
+        if (arr == null || arr.length == 0){
+            return arr;
+        }
         for (int i = arr.length - 1; i > 0; i--) {
             boolean flag = false; // 优化
             for (int j = 0; j < i; j++) {
@@ -50,6 +53,7 @@ public class BubbleSort {
                 }
             }
             if (!flag) break;
+
         }
         return arr;
     }

@@ -18,32 +18,32 @@ public class ShellSort {
         }
     }
     public int[] myShellSort(int[] arr) {
-        for (int inc = arr.length / 2; inc > 0; inc /= 2) {
-            for (int i = inc; i < arr.length; i++) {//注意i++
+        for (int gap = arr.length / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < arr.length; i++) {//注意i++，使得gap分出的每组都得到排序
                 int tmp = arr[i];
                 int j;
-                for (j = i - inc; j >= 0; j -= inc){
+                for (j = i - gap; j >= 0; j -= gap){
                     if (arr[j] > tmp){
-                        arr[j+ inc] = arr[j];
+                        arr[j+ gap] = arr[j];
                     }else{
                         break;
                     }
                 }
-                arr[j+ inc] = tmp;
+                arr[j+ gap] = tmp;
             }
         }
         return arr;
     }
     public int[] myShellSort1(int[] arr) {
-        for (int inc = arr.length / 2; inc > 0; inc /= 2) {
-            for (int i = inc; i < arr.length; i++) {
-                int j = i - inc;
+        for (int gap = arr.length / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < arr.length; i++) {
+                int j = i - gap;
                 int tmp = arr[i];
                 while (j >= 0 && arr[j] > tmp) {
-                    arr[j + inc] = arr[j];
-                    j -= inc;
+                    arr[j + gap] = arr[j];
+                    j -= gap;
                 }
-                arr[j + inc] = tmp;
+                arr[j + gap] = tmp;
             }
         }
         return arr;

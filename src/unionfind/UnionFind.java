@@ -1,5 +1,6 @@
 package unionfind;
 
+//用树的双亲表示法作为并查集的存储结构
 public class UnionFind {
     private int[] father;
     public UnionFind(int num){
@@ -8,7 +9,7 @@ public class UnionFind {
             father[i] = i;
         }
     }
-    public int findUnRecur(int n){
+    public int findUnRecur(int n){//找到树根
         while (father[n] != n){
             n = father[n];
         }
@@ -24,7 +25,7 @@ public class UnionFind {
     public boolean union(int a, int b){//返回a和b是否本身在一个集合中
         int fa = findUnRecur(a);
         int fb = findUnRecur(b);
-        father[fb] = fa;
+        father[fb] = fa;  ///b的树根指向a的树根
         return fa == fb;
     }
 }

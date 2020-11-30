@@ -11,6 +11,7 @@ package algorithms.tree;
 
 /**
  * 用先序遍历和后续遍历数组构造二叉树
+ * (先序和后序不能构造二叉树，先序/后序和中序可以构造二叉树)
  */
 public class ConstructBTByPreorderAndInorder {
     public static void main(String[] args){
