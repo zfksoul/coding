@@ -31,7 +31,7 @@ public class GetIntersectionNode {
         n5.next = n6;
         GetIntersectionNode o = new GetIntersectionNode();
         // n1 = o.myGetIntersectionNode1(n1, n11);
-        n1 = o.myGetIntersectionNode1(n13, n14);
+        n1 = o.myGetIntersectionNode2(n13, n14);
         System.out.println(n1);
         System.out.println(n1.val);
         /*
@@ -74,17 +74,15 @@ public class GetIntersectionNode {
         ListNode p = head1;
         ListNode q = head2;
         while (p != q){
-            if (p.next != null && q.next != null){
+            if (p != null) {
                 p = p.next;
-                q = q.next;
-            } else if (p.next == null && q.next != null){
-                p = head2;
-                q = q.next;
-            } else if (p.next != null && q.next == null){
-                p = p.next;
-                q = head1;
             } else {
-                return null;
+                p = head2;
+            }
+            if (q != null){
+                q = q.next;
+            } else {
+                q = head1;
             }
         }
         return p;

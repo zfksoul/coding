@@ -5,7 +5,7 @@ package linkedlist;
 *
 * @author zfk
 * @date 2019年11月4日 下午9:15:31 
-* 交换2个节点
+* 交换第m和第n个节点,m<n
 */
 public class SwapNodes {
 
@@ -22,7 +22,7 @@ public class SwapNodes {
         n4.next = n5;
         n5.next = n6;
         SwapNodes o = new SwapNodes();
-        n1 = o.mySwapNodes2(n1,3,6);
+        n1 = o.mySwapNodes1(n1,3,6);
         System.out.println(n1);
         while (n1 != null) {
             System.out.println(n1.val);
@@ -36,10 +36,10 @@ public class SwapNodes {
         }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        ListNode p1 = null;
-        ListNode p2 = null;
-        ListNode pre1 = null;
-        ListNode pos2 = null;
+        ListNode p1 = null;//m节点
+        ListNode p2 = null;//n节点
+        ListNode pre1 = null;//m前一个节点
+        ListNode pos2 = null;//n后一个节点
         ListNode cur = dummy;
         while (m > 1 && cur.next != null) {
             cur = cur.next;
@@ -82,34 +82,38 @@ public class SwapNodes {
         }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
+        ListNode p1;
+        ListNode p2;
+        ListNode pre1;
+        ListNode pos2;
         ListNode cur = dummy;
         while (m > 1 && cur.next != null){
-            cur = cur.next;
             m--;
+            cur = cur.next;
         }
         if (m > 1){
             return null;
         }
-        ListNode pre = cur;
-        ListNode p1 = cur.next;
+        pre1 = cur;
+        p1 = cur.next;
         cur = dummy;
         while (n > 1 && cur.next != null){
-            cur = cur.next;
             n--;
+            cur = cur.next;
         }
         if (n > 1){
             return null;
         }
-        ListNode p2 = cur.next;
-        ListNode pos = p2.next;
+        p2 = cur.next;
+        pos2 = p2.next;
         if (p1.next == p2){
-            pre.next = p2;
+            pre1.next = p2;
             p2.next = p1;
-            p1.next = pos;
+            p1.next = pos2;
         } else {
-            pre.next = p2;
+            pre1.next = p2;
             p2.next = p1.next;
-            p1.next = pos;
+            p1.next = pos2;
             cur.next = p1;
         }
         return dummy.next;

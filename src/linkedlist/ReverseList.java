@@ -33,8 +33,8 @@ public class ReverseList {
     }
 
     public ListNode myReverseList(ListNode head) {
-        if (head == null) {
-            return null;
+        if (head == null || head.next == null) {
+            return head;
         }
         ListNode a = null;
         ListNode b;
@@ -47,12 +47,12 @@ public class ReverseList {
         return a;
     }
     public ListNode myReverseList1(ListNode head) {
-        if (head == null){
-            return null;
+        if (head == null || head.next == null) {
+            return head;
         }
         ListNode a = null;
         ListNode b;
-        while (head != null){
+        while(head != null){
             b = head.next;
             head.next = a;
             a = head;

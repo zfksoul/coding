@@ -32,10 +32,9 @@ public class ReverseList2 {
     }
     
     public ListNode myReverseList1(ListNode head, int m, int n) {
-        if (head == null) {
-            return null;
+        if (head == null || m == n){
+            return head;
         }
-        if (m == n) return head; 
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
         ListNode p = dummy;
@@ -56,8 +55,9 @@ public class ReverseList2 {
         }
         ListNode a = p.next;
         ListNode b = a.next;
+        ListNode c;
         while (b != q) {
-            ListNode c = b.next;
+            c = b.next;
             b.next = a;
             a = b;
             b = c;
@@ -74,7 +74,7 @@ public class ReverseList2 {
         dummy.next = head;
         ListNode p = dummy;
         ListNode q = dummy;
-        while (m > 1 && p.next != null){
+        while (p.next != null && m > 1){
             p = p.next;
             m--;
         }
@@ -84,6 +84,9 @@ public class ReverseList2 {
         while (q != null && n >= 0){
             q = q.next;
             n--;
+        }
+        if (n >= 0){
+            return null;
         }
         ListNode a = p.next;
         ListNode b = a.next;

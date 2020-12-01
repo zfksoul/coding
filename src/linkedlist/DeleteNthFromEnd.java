@@ -20,7 +20,7 @@ public class DeleteNthFromEnd {
         n3.next = n4;
         n4.next = n5;
         DeleteNthFromEnd o = new DeleteNthFromEnd();
-        n1 = o.myDeleteNthFromEnd(n1, 5);
+        n1 = o.myDeleteNthFromEnd1(n1, 5);
         System.out.println(n1);
         while(n1 != null) {
             System.out.println(n1.val);
@@ -59,8 +59,8 @@ public class DeleteNthFromEnd {
         ListNode p = dummy;
         ListNode q = dummy;
         while (n > 0 && q.next != null){
-            q = q.next;
             n--;
+            q = q.next;
         }
         if (n > 0){
             return null;

@@ -56,8 +56,7 @@ public class ReverseList1 {
                 q.next = p;
                 p = head;
                 head = r;
-
-                q = head;
+                q = r;
                 cnt = 1;
             }
         }
@@ -66,24 +65,24 @@ public class ReverseList1 {
         if (head == null || n <= 0){
             return null;
         }
-        ListNode p = null;
-        ListNode q = head;
-        ListNode r;
+        ListNode a = null;
+        ListNode b = head;
+        ListNode c;
         int cnt = 1;
         while (true){
-            while (q.next != null && cnt < n){
-                q = q.next;
+            while (b.next != null && cnt < n){
+                b = b.next;
                 cnt++;
             }
-            if (q.next == null){
-                q.next = p;
+            if (b.next == null){
+                b.next = a;
                 return head;
             } else {
-                r = q.next;
-                q.next = p;
-                p = head;
-                head = r;
-                q = head;
+                c = b.next;
+                b.next = a;
+                a = head;
+                head = c;
+                b = c;
                 cnt = 1;
             }
         }

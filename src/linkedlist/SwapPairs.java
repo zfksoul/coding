@@ -22,7 +22,7 @@ public class SwapPairs {
         n4.next = n5;
         n5.next = n6;
         SwapPairs o = new SwapPairs();
-        n1 = o.mySwapPairs(n1);
+        n1 = o.mySwapPairs1(n1);
         System.out.println(n1);
         while (n1 != null) {
             System.out.println(n1.val);
@@ -36,16 +36,16 @@ public class SwapPairs {
         }
         ListNode dummy = new ListNode(0);
         dummy.next = head;
-        ListNode a = dummy;
-        ListNode b;
-        ListNode c;
-        while (a.next != null && a.next.next != null) {
-            b = a.next;
-            c = a.next.next;
-            a.next = c;
-            b.next = c.next;
-            c.next = b;
-            a = b;
+        ListNode pre = dummy;
+        ListNode p;
+        ListNode q;
+        while (pre.next != null && pre.next.next != null) {
+            p = pre.next;
+            q = pre.next.next;
+            pre.next = q;
+            p.next = q.next;
+            q.next = p;
+            pre = p;
         } 
         return dummy.next;
     }
@@ -55,16 +55,16 @@ public class SwapPairs {
         }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        ListNode a = dummy;
-        ListNode b;
-        ListNode c;
-        while (a.next != null && a.next.next != null){
-            b = a.next;
-            c = a.next.next;
-            a.next = c;
-            b.next = c.next;
-            c.next = b;
-            a = b;
+        ListNode pre = dummy;
+        ListNode p;
+        ListNode q;
+        while (pre.next != null && pre.next.next != null){
+            p = pre.next;
+            q = pre.next.next;
+            pre.next = q;
+            p.next = q.next;
+            q.next = p;
+            pre = p;
         }
         return dummy.next;
     }

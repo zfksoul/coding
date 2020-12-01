@@ -21,7 +21,7 @@ public class RotateRight {
         n3.next = n4;
         n4.next = n5;
         RotateRight o = new RotateRight();
-        n1 = o.myRotateRight(n1,4);
+        n1 = o.myRotateRight1(n1,4);
         System.out.println(n1);
         while (n1 != null) {
             System.out.println(n1.val);
@@ -29,6 +29,9 @@ public class RotateRight {
         }
     }
     public ListNode myRotateRight(ListNode head, int k) {
+        if (head == null || k < 0){
+            return null;
+        }
         ListNode p = head, q = head;
         int n = 0;
         while(p != null) {
