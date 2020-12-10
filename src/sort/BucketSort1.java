@@ -22,23 +22,22 @@ public class BucketSort1 {
         }
         int min = arr[0];
         int max = arr[0];
-        for (int i : arr){
-            if (min > i){
-                min = i;
+        for (int i = 0; i < arr.length; i++){
+            if (min > arr[i]){
+                min = arr[i];
             }
-            if (max < i){
-                max = i;
+            if (max < arr[i]){
+                max = arr[i];
             }
         }
-        int bucketsize = 5;
-        int bucketcount = (max - min) / bucketsize + 1;
+        int bucketSize = 5;
+        int bucketCount = (max - min) / bucketSize + 1;
         ArrayList<LinkedList<Integer>> buckets = new ArrayList<>();
-        for (int i = 0; i < bucketcount; i++){
+        for (int i = 0; i < bucketCount; i++){
             buckets.add(new LinkedList<>());
         }
-        for (int i : arr){
-            int index = (i - min) / bucketsize;
-            insert(buckets.get(index), i);
+        for (int i = 0; i < arr.length; i++){
+            insertAdd(buckets.get((arr[i] - min) / bucketSize),arr[i]);
         }
         int k = 0;
         for (List<Integer> bucket : buckets){
@@ -48,11 +47,11 @@ public class BucketSort1 {
         }
     }
 
-    private void insert(LinkedList<Integer> bucket, int i) {
+    private void insertAdd(LinkedList<Integer> bucket, int i) {
         ListIterator it = bucket.listIterator();
         boolean flag = false;
         while (it.hasNext()){
-            if ((Integer)it.next() > i){
+            if((int)it.next() > i){
                 it.previous();
                 it.add(i);
                 flag = true;
@@ -60,7 +59,8 @@ public class BucketSort1 {
             }
         }
         if (!flag){
-            bucket.add(i);
+            it.add(i);
         }
     }
+
 }

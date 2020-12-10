@@ -53,7 +53,6 @@ public class BubbleSort {
                 }
             }
             if (!flag) break;
-
         }
         return arr;
     }

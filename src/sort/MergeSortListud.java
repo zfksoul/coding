@@ -12,12 +12,12 @@ public class MergeSortListud {
     public static void main(String[] args) {
         MergeSortListud o = new MergeSortListud();
 
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(3);
-        ListNode node3 = new ListNode(5);
+        ListNode node1 = new ListNode(3);
+        ListNode node2 = new ListNode(1);
+        ListNode node3 = new ListNode(11);
         ListNode node4 = new ListNode(7);
         ListNode node5 = new ListNode(2);
-        ListNode node6 = new ListNode(4);
+        ListNode node6 = new ListNode(10);
         ListNode node7 = new ListNode(6);
         ListNode node8 = new ListNode(8);
         node1.next = node2;
@@ -27,7 +27,7 @@ public class MergeSortListud {
         node5.next = node6;
         node6.next = node7;
         node7.next = node8;
-        ListNode node = o.myMergeSortListud4(node1);
+        ListNode node = o.myMergeSortListud1(node1);
         while (node != null) {
             System.out.println(node.val);
             node = node.next;
@@ -49,8 +49,8 @@ public class MergeSortListud {
         }
         ListNode head2 = s.next;
         s.next = null;
-        myMergeSortListud1(head);
-        myMergeSortListud1(head2);
+        head = myMergeSortListud1(head);
+        head2 = myMergeSortListud1(head2);
         return merge1(head, head2);
     }
 
@@ -70,45 +70,8 @@ public class MergeSortListud {
         }
     }
     
-    public ListNode myMergeSortListud2(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode f = head.next;
-        ListNode s = head;
-        while (f != null && f.next != null) {
-            s = s.next;
-            f = f.next.next;
-        }
-        ListNode h2 = s.next;
-        s.next = null;
-        head = myMergeSortListud2(head);
-        h2 = myMergeSortListud2(h2);
-        return merge2(head,h2);
-    }
-    public ListNode merge2(ListNode n1, ListNode n2) {
-        ListNode dummy = new ListNode(-1);
-        ListNode cur = dummy;
-        while (n1 != null && n2 != null) {
-            if (n1.val <= n2.val) {
-                cur.next = n1;
-                n1 = n1.next;
-            }else {
-                cur.next = n2;
-                n2 = n2.next;
-            }
-            cur = cur.next;
-        }
-        if (n1 == null) {
-            cur.next = n2;
-        }
-        if (n2 == null) {
-            cur.next = n1;
-        }
-        return dummy.next;
-    }
 
-    public ListNode myMergeSortListud3(ListNode head) {
+    public ListNode myMergeSortListud2(ListNode head) {
         if (head == null || head.next == null){
             return head;
         }
@@ -120,8 +83,8 @@ public class MergeSortListud {
         }
         ListNode head2 = s.next;
         s.next = null;
-        head = myMergeSortListud3(head);
-        head2 = myMergeSortListud3(head2);
+        head = myMergeSortListud2(head);
+        head2 = myMergeSortListud2(head2);
         ListNode dummy = new ListNode(-1);
         ListNode cur = dummy;
         while (head != null && head2 != null){
@@ -139,13 +102,15 @@ public class MergeSortListud {
         if (head2 != null) cur.next = head2;
         return dummy.next;
     }
-    public ListNode myMergeSortListud4(ListNode head) {
-        if (head == null || head.next == null) return head;
+    public ListNode myMergeSortListud3(ListNode head) {
+        if (head == null || head.next == null){
+            return head;
+        }
         ListNode f = head;
         ListNode s = head;
         while (f.next != null && f.next.next != null){
-            f = f.next.next;
             s = s.next;
+            f = f.next.next;
         }
         ListNode head2 = s.next;
         s.next = null;
@@ -157,15 +122,18 @@ public class MergeSortListud {
             if (head.val <= head2.val){
                 cur.next = head;
                 head = head.next;
-                cur = cur.next;
             } else {
                 cur.next = head2;
                 head2 = head2.next;
-                cur = cur.next;
             }
+            cur = cur.next;
         }
-        if (head != null) cur.next = head;
-        if (head2 != null) cur.next = head2;
+        if (head != null){
+            cur.next = head;
+        }
+        if (head2 != null){
+            cur.next = head2;
+        }
         return dummy.next;
     }
 }

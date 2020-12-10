@@ -56,22 +56,7 @@ public class HeapSort {
             pushDown(arr, largest, len);
         }
     }
-   /* public void heapify(int[] arr, int i, int len) {//堆调整，建立大根堆
-        int l = 2 * i + 1;
-        int r = 2 * i + 2;
-        int largest = i;
-        if (l < len && arr[l] > arr[largest]) {
-            largest = l;
-        }
-        if (r < len && arr[r] > arr[largest]) {
-            largest = r;
-        }
-        if (largest != i) {
-            swap(arr, i, largest);
-            heapify(arr, largest, len);
-        }
-    }
-*/
+
     public void swap(int[] arr, int i, int j) {
         int tmp = arr[i];
         arr[i] = arr[j];
@@ -120,7 +105,7 @@ public class HeapSort {
     /*public void removeTop(List<Integer> heap, int size) {
         heap.set(0,heap.get(size));
         heap.remove(size);
-        pushDown(heap,heap.size(),0);
+        pushDown(heap,0,heap.size());
     }*/
     
     //改变堆中一个数，重新调整堆

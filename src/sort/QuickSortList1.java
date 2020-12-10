@@ -41,7 +41,7 @@ public class QuickSortList1 {
         }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        ListNode pivot = partition1(dummy);
+        ListNode pivot = partition(dummy);
         ListNode head2 = pivot.next;
         ListNode p = dummy;
         while (p.next != pivot) {
@@ -50,7 +50,7 @@ public class QuickSortList1 {
         p.next = null;
         ListNode h1 = myQuickSortList(dummy.next);//partition后，head位置已经改变
         ListNode h2 = myQuickSortList(head2);
-        dummy.next = h1;
+        dummy.next = h1;//h1有可能为null，用dummy做头结点连接
         p = dummy;
         while (p.next != null) {
             p = p.next;
@@ -60,15 +60,23 @@ public class QuickSortList1 {
         return dummy.next;
     }
     public ListNode partition(ListNode dummy) {
-        /*if (dummy.next == null || dummy.next.next == null) {
+        if (dummy.next == null || dummy.next.next == null) {
             return dummy.next;
-        }*/
+        }
         ListNode prePivot = dummy;
         ListNode preP = dummy.next;
-        for (ListNode preI = preP; preI.next != null; preI = preI.next) {
+        ListNode preI = preP;
+        while (preI.next != null){
             if (preI.next.val < prePivot.next.val) {
-                swap(preP,preI);
+                if (preP.next == preI){//如果preP和preI相邻，交换后preI不需要后移
+                    swap(preP,preI);
+                } else {
+                    swap(preP,preI);
+                    preI = preI.next;
+                }
                 preP = preP.next;
+            } else {
+                preI = preI.next;
             }
         }
         ListNode prePreP = dummy;
@@ -76,43 +84,23 @@ public class QuickSortList1 {
         while (prePreP.next != preP) {
             prePreP = prePreP.next;
         }
-        swap(prePivot,prePreP);//如果prePivot和prePreP相邻，交换后，prePreP改变位置，则它的下一个节点就不是preP了，需要提前用指针指向preP
-        while (preP.next != p) {
-            preP = preP.next;
+        if (prePivot.next == prePreP){//如果prePivot和prePreP相邻，交换后，prePreP改变位置
+            swap(prePivot, prePreP);
+            return prePreP;
+        } else {
+            swap(prePivot, prePreP);
+            return prePreP.next;
         }
-        return preP;
     }
-    public ListNode partition1(ListNode dummy) {
-        if (dummy.next == null || dummy.next.next == null){
-            return dummy.next;
-        }
-        ListNode prePivot = dummy;
-        ListNode preP = dummy.next;
-        for (ListNode preI = preP; preI.next != null; preI = preI.next){
-            if (preI.next.val < prePivot.next.val){
-                swap(preI,preP);
-                preP = preP.next;
-            }
-        }
-        ListNode prePreP = dummy;
-        ListNode p = preP.next;
-        while (prePreP.next != preP){
-            prePreP = prePreP.next;
-        }
-        swap(prePivot,prePreP);
-        while (preP.next != p){
-            preP = preP.next;
-        }
-        return preP;
-    }
+
     public void swap(ListNode preN1, ListNode preN2) {
         if (preN1 == preN2) {
             return;
         }
         ListNode n1 = preN1.next;
         ListNode n2 = preN2.next;
-        ListNode posN2 = n2.next;
         ListNode posN1 = n1.next;
+        ListNode posN2 = n2.next;
         if (n1.next == n2) {
             preN1.next = n2;
             n2.next = n1;

@@ -5,7 +5,9 @@ package sort;
 *
 * @author zfk
 * @date 2019年10月27日 下午9:57:29 
-* 
+* 选择排序
+ * 时间复杂度O(n^2)
+ * 空间复杂度O(1)
 */
 public class SelectionSort {
 
@@ -18,6 +20,9 @@ public class SelectionSort {
         }
     }
     public int[] mySelectionSort(int[] arr) {
+        if (arr == null || arr.length == 0){
+            return arr;
+        }
         for (int i = 0; i < arr.length - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < arr.length; j++) {

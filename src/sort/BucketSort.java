@@ -6,7 +6,10 @@ import java.util.*;
 * 
 *
 * @author zfk
-* @date 2019年10月30日 下午11:01:50 
+* @date 2019年10月30日 下午11:01:50
+ * 时间复杂度：O(n+(n/k)log(n/k))
+ * 空间复杂度：O(n+k)
+ * n为元素数量，k为桶数量
 * 
 */
 public class BucketSort {

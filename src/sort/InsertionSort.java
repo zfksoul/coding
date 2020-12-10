@@ -39,7 +39,7 @@ public class InsertionSort {
             int tmp = arr[i];
             int j;
             for (j = i - 1; j >= 0; j--){
-                if (arr[j] > arr[j + 1]){
+                if (arr[j] > tmp){
                     arr[j + 1] = arr[j];
                 } else {
                     break;

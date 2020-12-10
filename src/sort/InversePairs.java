@@ -10,11 +10,12 @@ package sort;
 public class InversePairs {
 
     public static void main(String[] args) {
-        int[] arr = new int[] { 5, 4, 3, 2, 1 };
+        int[] arr = new int[] { 5, 4, 3, 2, 1, 20, 1, 9, 23, 12, 0 };
+        int[] tmp = new int[arr.length];
         InversePairs o = new InversePairs();
-        System.out.println(o.inversePairs1(arr, 0, arr.length - 1));
-        arr = new int[] { 5, 4, 3, 2, 1 };
-        System.out.println(o.inversePairs(arr, 0, arr.length - 1));
+        System.out.println(o.inversePairs(arr, tmp, 0, arr.length - 1));
+        arr = new int[] { 5, 4, 3, 2, 1, 20, 1, 9, 23, 12, 0 };
+        System.out.println(o.inversePairs1(arr, tmp, 0, arr.length - 1));
 
     }
 
@@ -25,29 +26,28 @@ public class InversePairs {
      * 求速度的逆序对个数为答案 
      */
     // 用归并排序查找逆序对
-    public int inversePairs(int[] arr, int l, int r) {
+    public int inversePairs(int[] arr, int[] tmp, int l, int r) {
         int res = 0;
         if (l < r) {
-            int tmp[] = new int[arr.length];
             int mid = (l + r) / 2;
-            res += inversePairs(arr, l, mid);
-            res += inversePairs(arr, mid + 1, r);
-            int p1 = l;
-            int p2 = mid + 1;
+            res += inversePairs(arr, tmp, l, mid);
+            res += inversePairs(arr, tmp, mid + 1, r);
+            int f = l;
+            int s = mid + 1;
             int k = l;
-            while (p1 <= mid && p2 <= r) {
-                if (arr[p1] <= arr[p2]) {
-                    tmp[k++] = arr[p1++];
+            while (f <= mid && s <= r) {
+                if (arr[f] <= arr[s]) {
+                    tmp[k++] = arr[f++];
                 } else {
-                    tmp[k++] = arr[p2++];
-                    res += mid - p1 + 1;
+                    tmp[k++] = arr[s++];
+                    res += mid - f + 1;
                 }
             }
-            while (p1 <= mid) {
-                tmp[k++] = arr[p1++];
+            while (f <= mid) {
+                tmp[k++] = arr[f++];
             }
-            while (p2 <= r) {
-                tmp[k++] = arr[p2++];
+            while (s <= r) {
+                tmp[k++] = arr[s++];
             }
             for (int i = l; i <= r; i++) {
                 arr[i] = tmp[i];
@@ -55,29 +55,28 @@ public class InversePairs {
         }
         return res;
     }
-    public int inversePairs1(int[] arr, int l, int r) {
+    public int inversePairs1(int[] arr, int[] tmp, int l, int r) {
         int res = 0;
         if (l < r){
-            int[] tmp = new int[arr.length];
-            int mid = (l + r) >> 1;
-            res += inversePairs1(arr, l, mid);
-            res += inversePairs1(arr, mid + 1, r);
-            int p = l;
-            int q = mid + 1;
+            int mid = l + r >> 1;
+            res += inversePairs1(arr, tmp, l, mid);
+            res += inversePairs1(arr, tmp, mid + 1, r);
+            int f = l;
+            int s = mid + 1;
             int k = l;
-            while (p <= mid && q <= r){
-                if (arr[p] <= arr[q]){
-                    tmp[k++] = arr[p++];
+            while (f <= mid && s <= r){
+                if (arr[f] <= arr[s]){
+                    tmp[k++] = arr[f++];
                 } else {
-                    tmp[k++] = arr[q++];
-                    res += mid - p + 1;
+                    res += mid - f + 1;
+                    tmp[k++] = arr[s++];
                 }
             }
-            while (p <= mid){
-                tmp[k++] = arr[p++];
+            while (f <= mid){
+                tmp[k++] = arr[f++];
             }
-            while (q <= r){
-                tmp[k++] = arr[q++];
+            while (s <= r){
+                tmp[k++] = arr[s++];
             }
             for (int i = l; i <= r; i++){
                 arr[i] = tmp[i];

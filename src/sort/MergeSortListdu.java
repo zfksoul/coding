@@ -49,112 +49,110 @@ public class MergeSortListdu {
         }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        for (int i = 1; i < n; i *= 2) {// 每一段的长度
-            ListNode begin = dummy;//第一个节点可能换位置，所以begin不能指向第一个节点
-            for (int j = 0; j + i < n; j += i * 2) {// 判断本轮迭代是否结束
-                // j + i < n：最后如果只有一段链表则不需要调整，但是数组不能这么判断
-                ListNode first = begin.next;// 第一段开始
-                ListNode second = begin.next;
-                for (int k = 0; k < i; k++) {
-                    second = second.next;// 第二段开始
+        int fc, sc;
+        for (int l = 1; l < n; l *= 2) {// 每一段的长度
+            ListNode cur = dummy;//第一个节点可能换位置，所以begin不能指向第一个节点
+            for (int begin = 0; begin + l < n; begin += l * 2) {// 判断本轮迭代是否结束
+                // begin + l < n：最后如果只有一段链表则不需要调整，但是数组不能这么判断
+                ListNode f = cur.next;// 第一段开始
+                ListNode s = cur.next;
+                for (int k = 0; k < l; k++) {
+                    s = s.next;// 第二段开始
                 }
-                int f = 0;// 遍历第一段
-                int s = 0;// 遍历第二段
-                while (f < i && s < i && second != null) {// 合并一组
-                    if (first.val <= second.val) {
-                        begin.next = first;
-                        begin = begin.next;
-                        first = first.next;
-                        f++;
+                fc = 0;// 遍历第一段
+                sc = 0;// 遍历第二段
+                while (fc < l && sc < l && s != null) {// 合并一组
+                    if (f.val <= s.val) {
+                        cur.next = f;
+                        f = f.next;
+                        fc++;
                     } else {
-                        begin.next = second;
-                        begin = begin.next;
-                        second = second.next;
-                        s++;
+                        cur.next = s;
+                        s = s.next;
+                        sc++;
                     }
+                    cur = cur.next;
                 }
-                /*while (f < i) {// 合并剩余部分
-                    begin.next = first;
-                    begin = begin.next;
-                    first = first.next;
-                    f++;
+                /*while (fc < l) {// 合并剩余部分
+                    cur.next = f;
+                    cur = cur.next;
+                    f = f.next;
+                    fc++;
                 }*/
-                if (f < i){
-                    begin.next = first;
-                    while (f < i){
-                        begin = begin.next;
-                        f++;
+                if (fc < l){
+                    cur.next = f;
+                    while (fc < l){
+                        cur = cur.next;
+                        fc++;
                     }
                 }
-                /*while (s < i && second != null) {
-                    begin.next = second;
-                    begin = begin.next;
-                    second = second.next;
-                    s++;
+                /*while (sc < l && s != null) {
+                    cur.next = s;
+                    cur = cur.next;
+                    s = s.next;
+                    sc++;
                 }*/
-                if (s < i){
-                    begin.next = second;
-                    while (s < i && second != null){
-                        begin = begin.next;
-                        second = second.next;
-                        s++;
+                if (sc < l){
+                    cur.next = s;
+                    while (sc < l && s != null){
+                        cur = cur.next;
+                        s = s.next;
+                        sc++;
                     }
                 }
-                begin.next = second;// 连接下一组的第一个节点
+                cur.next = s;// 连接下一组的第一个节点
             }
         }
         return dummy.next;
     }
     public ListNode myMergeSortListdu1(ListNode head) {
-        if (head == null || head.next == null) return head;
+        if (head == null || head.next == null){
+            return head;
+        }
+        ListNode cur = head;
         int n = 0;
-        ListNode p = head;
-        while (p != null){
-            p = p.next;
+        while (cur != null){
             n++;
+            cur = cur.next;
         }
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        for (int i = 1; i < n; i *= 2){
-            ListNode begin = dummy;
-            for (int j = 0; j + i < n; j += i * 2){
-                ListNode first = begin.next;
-                ListNode second = begin.next;
-                for (int k = 0; k < i; k++){
-                    second = second.next;
+        int fc, sc;
+        for (int l = 1; l < n; l *= 2){
+            cur = dummy;
+            for (int begin = 0; begin + l < n; begin += l * 2){
+                ListNode f = cur.next;
+                ListNode s = cur.next;
+                for (int i = 0; i < l; i++){
+                    s = s.next;
                 }
-                int f = 0;
-                int s = 0;
-                while (f < i && s < i && second != null){
-                    if (first.val <= second.val){
-                        begin.next = first;
-                        first = first.next;
-                        begin = begin.next;
-                        f++;
+                fc = 0;
+                sc = 0;
+                while (fc < l && sc < l && s != null){
+                    if (f.val <= s.val){
+                        cur.next = f;
+                        f = f.next;
+                        fc++;
                     } else {
-                        begin.next = second;
-                        begin = begin.next;
-                        second = second.next;
-                        s++;
+                        cur.next = s;
+                        s = s.next;
+                        sc++;
                     }
+                    cur = cur.next;
                 }
-                if (f < i){
-                    begin.next = first;
-                    while (f < i){
-                        begin = begin.next;
-                        f++;
-                    }
+                while (fc < l){
+                    cur.next = f;
+                    f = f.next;
+                    cur = cur.next;
+                    fc++;
                 }
-                if (s < i){
-                    begin.next = second;
-                    while (s < i && second != null){
-                        begin.next = second;
-                        begin = begin.next;
-                        second = second.next;
-                        s++;
-                    }
+                while (sc < l && s != null){
+                    cur.next = s;
+                    s = s.next;
+                    cur = cur.next;
+                    sc++;
                 }
-                begin.next = second;
+                cur.next = s;
             }
         }
         return dummy.next;

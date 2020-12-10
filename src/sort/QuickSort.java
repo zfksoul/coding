@@ -86,11 +86,14 @@ public class QuickSort {
 
     public void quickSort2(int[] arr, int l, int r){
         if (l < r){
-            int[] p = partitionRandom3(arr, l, r);
+            int[] p = partitionRandom2(arr, l, r);
             quickSort2(arr, l, p[0]-1);
             quickSort2(arr, p[1]+1, r);
         }
     }
+
+
+    //多个pivot
     public int[] partition2(int[] arr, int l, int r){
         int pivot = l;
         int p = l + 1;//p-1表示第一个等于arr[pivot]的位置
@@ -128,23 +131,5 @@ public class QuickSort {
         swap(arr,pivot,p-1);
         return new int[]{p-1,q};
     }
-    public int[] partitionRandom3(int[] arr, int l, int r){
-        int ran = l + (int)Math.random() * (r - l + 1);
-        swap(arr, l, ran);
-        int pivot = l;
-        int p = l + 1;
-        int q = r;
-        int i = p;
-        while (i <= q){
-            if (arr[i] < arr[pivot]){
-                swap(arr, i++, p++);
-            } else if (arr[i] > arr[pivot]){
-                swap(arr, i, q--);
-            } else {
-                i++;
-            }
-        }
-        swap(arr, pivot, p - 1);
-        return new int[]{p - 1, q};
-    }
+
 }
