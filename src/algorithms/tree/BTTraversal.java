@@ -19,30 +19,28 @@ public class BTTraversal {
         node6.left = node5;
         node6.right = node7;
         BTTraversal o = new BTTraversal();
-        /*o.preOrderUnRecur(node4);
-        o.preOrderUnRecur1(node4);
-        o.preOrderUnRecur2(node4);
+        /*o.preOrder(node4);
+        o.preOrder1(node4);
+        o.preOrder2(node4);
         o.preOrderRecur(node4);*/
-        /*o.inOrderUnRecur(node4);
-        o.inOrderUnRecur1(node4);
+        /*o.inOrder(node4);
+        o.inOrder1(node4);
         o.inOrderRecur(node4);*/
-        o.posOrderUnRecur1(node4);
-        o.posOrderUnRecur2(node4);
-        o.posOrderUnRecur3(node4);
-        o.posOrderUnRecur4(node4);
+        o.posOrder(node4);
+        o.posOrder1(node4);
+        o.posOrder2(node4);
+        o.posOrder3(node4);
         o.posOrderRecur(node4);
     }
 
-
-
-    public void preOrderUnRecur(TreeNode head){
+    public void preOrder(TreeNode head){
         System.out.println("preOrderUnRecur:");
         if (head == null){
             return;
         }
-        Stack<TreeNode> st = new Stack<>();
+        LinkedList<TreeNode> st = new LinkedList<>();
         st.push(head);
-        while (!st.empty()){
+        while (!st.isEmpty()){
             head = st.pop();
             System.out.print(head.value + " ");
             if (head.right != null){
@@ -54,12 +52,12 @@ public class BTTraversal {
         }
         System.out.println();
     }
-    public void preOrderUnRecur1(TreeNode head){
+    public void preOrder1(TreeNode head){
         if (head == null){
             return;
         }
-        Stack<TreeNode> st = new Stack<>();
-        while(!st.empty() || head != null){
+        LinkedList<TreeNode> st = new LinkedList<>();
+        while(!st.isEmpty() || head != null){
             if (head != null){
                 System.out.print(head.value + " ");
                 st.push(head);
@@ -71,19 +69,21 @@ public class BTTraversal {
         }
         System.out.println();
     }
-    private void preOrderUnRecur2(TreeNode head) {
+    private void preOrder2(TreeNode head) {
         if (head == null) return;
-        Stack<TreeNode> st = new Stack<>();
-        while (!st.isEmpty() || head != null){
-            if (head != null){
-                System.out.println(head.value + " ");
+        LinkedList<TreeNode> st = new LinkedList<>();
+        while (head != null || !st.isEmpty()){
+            while (head != null){
+                System.out.print(head.value + " ");
                 st.push(head);
                 head = head.left;
-            } else {
+            }
+            if (!st.isEmpty()){
                 head = st.pop();
                 head = head.right;
             }
         }
+        System.out.println();
     }
 
     public void preOrderRecur(TreeNode head){
@@ -94,13 +94,13 @@ public class BTTraversal {
         preOrderRecur(head.left);
         preOrderRecur(head.right);
     }
-    public void inOrderUnRecur(TreeNode head){
+    public void inOrder(TreeNode head){
         System.out.println("inOrderUnRecur:");
         if (head == null){
             return;
         }
-        Stack<TreeNode> st = new Stack<>();
-        while (!st.empty() || head != null){
+        LinkedList<TreeNode> st = new LinkedList<>();
+        while (!st.isEmpty() || head != null){
             if (head != null){
                 st.push(head);
                 head = head.left;
@@ -112,18 +112,17 @@ public class BTTraversal {
         }
         System.out.println();
     }
-    public void inOrderUnRecur1(TreeNode head){
+    public void inOrder1(TreeNode head){
         if (head == null) return;
-        Stack<TreeNode> st = new Stack<>();
-        while (!st.isEmpty() || head != null){
-            if (head != null){
+        LinkedList<TreeNode> st = new LinkedList<>();
+        while (head != null || !st.isEmpty()){
+            while(head != null){
                 st.push(head);
                 head = head.left;
-            } else {
-                head = st.pop();
-                System.out.print(head.value + " ");
-                head = head.right;
             }
+            head = st.pop();
+            System.out.print(head.value + " ");
+            head = head.right;
         }
         System.out.println();
     }
@@ -135,15 +134,15 @@ public class BTTraversal {
         System.out.print(head.value + " ");
         inOrderRecur(head.right);
     }
-    public void posOrderUnRecur1(TreeNode head){
+    public void posOrder(TreeNode head){
         System.out.println("posOrderUnRecur1:");
         if (head == null){
             return;
         }
-        Stack<TreeNode> st1 = new Stack<>();
-        Stack<TreeNode> st2 = new Stack<>();
+        LinkedList<TreeNode> st1 = new LinkedList<>();
+        LinkedList<TreeNode> st2 = new LinkedList<>();
         st1.push(head);
-        while (!st1.empty()){
+        while (!st1.isEmpty()){
             head = st1.pop();
             st2.push(head);
             if (head.left != null){
@@ -153,21 +152,43 @@ public class BTTraversal {
                 st1.push(head.right);
             }
         }
-        while (!st2.empty()){
+        while (!st2.isEmpty()){
             System.out.print(st2.pop().value + " ");
         }
         System.out.println();
     }
-    public void posOrderUnRecur2(TreeNode head){
+    public void posOrder1(TreeNode head){
+        if (head == null){
+            return;
+        }
+        LinkedList<TreeNode> st1 = new LinkedList<>();
+        LinkedList<TreeNode> st2 = new LinkedList<>();
+        while(!st1.isEmpty() || head != null){
+            if (head != null){
+                st1.push(head);
+                st2.push(head);
+                head = head.right;
+            } else {
+                head = st1.pop();
+                head = head.left;
+            }
+        }
+        while (!st2.isEmpty()){
+            head = st2.pop();
+            System.out.print(head.value + " ");
+        }
+        System.out.println();
+    }
+    public void posOrder2(TreeNode head){
         System.out.println("posOrderUnRecur2:");
         if (head == null){
             return;
         }
-        Stack<TreeNode> st = new Stack<>();
+        LinkedList<TreeNode> st = new LinkedList<>();
         st.push(head);
         TreeNode last = head;//标记上一个打印的节点,last=head防止特殊情况，如果last=null，可能出现null==null
         TreeNode cur = null;//判断当前节点
-        while (!st.empty()){
+        while (!st.isEmpty()){
             cur = st.peek();
             if (cur.left != null && last != cur.left && last != cur.right){//左边有节点且左子树没打印完
                 st.push(cur.left);
@@ -181,34 +202,13 @@ public class BTTraversal {
         System.out.println();
     }
 
-    public void posOrderUnRecur3(TreeNode head){
-        if (head == null){
-            return;
-        }
-        Stack<TreeNode> st1 = new Stack<>();
-        Stack<TreeNode> st2 = new Stack<>();
-        while(!st1.empty() || head != null){
-            if (head != null){
-                st1.push(head);
-                st2.push(head);
-                head = head.right;
-            } else {
-                head = st1.pop();
-                head = head.left;
-            }
-        }
-        while (!st2.empty()){
-            head = st2.pop();
-            System.out.print(head.value + " ");
-        }
-        System.out.println();
-    }
-    public void posOrderUnRecur4(TreeNode head){
+
+    public void posOrder3(TreeNode head){
         if (head == null) return;
-        Stack<TreeNode> st = new Stack<>();
-        st.push(head);
-        TreeNode cur = null;
+        LinkedList<TreeNode> st = new LinkedList<>();
         TreeNode last = head;
+        TreeNode cur;
+        st.push(head);
         while (!st.isEmpty()){
             cur = st.peek();
             if (cur.left != null && last != cur.left && last != cur.right){
@@ -216,7 +216,8 @@ public class BTTraversal {
             } else if (cur.right != null && last != cur.right){
                 st.push(cur.right);
             } else {
-                System.out.print(st.pop().value + " ");
+                System.out.print(cur.value + " ");
+                st.pop();
                 last = cur;
             }
         }

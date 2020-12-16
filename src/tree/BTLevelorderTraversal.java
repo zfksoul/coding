@@ -5,15 +5,20 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-//层次遍历二叉树
+/**
+ * 层次遍历二叉树
+ *      1
+ *    2  3
+ *  4 5 6 7
+ */
 public class BTLevelorderTraversal {
     public static void main(String[] args){
-        TreeNode node1 = new TreeNode(4);
+        TreeNode node1 = new TreeNode(1);
         TreeNode node2 = new TreeNode(2);
-        TreeNode node3 = new TreeNode(6);
-        TreeNode node4 = new TreeNode(1);
-        TreeNode node5 = new TreeNode(3);
-        TreeNode node6 = new TreeNode(5);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node5 = new TreeNode(5);
+        TreeNode node6 = new TreeNode(6);
         TreeNode node7 = new TreeNode(7);
         node1.left = node2;
         node1.right =node3;
@@ -51,10 +56,10 @@ public class BTLevelorderTraversal {
             int len = q.size();
             List<Integer> level = new ArrayList<>();
             for (int i = 0; i < len; i++){
-                TreeNode t = q.poll();
-                level.add(t.val);
-                if (t.left != null) q.offer(t.left);
-                if (t.right != null) q.offer(t.right);
+                TreeNode node = q.poll();
+                level.add(node.val);
+                if (node.left != null) q.offer(node.left);
+                if (node.right != null) q.offer(node.right);
             }
             res.add(level);
         }

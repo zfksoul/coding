@@ -21,7 +21,7 @@ public class ConstructBinaryTree {
         TreeNode p = root;
         Stack<TreeNode> st = new Stack<>();
         List<Integer> list = new ArrayList<>();
-        while (p != null || st.size() != 0){
+        while (p != null || st.size() > 0){
             while (p != null){
                 st.push(p);
                 p = p.left;
@@ -52,13 +52,15 @@ public class ConstructBinaryTree {
         return root;
     }
     private TreeNode dfs1(int[] preorder, int[] inorder, int pl, int pr, int il, int ir) {
-        if (pl > pr) return null;
+        if (pl > pr){
+            return null;
+        }
         int val = preorder[pl];
         int k = map.get(val);
         int len = k - il;
-        TreeNode root = new TreeNode(val);
-        root.left = dfs1(preorder,inorder,pl+1,pl+len,il,k-1);
-        root.right = dfs1(preorder,inorder,pl+len+1,pr,k+1,ir);
-        return root;
+        TreeNode node = new TreeNode(val);
+        node.left = dfs1(preorder, inorder, pl + 1, pl + len, il, k - 1);
+        node.right = dfs1(preorder, inorder, pl + len + 1, pr, k + 1, ir);
+        return node;
     }
 }

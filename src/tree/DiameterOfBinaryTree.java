@@ -1,6 +1,9 @@
 package tree;
 
-//树中两点之间最长的路径，枚举所有最高点
+/**
+ * 计算树的直径
+ * 树中任意两点之间最长的路径，枚举所有最高点
+ */
 public class DiameterOfBinaryTree {
     public static void main(String[] args){
         TreeNode node1 = new TreeNode(4);
@@ -31,7 +34,7 @@ public class DiameterOfBinaryTree {
         int left = dfs(root.left);
         int right = dfs(root.right);
         res = Math.max(res, left + right);//只加边，不加点
-        return Math.max(left + 1, right + 1);
+        return Math.max(left, right) + 1;//加1表示节点连接父节点的那条边，也可以表示该节点
     }
 
     private int dfs1(TreeNode root) {
@@ -39,7 +42,7 @@ public class DiameterOfBinaryTree {
         int left = dfs1(root.left);
         int right = dfs1(root.right);
         res = Math.max(res, left + right);
-        return Math.max(left, right)+1;//加1表示节点连接父节点的那条边，也可以表示该节点
+        return Math.max(left, right) + 1;
     }
 
     //求树最大深度

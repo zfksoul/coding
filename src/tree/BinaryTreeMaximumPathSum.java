@@ -30,13 +30,20 @@ public class BinaryTreeMaximumPathSum {
         return res;
     }
 
-    //返回root向下走的最大值,求答案用到了这个值，用它作为函数返回值比较方便，所以要用全局变量作为答案
+    //返回root为根的最大路径
     private int dfs(TreeNode root) {
         if (root == null) return 0;
         int left = dfs(root.left);
         int right = dfs(root.right);
         res = Math.max(res, left + root.val + right);
         return Math.max(0,root.val+Math.max(left,right));
+    }
+    private int dfs1(TreeNode root) {
+        if (root == null) return 0;
+        int left = dfs1(root.left);
+        int right = dfs1(root.right);
+        res = Math.max(res, left + right + root.val);
+        return Math.max(0, Math.max(left, right) + root.val);
     }
 }
 

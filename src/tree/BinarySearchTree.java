@@ -2,6 +2,7 @@ package tree;
 
 /**
  * 验证搜索二叉树
+ * 节点大于左子树所有值，小于右子树所有值，不存在相等情况
  */
 public class BinarySearchTree {
     public static void main(String[] args){
@@ -22,13 +23,22 @@ public class BinarySearchTree {
         System.out.println(o.isValidBST(node1));
     }
     public boolean isValidBST(TreeNode root){
+
         return dfs(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
 
+    /**
+     * 自上向下递归
+     * @param root
+     * @param minValue 当前子树的最小值
+     * @param maxValue 当前子树的最大值
+     * @return
+     */
     private boolean dfs(TreeNode root, Long minValue, Long maxValue) {
         if (root == null) return true;
         if (root.val < minValue || root.val > maxValue) return false;
-        return dfs(root.left, minValue, (root.val - 1L))//root.val是int类型，可能溢出，转成Long类型
+        //root.val是int类型，如果取极大值或极小值，这里可能溢出，转成Long类型
+        return dfs(root.left, minValue, (root.val - 1L))
                 && dfs(root.right, (root.val + 1L), maxValue);
     }
     private boolean dfs1(TreeNode root, Long minValue, Long maxValue) {

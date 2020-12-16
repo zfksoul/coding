@@ -50,9 +50,11 @@ public class LowestCommonAncestor {
     }
 
     public TreeNode myLowestCommonAncestor1(TreeNode root, TreeNode p, TreeNode q){
-        if (root == null || root == p || root == q) return root;
-        TreeNode left = myLowestCommonAncestor(root.left, p, q);
-        TreeNode right = myLowestCommonAncestor(root.right, p, q);
+        if (root == null || root == p || root == q){
+            return root;
+        }
+        TreeNode left = myLowestCommonAncestor1(root.left, p, q);
+        TreeNode right = myLowestCommonAncestor1(root.right, p, q);
         if (left == null) return right;
         if (right == null) return left;
         return root;

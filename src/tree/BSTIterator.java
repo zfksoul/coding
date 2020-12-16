@@ -1,11 +1,12 @@
 package tree;
 
+import java.util.LinkedList;
 import java.util.Stack;
 
 //迭代器，中序遍历，时间复杂度O(1)，空间复杂度O(h)，h是树的高度，所以不能直接求中序遍历放到数组中
 public class BSTIterator {
 
-    private Stack<TreeNode> st = new Stack<>();
+    private LinkedList<TreeNode> st = new LinkedList<>();
     public BSTIterator(TreeNode root) {
         while(root != null){
             st.push(root);
@@ -24,6 +25,6 @@ public class BSTIterator {
         return res;
     }
     public Boolean hasNext(){
-        return !st.empty();
+        return !st.isEmpty();
     }
 }

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * 层次遍历二叉树
+ */
 public class LevelTraversal {
     public static void main(String[] args){
         LevelTraversal o = new LevelTraversal();
@@ -33,8 +36,8 @@ public class LevelTraversal {
         Queue<TreeNode> q = new LinkedList<>();
         q.offer(root);
         TreeNode cur = root;
-        TreeNode last = root;
-        TreeNode nlast = cur;
+        TreeNode last = root;//第n层遍历的结束标记
+        TreeNode nlast = cur;//第n+1层的结束标记
         int level = 1;
         System.out.println("level:" + level++);
         while (!q.isEmpty()){
@@ -61,31 +64,32 @@ public class LevelTraversal {
 
     public ArrayList<Integer> PrintFromTopToBottom1(TreeNode root) {
         ArrayList<Integer> res = new ArrayList<>();
-        if (root == null) return res;
-        Queue<TreeNode> q = new LinkedList<>();
+        if (root == null) {
+            return res;
+        }
+        Queue<TreeNode> q = new LinkedList();
         q.offer(root);
-        TreeNode cur = root;
         TreeNode last = root;
         TreeNode nlast = root;
+        TreeNode cur;
         int level = 1;
-        System.out.println("level:" + level++);
-        while (!q.isEmpty()){
+        System.out.println("level:"+level++);
+        while (q.size() > 0){
             cur = q.poll();
+            System.out.print(cur.value + " ");
             res.add(cur.value);
             if (cur.left != null){
-                q.offer(cur.left);
                 nlast = cur.left;
+                q.offer(cur.left);
             }
             if (cur.right != null){
-                q.offer(cur.right);
                 nlast = cur.right;
+                q.offer(cur.right);
             }
-            if (cur == last && !q.isEmpty()){
-                System.out.println(cur.value);
-                System.out.println("level:" + level++);
+            if (cur == last && q.size() > 0){
+                System.out.println();
                 last = nlast;
-            } else {
-                System.out.print(cur.value + " ");
+                System.out.println("level:"+level++);
             }
         }
         return res;
