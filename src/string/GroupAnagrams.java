@@ -28,18 +28,16 @@ public class GroupAnagrams {
         strs.add("bat");
         GroupAnagrams o = new GroupAnagrams();
         System.out.println(o.myGoutpAndAnagrams(strs));
+        System.out.println(o.myGoutpAndAnagrams1(strs));
     }
     public List<List<String>> myGoutpAndAnagrams(List<String> strs){
         Map<String,List<String>> map = new HashMap<>();
         for (String str :strs){
             char[] c = str.toCharArray();
             sort(c,0,c.length-1);
-            //Arrays.sort(c);
-            System.out.println(c);
             //String key = Arrays.toString(c);
             //String key = new String(c);
             String key = String.valueOf(c);
-            System.out.println("key:"+key);
             if (map.get(key) == null){
                 map.put(key, new ArrayList<String>());
             }
@@ -53,13 +51,31 @@ public class GroupAnagrams {
         }
         return res;
     }
+    public List<List<String>> myGoutpAndAnagrams1(List<String> strs){
+        HashMap<String, LinkedList<String>> map = new HashMap<>();
+        for (String s : strs){
+            char[] c = s.toCharArray();
+            sort(c,0, s.length() - 1);
+            String key = Arrays.toString(c);
+            if (!map.containsKey(key)){
+                map.put(key, new LinkedList<>());
+            }
+            map.get(key).add(s);
+        }
+        List<List<String>> res = new LinkedList<>();
+        for (String key : map.keySet()){
+            res.add(map.get(key));
+        }
+        return res;
+    }
 
     private void sort(char[] c, int l, int r) {
         if (c == null || c.length == 0) return;
-        if (l >= r) return;
-        int pivot = partition(c,l,r);
-        sort(c,l,pivot - 1);
-        sort(c,pivot + 1,r);
+        if (l < r) {
+            int pivot = partition(c, l, r);
+            sort(c, l, pivot - 1);
+            sort(c, pivot + 1, r);
+        }
     }
 
     private int partition(char[] c, int l, int r) {

@@ -35,8 +35,6 @@ public class CompareVersionNumbers {
         int res = 0;
         int i = 0;
         while (i < str.length()){
-            char a = str.charAt(i);
-            int k = (str.charAt(i) - '0');
             res = res * 10 + (str.charAt(i) - '0');
             i++;
         }
@@ -46,14 +44,13 @@ public class CompareVersionNumbers {
         int i = 0;
         int j = 0;
         while (i < s1.length() || j < s2.length()){
-            int x = i;
-            int y = j;
+            int x = i, y = j;
             while (x < s1.length() && s1.charAt(x) != '.') x++;
             while (y < s2.length() && s2.charAt(y) != '.') y++;
-            int a = (i == x) ? 0 : count(s1.substring(i,x));
-            int b = (j == y) ? 0 : count(s2.substring(j,y));
-            if (a > b) return 1;
+            int a = (x == i) ? 0 : count(s1.substring(i, x));
+            int b = (y == j) ? 0 : count(s2.substring(j, y));
             if (a < b) return -1;
+            if (a > b) return 1;
             i = x + 1;
             j = y + 1;
         }

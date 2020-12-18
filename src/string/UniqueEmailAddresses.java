@@ -18,20 +18,36 @@ public class UniqueEmailAddresses {
                            "test.e.mail+bob.cathy@leetcode.com",
                            "testemail+david@lee.tcode.com"};
         UniqueEmailAddresses o = new UniqueEmailAddresses();
-        System.out.print(o.myUniqueEmailAddress(emails));
+        System.out.println(o.myUniqueEmailAddress(emails));
+        System.out.println(o.myUniqueEmailAddress1(emails));
     }
     public int myUniqueEmailAddress(String[] emails){
         Set<String> set = new HashSet<String>();
         for (String email : emails){
             int at = email.indexOf("@");
-            StringBuilder name = new StringBuilder("");
+            String domain = email.substring(at);
+            StringBuilder name = new StringBuilder();
+            char c;
             for (int i = 0; i < at; i++){
-                if (email.charAt(i) == '+') break;
-                if (email.charAt(i) != '.') name.append(email.charAt(i));
+                if ((c = email.charAt(i)) == '+') break;
+                if (c != '.') name.append(c);
             }
-            String domain = email.substring(at+1);
-            set.add(name.append("@").append(domain).toString());
-            //set.add(name+"@"+domain);
+            set.add(name.append(domain).toString());
+        }
+        return set.size();
+    }
+    public int myUniqueEmailAddress1(String[] emails){
+        Set<String> set = new HashSet<>();
+        for (String email : emails){
+            int at = email.indexOf('@');
+            String domain = email.substring(at);
+            StringBuilder name = new StringBuilder();
+            char c;
+            for (int i = 0; i < at; i++){
+                if ((c = email.charAt(i)) == '+') break;
+                if (c != '.') name.append(c);
+            }
+            set.add(name.append(domain).toString());
         }
         return set.size();
     }
