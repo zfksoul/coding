@@ -1,5 +1,8 @@
 package test2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class A {
     static {
         System.out.println("static A");
@@ -8,6 +11,13 @@ public class A {
         B b = null;
         System.out.println("a");
         System.out.println("B.a="+B.a);
+
+        List<Integer> integer = new ArrayList<>();
+        fn(integer, new Object());
+
+    }
+    public static void fn(List list, Object o){
+
     }
 }
 class B{

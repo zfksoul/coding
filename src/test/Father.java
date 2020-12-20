@@ -14,13 +14,13 @@ public class Father {
     String s = "abc";
    
     protected void get(Father a) {
-        System.out.println(a.i);
+        System.out.println("Father.get(Father a)--->" + a.i);
     }
     protected void set(int x) {
         this.i = x;
     }
     protected void get() {
-        System.out.println(this.i);
+        System.out.println("Father.get()--->" + this.i);
     }
 
 }
