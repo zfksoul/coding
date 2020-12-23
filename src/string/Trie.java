@@ -5,7 +5,7 @@ package string;
  */
 public class Trie {
     private class Node{
-        boolean isEnd;
+        boolean isEnd;//是否存在以本节点结尾的单词
         Node[] son = new Node[26];
         private Node() {
             isEnd = false;

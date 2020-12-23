@@ -15,8 +15,8 @@ public class CompareVersionNumbers {
         System.out.println(o.myCompareVersion1("1.0","1.0.1"));
     }
     public int myCompareVersion(String s1, String s2){
-        int i = 0;
-        int j = 0;
+        int i = 0;//每一节开头
+        int j = 0;//每一节开头
         while (i < s1.length() || j < s2.length()){
             int x = i, y = j;
             while (x < s1.length() && s1.charAt(x) != '.') x++;
@@ -44,13 +44,14 @@ public class CompareVersionNumbers {
         int i = 0;
         int j = 0;
         while (i < s1.length() || j < s2.length()){
-            int x = i, y = j;
-            while (x < s1.length() && s1.charAt(x) != '.') x++;
-            while (y < s2.length() && s2.charAt(y) != '.') y++;
+            int x = i;
+            int y = j;
+            while (x < s1.length() && '.' != s1.charAt(x)) x++;
+            while (y < s2.length() && '.' != s2.charAt(y)) y++;
             int a = (x == i) ? 0 : count(s1.substring(i, x));
             int b = (y == j) ? 0 : count(s2.substring(j, y));
-            if (a < b) return -1;
             if (a > b) return 1;
+            if (a < b) return -1;
             i = x + 1;
             j = y + 1;
         }

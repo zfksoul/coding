@@ -31,7 +31,6 @@ public class Sun extends Father {
         s1.get();//继承
         List<Sun> s = new ArrayList<>();
         f(s);
-        "".equals()
     }
 
     public static void f(List<? extends Father> list){

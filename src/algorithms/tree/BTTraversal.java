@@ -3,6 +3,12 @@ package algorithms.tree;
 import java.util.LinkedList;
 import java.util.Stack;
 
+/**
+ *     4
+ *    2  6
+ *   1 3 5 7
+ *        8
+ */
 public class BTTraversal {
     public static void main(String[] args){
         TreeNode node1 = new TreeNode(1);
@@ -12,12 +18,14 @@ public class BTTraversal {
         TreeNode node5 = new TreeNode(5);
         TreeNode node6 = new TreeNode(6);
         TreeNode node7 = new TreeNode(7);
+        TreeNode node8 = new TreeNode(8);
         node4.left = node2;
         node4.right =node6;
         node2.left = node1;
         node2.right = node3;
         node6.left = node5;
         node6.right = node7;
+        node7.left = node8;
         BTTraversal o = new BTTraversal();
         /*o.preOrder(node4);
         o.preOrder1(node4);
@@ -26,11 +34,11 @@ public class BTTraversal {
         /*o.inOrder(node4);
         o.inOrder1(node4);
         o.inOrderRecur(node4);*/
-        o.posOrder(node4);
-        o.posOrder1(node4);
+        //o.posOrder(node4);
+        //o.posOrder1(node4);
         o.posOrder2(node4);
-        o.posOrder3(node4);
-        o.posOrderRecur(node4);
+        //o.posOrder3(node4);
+        //o.posOrderRecur(node4);
     }
 
     public void preOrder(TreeNode head){
